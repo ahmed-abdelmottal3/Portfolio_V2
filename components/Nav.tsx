@@ -18,7 +18,7 @@ export default function Nav() {
   ];
 
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+    <div className="fixed bottom-12 sm:bottom-8 left-1/2 -translate-x-1/2 z-50">
       <nav className="relative flex items-center bg-gradient-to-r from-[#1a1a1a] via-[#222121] to-[#1a1a1a] backdrop-blur-2xl rounded-full px-3 py-1 shadow-2xl border border-white/10">
 
         {/* Background Glow */}

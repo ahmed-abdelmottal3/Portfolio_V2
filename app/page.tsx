@@ -7,74 +7,63 @@ const greatVibes = Great_Vibes({
   subsets: ["latin"],
   weight: ["400"],
 });
+
 export default function Home() {
   return (
-    <>
-      <>
-        <div className="flex flex-col items-center justify-center h-screen text-white px-4 md:px-8 lg:px-12">
-          <img
-            src="/mylogowhite.webp"
-            alt="logo"
-            className="w-24 md:w-32 lg:w-40 max-h-full mb-6"
-          />
+    <div className="flex flex-col items-center justify-center min-h-screen overflow-hidden bg-black text-white text-center px-4">
+      {/* logo */}
+      <img
+        src="/mylogowhite.webp"
+        alt="logo"
+        className="w-20 sm:w-24 md:w-32 lg:w-40 mb-4"
+      />
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-center">
-            Hi, I'm <span className="text-blue-500">Ahmed</span>
+      {/* heading */}
+      <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2">
+        Hi, I'm <span className="text-blue-500">Ahmed</span>
+      </h1>
+
+      {/* type animation */}
+      <TypeAnimation
+        sequence={[
+          "Front-end Developer",
+          2000,
+          "UI/UX Enthusiast",
+          2000,
+          "React Specialist",
+          2000,
+        ]}
+        wrapper="span"
+        speed={50}
+        className="text-lg sm:text-xl md:text-2xl font-semibold mb-3"
+        repeat={Infinity}
+      />
+
+      {/* description */}
+      <p className="text-sm sm:text-base md:text-lg max-w-md sm:max-w-lg mb-4 leading-relaxed opacity-80">
+        Passionate about creating beautiful and responsive web applications.
+        I love turning ideas into interactive experiences.
+      </p>
+
+      {/* links */}
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-4">
+        {["More About Me", "What I've Built", "Get In Touch"].map((text, i) => (
+          <h1
+            key={i}
+            className={`${greatVibes.className} relative text-xl sm:text-2xl md:text-3xl opacity-70 cursor-pointer group transition-all duration-300`}
+          >
+            {text}
+            <span className="absolute right-[-25px] sm:right-[-30px] top-1/2 transform -translate-y-1/2 opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 text-white text-lg">
+              →
+            </span>
           </h1>
+        ))}
+      </div>
 
-          <TypeAnimation
-            sequence={[
-              "Front-end Developer",
-              2000,
-              "UI/UX Enthusiast",
-              2000,
-              "React Specialist",
-              2000,
-            ]}
-            wrapper="span"
-            speed={50}
-            className="text-xl sm:text-2xl md:text-3xl font-semibold inline-block mb-4 text-center"
-            repeat={Infinity}
-          />
-
-          <p className="text-center text-base sm:text-lg md:text-xl max-w-xs sm:max-w-md md:max-w-lg mb-6 leading-relaxed">
-            passionate about creating beautiful and responsive web applications. I
-            love turning ideas into interactive experiences.
-          </p>
-
-          <div className="flex gap-10">
-
-            <h1
-              className={`${greatVibes.className} relative text-2xl sm:text-2xl md:text-4xl opacity-50 text-white text-center my-8 cursor-pointer hover:me-10 group inline-block transition-all duration-300`}
-            >
-              More About Me
-              <span className="absolute right-[-30px] sm:right-[-35px] top-1/2 transform -translate-y-1/2 opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 text-white text-xl">
-                →
-              </span>
-            </h1>
-
-            <h1
-              className={`${greatVibes.className} relative text-2xl sm:text-2xl md:text-4xl opacity-50 text-white text-center my-8 cursor-pointer hover:me-10 group inline-block transition-all duration-300`}
-            >
-              Waht I've Built
-              <span className="absolute right-[-30px] sm:right-[-35px] top-1/2 transform -translate-y-1/2 opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 text-white text-xl">
-                →
-              </span>
-            </h1>
-
-            <h1
-              className={`${greatVibes.className} relative text-2xl sm:text-2xl md:text-4xl opacity-50 text-white text-center my-8 cursor-pointer hover:me-10 group inline-block transition-all duration-300`}
-            >
-              Get In Touch
-              <span className="absolute right-[-30px] sm:right-[-35px] top-1/2 transform -translate-y-1/2 opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 text-white text-xl">
-                →
-              </span>
-            </h1>
-          </div>
-
-          <Nav />
-        </div>
-      </>
-    </>
+      {/* nav */}
+      <div className="mt-6">
+        <Nav />
+      </div>
+    </div>
   );
 }
