@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+"use client";
+import { useState } from "react";
 import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 export default function Nav() {
