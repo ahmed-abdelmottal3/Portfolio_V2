@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation"; // ✅ التعديل هنا
 import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 export default function Nav() {
-  const [active, setActive] = useState('/');
+  const pathname = usePathname(); 
+  const active = pathname; 
 
   const navItems = [
     { icon: <FaHome size={15} />, label: "Home", href: "/" },
@@ -35,11 +36,11 @@ export default function Nav() {
               <div key={item.href} className="relative group">
                 <Link
                   href={item.href}
-                  onClick={() => setActive(item.href)}
-                  className={`relative rounded-full p-1.5 flex items-center justify-center transition-all duration-500 ${isActive
+                  className={`relative rounded-full p-1.5 flex items-center justify-center transition-all duration-500 ${
+                    isActive
                       ? 'bg-white text-black shadow-2xl shadow-white/50 scale-110'
                       : 'text-gray-400 hover:text-white hover:scale-110'
-                    }`}
+                  }`}
                 >
                   <div className="text-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                     {item.icon}
@@ -98,7 +99,6 @@ export default function Nav() {
                 <div className="relative bg-background text-foreground text-xs font-bold px-4 py-1 rounded-full shadow-2xl border border-white/20 backdrop-blur-sm ">
                   {item.label}
                   <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-background rotate-45 border-r border-b border-white/20" />
-
                 </div>
               </div>
             </div>

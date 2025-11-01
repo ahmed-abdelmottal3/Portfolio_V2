@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaUser, FaRocket, FaPaperPlane } from 'react-icons/fa';
 import { Great_Vibes } from 'next/font/google';
+import Link from 'next/link';
 
 const greatVibes = Great_Vibes({
     weight: '400',
@@ -9,17 +10,17 @@ const greatVibes = Great_Vibes({
 
 export default function CTASection() {
     const items = [
-        { text: "More About Me", icon: <FaUser />, gradient: "from-blue-400 via-blue-500 to-purple-500", iconColor: "#8B5CF6" },
-        { text: "What I've Built", icon: <FaRocket />, gradient: "from-purple-400 via-purple-500 to-pink-500", iconColor: "#EC4899" },
-        { text: "Get In Touch", icon: <FaPaperPlane />, gradient: "from-pink-400 via-pink-500 to-orange-400", iconColor: "#FB923C" }
+        { text: "More About Me", icon: <FaUser />, gradient: "from-blue-400 via-blue-500 to-purple-500", iconColor: "#8B5CF6", href: "/about" },
+        { text: "What I've Built", icon: <FaRocket />, gradient: "from-purple-400 via-purple-500 to-pink-500", iconColor: "#EC4899", href: "/projects" },
+        { text: "Get In Touch", icon: <FaPaperPlane />, gradient: "from-pink-400 via-pink-500 to-orange-400", iconColor: "#FB923C", href: "/contact" },
     ];
 
     return (
         <div className="flex flex-wrap items-center justify-center mx-auto gap-3 sm:gap-5 md:gap-7 lg:gap-10 mt-8 px-4 sm:px-6 md:px-10">
             {items.map((item, i) => (
-                <a
+                <Link
                     key={i}
-                    href="#"
+                    href={item.href}
                     className="relative group cursor-pointer w-fit flex justify-center no-underline"
                 >
                     {/* Gradient Glow Background */}
@@ -69,7 +70,7 @@ export default function CTASection() {
                     <div className="absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 pointer-events-none">
                         <div className={`w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gradient-to-r ${item.gradient} rounded-full blur-sm animate-ping`} />
                     </div>
-                </a>
+                </Link>
             ))}
         </div>
     );

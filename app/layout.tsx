@@ -13,7 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   title: "Ahmed Abd El-mottalie",
   description: "My portfolio website, showcasing my projects and skills, built with Next.js and TypeScript and using shadcn/ui for the UI components.",
