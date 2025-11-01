@@ -3,6 +3,8 @@ import { TypeAnimation } from "react-type-animation";
 import { Great_Vibes } from "next/font/google";
 import "./globals.css";
 import CTASection from "@/components/CTAsection";
+import { AuroraText } from "@/components/ui/aurora-text"
+
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
   weight: ["400"],
@@ -20,7 +22,7 @@ export default function Home() {
 
       {/* heading */}
       <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2">
-        Hi, I'm <span className="text-blue-500">Ahmed</span>
+        Hi, I'm <AuroraText>Ahmed</AuroraText>
       </h1>
 
       {/* type animation */}

@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // ✅ التعديل هنا
+import { usePathname } from "next/navigation"; 
 import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub, FaWhatsapp, FaLinkedin } from "react-icons/fa";
-
 export default function Nav() {
   const pathname = usePathname(); 
   const active = pathname; 
