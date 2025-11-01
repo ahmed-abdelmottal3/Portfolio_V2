@@ -5,7 +5,7 @@ import "./globals.css";
 import CTASection from "@/components/CTAsection";
 import { AuroraText } from "@/components/ui/aurora-text"
 
-const greatVibes = Great_Vibes({
+export const greatVibes = Great_Vibes({
   subsets: ["latin"],
   weight: ["400"],
 });
