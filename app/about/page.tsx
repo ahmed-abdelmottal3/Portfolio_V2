@@ -1,8 +1,10 @@
 import CircularCTA from '@/components/shared/CircularCTA';
+import Header from '@/components/ui/header';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button'
 import { MagicCard } from '@/components/ui/magic-card';
 import { SpinningText } from '@/components/ui/spinning-text';
 import Link from 'next/link';
+import { title } from 'process';
 import { BsArrowRight } from 'react-icons/bs';
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, FaSass, FaFigma,
@@ -37,9 +39,7 @@ const experiences = [{
 export default function page() {
   return (
     <section className='container mx-auto pt-10 px-4'>
-      <div className='relative text-3xl font-semibold w-fit'>
-        About me <span className=' w-2 h-2 bg-blue-500 absolute bottom-2 -right-4 rounded-full'></span>
-      </div>
+      <Header title="About me" />
 
       {/* info */}
       <Info />
@@ -56,14 +56,12 @@ export default function page() {
       to='Tp Products' />
 
     </section>
-
-
   )
 }
 
 function Info() {
   return (
-    <section className='flex flex-col md:flex-row flex-wrap gap-5 md:gap-10 w-full pt-8'>
+    <section className='flex flex-col md:flex-row flex-wrap gap-5 md:gap-10 w-full'>
       {/* img + btn */}
       <div className='w-full md:w-1/3 flex flex-col items-center gap-4'>
         <div className='border border-background/20 rounded-2xl shadow-xl shadow-background/10 overflow-hidden w-60 md:w-72'>
@@ -119,10 +117,8 @@ function Info() {
 
 function Experience() {
   return (
-    <div >
-      <div className='relative text-3xl font-semibold w-fit mb-4'>
-        Experience <span className='w-2 h-2 bg-blue-500 absolute bottom-2 -right-4 rounded-full'></span>
-      </div>
+    <div>
+      <Header title="Experience" />
       {experiences.map((exp, index) => (
         <MagicCard className="p-4 mb-4" key={index}>
           <div className="flex items-center gap-4">
@@ -149,11 +145,8 @@ function Experience() {
 
 function Education() {
   return (
-
     <div>
-      <div className='relative text-3xl font-semibold w-fit mb-4'>
-        Education <span className='w-2 h-2 bg-blue-500 absolute bottom-2 -right-4 rounded-full'></span>
-      </div>
+      <Header title="Education" />
       <MagicCard className="p-4 mb-4 h-fit">
         <div className="flex items-center gap-4">
           <div>
