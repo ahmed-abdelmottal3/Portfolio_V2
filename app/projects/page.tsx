@@ -9,7 +9,7 @@ import { FaEye, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Page() {
-    const [view, setView] = useState<"list" | "grid">("grid");
+    const [view, setView] = useState("grid");
 
     const projects = [
         {
