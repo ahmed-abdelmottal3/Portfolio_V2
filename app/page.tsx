@@ -40,7 +40,7 @@ export default function Home() {
       />
 
       {/* description */}
-      <p className="text-foreground/50 text-sm sm:text-base md:text-lg max-w-md sm:max-w-lg mb-4 opacity-80">
+      <p className="text-background/50 text-sm sm:text-base md:text-lg max-w-md sm:max-w-lg mb-4 opacity-80">
         Passionate about creating beautiful and responsive web applications.
         I love turning ideas into interactive experiences.
       </p>

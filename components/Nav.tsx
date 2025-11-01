@@ -1,15 +1,16 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 export default function Nav() {
-  const [active, setActive] = useState('#home');
+  const [active, setActive] = useState('/');
 
   const navItems = [
-    { icon: <FaHome size={15} />, label: "Home", href: "#home" },
-    { icon: <FaUser size={15} />, label: "About", href: "#about" },
-    { icon: <FaProjectDiagram size={15} />, label: "Projects", href: "#projects" },
-    { icon: <FaEnvelope size={15} />, label: "Contact", href: "#contact" },
+    { icon: <FaHome size={15} />, label: "Home", href: "/" },
+    { icon: <FaUser size={15} />, label: "About", href: "/about" },
+    { icon: <FaProjectDiagram size={15} />, label: "Projects", href: "/projects" },
+    { icon: <FaEnvelope size={15} />, label: "Contact", href: "/contact" },
   ];
 
   const socialItems = [
@@ -32,7 +33,7 @@ export default function Nav() {
             const isActive = active === item.href;
             return (
               <div key={item.href} className="relative group">
-                <a
+                <Link
                   href={item.href}
                   onClick={() => setActive(item.href)}
                   className={`relative rounded-full p-1.5 flex items-center justify-center transition-all duration-500 ${isActive
@@ -50,13 +51,13 @@ export default function Nav() {
                       <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-white/40 to-white/0 blur-md" />
                     </>
                   )}
-                </a>
+                </Link>
 
                 {/* Tooltip */}
                 <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 pointer-events-none">
-                  <div className="relative bg-foreground text-background text-xs font-bold px-4 py-1 rounded-full shadow-2xl border border-white/20 backdrop-blur-sm ">
+                  <div className="relative bg-background text-foreground text-xs font-bold px-4 py-1 rounded-full shadow-2xl border border-white/20 backdrop-blur-sm ">
                     {item.label}
-                    <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-foreground rotate-45 border-r border-b border-white/20" />
+                    <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-background rotate-45 border-r border-b border-white/20" />
                   </div>
                 </div>
               </div>
@@ -93,10 +94,10 @@ export default function Nav() {
               </a>
 
               {/* Tooltip */}
-              <div className="absolute -top-16 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 pointer-events-none">
-                <div className="relative bg-foreground text-background text-xs font-bold px-4 py-1 rounded-full shadow-2xl border border-white/20 backdrop-blur-sm ">
+              <div className="absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 pointer-events-none">
+                <div className="relative bg-background text-foreground text-xs font-bold px-4 py-1 rounded-full shadow-2xl border border-white/20 backdrop-blur-sm ">
                   {item.label}
-                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-foreground rotate-45 border-r border-b border-white/20" />
+                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-background rotate-45 border-r border-b border-white/20" />
 
                 </div>
               </div>

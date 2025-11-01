@@ -15,7 +15,7 @@ export default function CTASection() {
     ];
 
     return (
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 md:gap-7 lg:gap-10 mt-8 px-4 sm:px-6 md:px-10">
+        <div className="flex flex-wrap items-center justify-center mx-auto gap-3 sm:gap-5 md:gap-7 lg:gap-10 mt-8 px-4 sm:px-6 md:px-10">
             {items.map((item, i) => (
                 <a
                     key={i}
@@ -42,14 +42,14 @@ export default function CTASection() {
                             className="text-lg sm:text-xl md:text-2xl opacity-0 translate-x-[-20px] group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-100 filter drop-shadow-lg"
                             style={{ color: item.iconColor }}
                         >
-                            <div className="group-hover:animate-bounce ps-5">
+                            <div className="group-hover:animate-bounce ps-2">
                                 {item.icon}
                             </div>
                         </span>
                     </div>
 
                     {/* Decorative Moving Dots */}
-                    <div className="absolute -bottom-2 sm:-bottom-3 left-0 right-0 flex justify-center gap-1.5 sm:gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
+                    <div className="absolute -bottom-3 sm:-bottom-3 left-0 right-0 flex justify-center gap-1.5 sm:gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
                         {[0, 1, 2].map((dot) => (
                             <div
                                 key={dot}
