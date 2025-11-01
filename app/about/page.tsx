@@ -2,10 +2,6 @@ import CircularCTA from '@/components/shared/CircularCTA';
 import Header from '@/components/ui/header';
 import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button'
 import { MagicCard } from '@/components/ui/magic-card';
-import { SpinningText } from '@/components/ui/spinning-text';
-import Link from 'next/link';
-import { title } from 'process';
-import { BsArrowRight } from 'react-icons/bs';
 import {
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, FaSass, FaFigma,
 } from "react-icons/fa";
@@ -53,7 +49,8 @@ export default function page() {
       {/* CTA section */}
       <CircularCTA title='my projects • my projects • my projects •'
       from='From Pixels'
-      to='Tp Products' />
+      to='Tp Products'
+      href='/projects' />
 
     </section>
   )
@@ -76,7 +73,7 @@ function Info() {
       <div className='flex-1 flex flex-col items-start justify-start'>
         <h2 className=' text-2xl font-semibold mb-4'><span className='font-great-vibes font-light'>Hi there,</span> I'm Ahmed Abd El-mottalie</h2>
         <p className='text-base leading-relaxed max-w-2xl mb-6'>
-          I’m a passionate and detail-oriented web developer with a strong focus on creating clean, modern, and user-friendly websites.
+          I'm a passionate and detail-oriented web developer with a strong focus on creating clean, modern, and user-friendly websites.
           I enjoy turning creative ideas into functional digital experiences, blending design with performance.
           Always eager to learn and adapt to new technologies, I aim to deliver high-quality solutions that make an impact.
         </p>
@@ -120,21 +117,21 @@ function Experience() {
     <div>
       <Header title="Experience" />
       {experiences.map((exp, index) => (
-        <MagicCard className="p-4 mb-4" key={index}>
-          <div className="flex items-center gap-4">
-            <div>
-              <div className='flex justify-between items-center'>
+        <MagicCard className="p-6 mb-4" key={index}>
+          <div className="relative z-10 flex items-center gap-4">
+            <div className="w-full">
+              <div className='flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4'>
                 <div>
-                  <h2 className="font-semibold text-lg text-blue-500">
+                  <h2 className="font-semibold text-lg text-blue-400">
                     {exp.role}
                   </h2>
-                  <h5 className="text-sm text-muted-foreground">
+                  <h5 className="text-sm text-gray-400">
                     {exp.company}
                   </h5>
                 </div>
-                <h6 className='text-sm text-background/40'>{exp.date}</h6>
+                <h6 className='text-sm text-gray-500'>{exp.date}</h6>
               </div>
-              <p className='pt-4 text-background/60 font-light'>{exp.desc}</p>
+              <p className='text-gray-400 font-light leading-relaxed'>{exp.desc}</p>
             </div>
           </div>
         </MagicCard>
@@ -147,21 +144,21 @@ function Education() {
   return (
     <div>
       <Header title="Education" />
-      <MagicCard className="p-4 mb-4 h-fit">
-        <div className="flex items-center gap-4">
-          <div>
-            <div className='flex justify-between items-center'>
+      <MagicCard className="p-6 mb-4 h-fit">
+        <div className="relative z-10 flex items-center gap-4">
+          <div className="w-full">
+            <div className='flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4'>
             <div>
-            <h2 className="font-semibold text-lg text-blue-500">
-              Bachelor’s Degree, Sc
+            <h2 className="font-semibold text-lg text-blue-400">
+              Bachelor's Degree, Sc
             </h2>
-            <h5 className="text-sm text-muted-foreground">
+            <h5 className="text-sm text-gray-400">
               KFS University
             </h5>
             </div>
-            <h6 className='text-sm text-background/40'>2020 - 2024</h6>
+            <h6 className='text-sm text-gray-500'>2020 - 2024</h6>
             </div>
-            <p className='pt-4 text-background/60 font-light'>Bachelor's degree in Computer Science from Kafr El-Sheikh University, focusing on software development and web technologies.</p>
+            <p className='text-gray-400 font-light leading-relaxed'>Bachelor's degree in Computer Science from Kafr El-Sheikh University, focusing on software development and web technologies.</p>
           </div>
         </div>
       </MagicCard>

@@ -7,6 +7,7 @@ import { MagicCard } from "@/components/ui/magic-card";
 import { ShinyButton } from "@/components/ui/shiny-button";
 import { FaEye, FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import CircularCTA from "@/components/shared/CircularCTA";
 
 export default function Page() {
     const [view, setView] = useState("grid");
@@ -162,6 +163,12 @@ export default function Page() {
                         </div>
                     </MagicCard>
                 ))}
+            </div>
+            <div>
+                <CircularCTA title='Get in touch • Get in touch • Get in touch •'
+                    from='Crafted With Care'
+                    to='Lets Craft Yours'
+                    href="/contact" />
             </div>
         </section>
     );
