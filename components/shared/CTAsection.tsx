@@ -3,10 +3,7 @@ import { FaUser, FaRocket, FaPaperPlane } from 'react-icons/fa';
 import { Great_Vibes } from 'next/font/google';
 import Link from 'next/link';
 
-const greatVibes = Great_Vibes({
-    weight: '400',
-    subsets: ['latin']
-});
+
 
 export default function CTASection() {
     const items = [
@@ -25,7 +22,7 @@ export default function CTASection() {
                 >
                     {/* Gradient Glow Background */}
                     <div
-                        className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-full opacity-0 group-hover:opacity-30 blur-xl transition-all duration-700 pointer-events-none`}
+                        className={`absolute inset-0 bg-linear-to-r ${item.gradient} rounded-full opacity-0 group-hover:opacity-30 blur-xl transition-all duration-700 pointer-events-none`}
                     />
 
                     {/* Main Content */}
@@ -33,19 +30,19 @@ export default function CTASection() {
 
                         {/* Text with Gradient on Hover */}
                         <h1
-                            className={`${greatVibes.className} xs:text-2xl sm:text-3xl md:text-4xl text-white/70 text-center group-hover:bg-gradient-to-r ${item.gradient} group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 group-hover:scale-110 transform whitespace-nowrap`}
+                            className={`font-great-vibes xs:text-2xl sm:text-3xl md:text-4xl text-white/70 text-center group-hover:bg-linear-to-r ${item.gradient} group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 group-hover:scale-110 transform whitespace-nowrap`}
                         >
                             {item.text}
                         </h1>
 
                         {/* Animated Icon */}
                         <span
-                            className="text-lg sm:text-xl md:text-2xl opacity-0 translate-x-[-20px] group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-100 filter drop-shadow-lg"
+                            className="text-lg sm:text-xl md:text-2xl opacity-0 -translate-x-5 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-100 filter drop-shadow-lg"
                             style={{ color: item.iconColor }}
                         >
-                            <div className="group-hover:animate-bounce ps-2">
+                            <span className="group-hover:animate-bounce ps-2 inline-block">
                                 {item.icon}
-                            </div>
+                            </span>
                         </span>
                     </div>
 
@@ -54,21 +51,21 @@ export default function CTASection() {
                         {[0, 1, 2].map((dot) => (
                             <div
                                 key={dot}
-                                className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r ${item.gradient} animate-pulse`}
+                                className={`w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-linear-to-r ${item.gradient} animate-pulse`}
                                 style={{ animationDelay: `${dot * 150}ms` }}
                             />
                         ))}
                     </div>
 
                     {/* Animated Underline */}
-                    <div className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r ${item.gradient} w-0 group-hover:w-full transition-all duration-700 shadow-lg pointer-events-none`} />
+                    <div className={`absolute -bottom-1 left-0 h-0.5 bg-linear-to-r ${item.gradient} w-0 group-hover:w-full transition-all duration-700 shadow-lg pointer-events-none`} />
 
                     {/* Floating Sparkles */}
                     <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
-                        <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r ${item.gradient} rounded-full blur-sm animate-ping`} />
+                        <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 bg-linear-to-r ${item.gradient} rounded-full blur-sm animate-ping`} />
                     </div>
                     <div className="absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 pointer-events-none">
-                        <div className={`w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gradient-to-r ${item.gradient} rounded-full blur-sm animate-ping`} />
+                        <div className={`w-1 h-1 sm:w-1.5 sm:h-1.5 bg-linear-to-r ${item.gradient} rounded-full blur-sm animate-ping`} />
                     </div>
                 </Link>
             ))}

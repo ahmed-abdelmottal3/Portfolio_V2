@@ -21,11 +21,11 @@ export default function Nav() {
 
   return (
     <div className="fixed bottom-12 sm:bottom-8 left-1/2 -translate-x-1/2 z-50">
-      <nav className="relative flex items-center bg-gradient-to-r from-[#1a1a1a] via-[#222121] to-[#1a1a1a] backdrop-blur-2xl rounded-full px-3 py-1 shadow-2xl border border-white/10">
+      <nav className="relative flex items-center bg-linear-to-r from-[#1a1a1a] via-[#222121] to-[#1a1a1a] backdrop-blur-2xl rounded-full px-3 py-1 shadow-2xl border border-white/10">
 
         {/* Background Glow */}
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-50 blur-xl" />
-        <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-30 blur-sm" />
+        <div className="absolute inset-0 rounded-3xl bg-linear-to-r from-white/5 via-white/10 to-white/5 opacity-50 blur-xl" />
+        <div className="absolute -inset-0.5 rounded-3xl bg-linear-to-r from-transparent via-white/20 to-transparent opacity-30 blur-sm" />
 
         {/* Nav Items */}
         <div className="relative flex items-center gap-1 border-r border-white/20 pr-3">
@@ -48,7 +48,7 @@ export default function Nav() {
                   {isActive && (
                     <>
                       <div className="absolute inset-0 rounded-2xl bg-white animate-ping opacity-20" />
-                      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-white/40 to-white/0 blur-md" />
+                      <div className="absolute -inset-1 rounded-2xl bg-linear-to-r from-white/40 to-white/0 blur-md" />
                     </>
                   )}
                 </Link>
@@ -76,7 +76,7 @@ export default function Nav() {
                 className="relative rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:scale-125 transition-all duration-500"
               >
                 <div
-                  className="text-xl transition-all duration-500 group-hover:scale-125 group-hover:rotate-[360deg]"
+                  className="text-xl transition-all duration-500 group-hover:scale-125 group-hover:rotate-360"
                   style={{ color: 'inherit' }}
                 >
                   {item.icon}
@@ -105,12 +105,12 @@ export default function Nav() {
         </div>
 
         {/* Decorative Lines */}
-        <div className="absolute -top-1 left-1/4 w-20 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent blur-sm" />
-        <div className="absolute -bottom-1 right-1/4 w-20 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent blur-sm" />
+        <div className="absolute -top-1 left-1/4 w-20 h-0.5 bg-linear-to-r from-transparent via-white/30 to-transparent blur-sm" />
+        <div className="absolute -bottom-1 right-1/4 w-20 h-0.5 bg-linear-to-r from-transparent via-white/30 to-transparent blur-sm" />
       </nav>
 
       {/* Bottom Shadow */}
-      <div className="absolute inset-x-0 -bottom-4 h-8 bg-gradient-to-b from-black/20 to-transparent blur-2xl" />
+      <div className="absolute inset-x-0 -bottom-4 h-8 bg-linear-to-b from-black/20 to-transparent blur-2xl" />
     </div>
   );
 }

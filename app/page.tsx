@@ -2,13 +2,10 @@
 import { TypeAnimation } from "react-type-animation";
 import { Great_Vibes } from "next/font/google";
 import "./globals.css";
-import CTASection from "@/components/CTAsection";
+import CTASection from "@/components/shared/CTAsection";
 import { AuroraText } from "@/components/ui/aurora-text"
 
-export const greatVibes = Great_Vibes({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+
 
 export default function Home() {
   return (
