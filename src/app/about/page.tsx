@@ -52,7 +52,7 @@ function Info() {
       {/* desc*/}
       <div className='flex-1 flex flex-col items-start justify-start'>
         <h2 className=' text-2xl font-semibold mb-4'><span className='font-great-vibes font-light'>Hi there,</span> I'm Ahmed Abd El-mottalie</h2>
-        <p className='text-base leading-relaxed max-w-2xl mb-6'>
+        <p className='text-base leading-relaxed text-background/60 max-w-2xl mb-6'>
           I'm a passionate and detail-oriented web developer with a strong focus on creating clean, modern, and user-friendly websites.
           I enjoy turning creative ideas into functional digital experiences, blending design with performance.
           Always eager to learn and adapt to new technologies, I aim to deliver high-quality solutions that make an impact.
@@ -105,13 +105,13 @@ function Experience() {
                   <h2 className="font-semibold text-lg text-blue-400">
                     {exp.role}
                   </h2>
-                  <h5 className="text-sm text-gray-400">
+                  <h5 className="text-sm text-background/60">
                     {exp.company}
                   </h5>
                 </div>
-                <h6 className='text-sm text-gray-500'>{exp.date}</h6>
+                <h6 className='text-sm text-background/40'>{exp.date}</h6>
               </div>
-              <p className='text-gray-400 font-light leading-relaxed'>{exp.desc}</p>
+              <p className='text-background/80 font-light leading-relaxed'>{exp.desc}</p>
             </div>
           </div>
         </MagicCard>
@@ -132,13 +132,13 @@ function Education() {
                 <h2 className="font-semibold text-lg text-blue-400">
                   Bachelor's Degree, Sc
                 </h2>
-                <h5 className="text-sm text-gray-400">
+                <h5 className="text-sm text-background/60">
                   KFS University
                 </h5>
               </div>
-              <h6 className='text-sm text-gray-500'>2020 - 2024</h6>
+              <h6 className='text-sm text-background/40'>2020 - 2024</h6>
             </div>
-            <p className='text-gray-400 font-light leading-relaxed'>Bachelor’s degree in Science (Zoology Department) from Kafr El-Sheikh University.</p>
+            <p className='text-background/80 font-light leading-relaxed'>Bachelor’s degree in Science (Zoology Department) from Kafr El-Sheikh University.</p>
           </div>
         </div>
       </MagicCard>

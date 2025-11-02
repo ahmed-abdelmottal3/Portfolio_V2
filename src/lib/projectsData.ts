@@ -30,7 +30,7 @@ export const projectsData: Project[] = [
             img: "/ANTOJITOS.jpg",
             liveUrl: "https://antojitos-one.vercel.app/",
             githubUrl: "https://github.com/ahmed-abdelmottal3/ANTOJITOS",
-            date: "December 2024",
+            date: "October 2025",
             category: "Web Development",
             features: [
                 "Responsive design that works seamlessly across all devices",
@@ -65,7 +65,7 @@ export const projectsData: Project[] = [
             img: "/Gradient.png",
             liveUrl: "https://github.com/ahmed-abdelmottal3/Gradient-Generator",
             githubUrl: "https://gradient-generator-bice-iota.vercel.app/",
-            date: "November 2024",
+            date: "July 2025",
             category: "Web Tool",
             features: [
                 "Real-time gradient preview with instant updates",
@@ -100,7 +100,7 @@ export const projectsData: Project[] = [
             img: "/QR.png",
             liveUrl: "https://github.com/ahmed-abdelmottal3/QR-generator",
             githubUrl: "https://ahmed-abdelmottal3.github.io/QR-generator/",
-            date: "October 2024",
+            date: "October 2025",
             category: "Utility Tool",
             features: [
                 "Support for multiple data types (URL, text, contact, WiFi)",
@@ -135,7 +135,7 @@ export const projectsData: Project[] = [
             img: "/portfolio-1.png",
             liveUrl: "https://ahmed-saleh-two.vercel.app/",
             githubUrl: "https://github.com/ahmed-abdelmottal3/my-first-client-project",
-            date: "September 2024",
+            date: "November 2025",
             category: "Portfolio",
             features: [
                 "Clean and professional design aesthetic",

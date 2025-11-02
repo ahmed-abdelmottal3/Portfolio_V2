@@ -87,7 +87,7 @@ export function MagicCard({
           `,
         }}
       />
-      <div className="bg-[#18181b] absolute inset-px rounded-2xl" />
+      <div className="bg-magic absolute inset-px rounded-2xl" />
       <motion.div
         className="pointer-events-none absolute inset-1 rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{

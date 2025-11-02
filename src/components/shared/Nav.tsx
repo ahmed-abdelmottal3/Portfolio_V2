@@ -1,10 +1,11 @@
 "use client";
+import { AnimatedThemeToggler } from "@/src/components/ui/animated-theme-toggler";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
 import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 export default function Nav() {
-  const pathname = usePathname(); 
-  const active = pathname; 
+  const pathname = usePathname();
+  const active = pathname;
 
   const navItems = [
     { icon: <FaHome size={15} />, label: "Home", href: "/" },
@@ -28,18 +29,17 @@ export default function Nav() {
         <div className="absolute -inset-0.5 rounded-3xl bg-linear-to-r from-transparent via-white/20 to-transparent opacity-30 blur-sm" />
 
         {/* Nav Items */}
-        <div className="relative flex items-center gap-1 border-r border-white/20 pr-3">
+        <div className="relative flex items-center gap-1  border-white/20 pr-3">
           {navItems.map((item) => {
             const isActive = active === item.href;
             return (
               <div key={item.href} className="relative group">
                 <Link
                   href={item.href}
-                  className={`relative rounded-full p-1.5 flex items-center justify-center transition-all duration-500 ${
-                    isActive
-                      ? 'bg-white text-black shadow-2xl shadow-white/50 scale-110'
-                      : 'text-gray-400 hover:text-white hover:scale-110'
-                  }`}
+                  className={`relative rounded-full p-1.5 flex items-center justify-center transition-all duration-500 ${isActive
+                    ? 'bg-white text-black shadow-2xl shadow-white/50 scale-110'
+                    : 'text-gray-400 hover:text-white hover:scale-110'
+                    }`}
                 >
                   <div className="text-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
                     {item.icon}
@@ -66,7 +66,7 @@ export default function Nav() {
         </div>
 
         {/* Social Items */}
-        <div className="relative flex items-center gap-4 pl-3">
+        <div className="relative flex items-center border-l border-r gap-4 px-3">
           {socialItems.map((item) => (
             <div key={item.href} className="relative group">
               <a
@@ -103,6 +103,12 @@ export default function Nav() {
             </div>
           ))}
         </div>
+
+        {/* theme toggle */}
+        <div className="relative flex items-center gap-4 pl-3">
+          <AnimatedThemeToggler
+            className="relative text-gray-400 hover:text-white hover:scale-125 transition-all duration-500 p-2 rounded-full"
+          />        </div>
 
         {/* Decorative Lines */}
         <div className="absolute -top-1 left-1/4 w-20 h-0.5 bg-linear-to-r from-transparent via-white/30 to-transparent blur-sm" />

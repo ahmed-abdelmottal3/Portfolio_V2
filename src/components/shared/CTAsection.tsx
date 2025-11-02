@@ -30,7 +30,7 @@ export default function CTASection() {
 
                         {/* Text with Gradient on Hover */}
                         <h1
-                            className={`font-great-vibes xs:text-2xl sm:text-3xl md:text-4xl text-white/70 text-center group-hover:bg-linear-to-r ${item.gradient} group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 group-hover:scale-110 transform whitespace-nowrap`}
+                            className={`font-great-vibes xs:text-2xl sm:text-3xl md:text-4xl text-background/70 text-center group-hover:bg-linear-to-r ${item.gradient} group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 group-hover:scale-110 transform whitespace-nowrap`}
                         >
                             {item.text}
                         </h1>

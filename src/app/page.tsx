@@ -1,18 +1,36 @@
 "use client";
 import { TypeAnimation } from "react-type-animation";
-import { Great_Vibes } from "next/font/google";
 import "./globals.css";
 import CTASection from "../components/shared/CTAsection";
 import { AuroraText } from "../components/ui/aurora-text"
+import { useEffect, useState } from "react";
 
 
 
 export default function Home() {
+
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const updateTheme = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+    updateTheme();
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen overflow-hidden text-center px-4">
       {/* logo */}
+
       <img
-        src="/mylogowhite.webp"
+        src={isDark ? "/mylogoblack.png" : "mylogowhite.webp"}
         alt="logo"
         className="w-20 sm:w-24 md:w-32 lg:w-40 mb-4"
       />
@@ -45,9 +63,9 @@ export default function Home() {
       </p>
 
       {/* links */}
-        <CTASection />
+      <CTASection />
 
-     
+
     </div>
   );
 }

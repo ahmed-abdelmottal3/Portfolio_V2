@@ -17,23 +17,23 @@ export default function Page() {
     return (
         <section className='container mx-auto pt-10 px-4'>
             <Header title="Projects" />
-            <p className="max-w-lg text-background/40 font-light">
+            <p className="max-w-lg text-background/60 font-light">
                 Explore my mini-projects showcasing my skills in web development and design.
                 Each project reflects my passion for coding and creativity.
             </p>
 
             {/* view toggle */}
-            <div className="hidden sm:flex w-fit m-auto mt-5 gap-3 items-center justify-center bg-background/20 rounded-full py-1 px-2">
+            <div className="hidden sm:flex w-fit m-auto mt-5 gap-3 items-center justify-center bg-background/10 rounded-full py-0.5 px-2">
                 <div
                     onClick={() => setView("grid")}
-                    className={`p-2 rounded-full cursor-pointer transition-all duration-300 ${view === "grid" ? "bg-blue-500/30 text-blue-400" : "hover:bg-background/40"
+                    className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${view === "grid" ? "bg-blue-500/30 text-blue-400" : "hover:bg-background/40"
                         }`}
                 >
                     <HiViewGrid size={22} />
                 </div>
                 <div
                     onClick={() => setView("list")}
-                    className={`p-2 rounded-full cursor-pointer transition-all duration-300 ${view === "list" ? "bg-blue-500/30 text-blue-400" : "hover:bg-background/40"
+                    className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${view === "list" ? "bg-blue-500/30 text-blue-400" : "hover:bg-background/40"
                         }`}
                 >
                     <MdViewList size={22} />
@@ -87,14 +87,14 @@ export default function Page() {
                         >
                             {/* title */}
                             <Link href={`/projects/${proj.id}`}>
-                                <h3 className="relative text-lg w-fit font-semibold text-white transition-colors duration-300 group-hover:text-blue-400 pb-1 cursor-pointer">
+                                <h3 className="relative text-lg w-fit font-semibold text-background transition-colors duration-300 group-hover:text-blue-400 pb-1 cursor-pointer">
                                     {proj.title}
                                     <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                                 </h3>
                             </Link>
 
                             {/* desc */}
-                            <p className="text-sm text-gray-400 leading-relaxed mt-1">
+                            <p className="text-sm text-background/40 leading-relaxed mt-1">
                                 {proj.desc.slice(0, 100) + "..."}
                             </p>
 
@@ -103,7 +103,7 @@ export default function Page() {
                                 {proj.skills.map((skill, index) => (
                                     <span
                                         key={index}
-                                        className="px-3 py-1 text-xs font-medium rounded-full bg-white/10 text-gray-300 backdrop-blur-sm border border-white/10"
+                                        className="px-3 py-1 text-xs font-medium rounded-full bg-background/10 text-foregound backdrop-blur-sm border border-white/10"
                                     >
                                         {skill}
                                     </span>
@@ -113,8 +113,8 @@ export default function Page() {
                             {/* buttons */}
                             <div className="flex flex-wrap gap-3 mt-4">
                                 <Link href={`/projects/${proj.id}`} className="flex-1">
-                                    <button className="w-full flex items-center justify-center gap-2 bg-foreground text-white px-6 py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:bg-foreground/80 active:scale-95 active:shadow-md">
-                                        <FaEye className="text-white" />
+                                    <button className="w-full flex items-center justify-center gap-2 bg-foreground text-background px-6 py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:bg-foreground/80 active:scale-95 active:shadow-md">
+                                        <FaEye className="text-background" />
                                         Demo
                                     </button>
                                 </Link>
