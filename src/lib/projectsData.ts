@@ -133,8 +133,8 @@ export const projectsData: Project[] = [
             longDesc: "This portfolio website represents a complete personal branding solution. Built with semantic HTML5 and modern CSS3 techniques, it features a clean and professional design that emphasizes content while maintaining visual interest through subtle animations and transitions. The site is fully responsive and optimized for all devices.",
             skills: ["React.js", "Tailwind CSS", "Responsive Design"],
             img: "/portfolio-1.png",
-            liveUrl: "https://github.com/ahmed-abdelmottal3/my-first-client-project",
-            githubUrl: "https://ahmed-saleh-two.vercel.app/",
+            liveUrl: "https://ahmed-saleh-two.vercel.app/",
+            githubUrl: "https://github.com/ahmed-abdelmottal3/my-first-client-project",
             date: "September 2024",
             category: "Portfolio",
             features: [

@@ -42,7 +42,7 @@ export const projects = [
         desc: "A modern and responsive personal portfolio website built with HTML5 and CSS3. The design highlights projects, skills, and experience with a clean layout and smooth animations to provide an engaging user experience.",
         skills: ["React.js", "Tailwind CSS", "Framer Motion"],
         img: "/Portfolio.png",
-        liveUrl: "https://github.com/ahmed-abdelmottal3/my-first-client-project",
-        githubUrl: "https://ahmed-saleh-two.vercel.app/",
+        liveUrl: "https://ahmed-saleh-two.vercel.app/",
+        githubUrl: "https://github.com/ahmed-abdelmottal3/my-first-client-project",
     },
 ];
