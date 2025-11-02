@@ -87,7 +87,7 @@ export default function Page() {
                 {projects.map((proj, i) => (
                     <MagicCard
                         key={i}
-                        className={`transition-all duration-500 group ${view === "list" ? "flex flex-row items-center gap-4 p-4" : "flex flex-col p-1"
+                        className={`transition-all duration-500 group ${view === "list" ? "flex flex-col sm:flex-row items-center gap-4 p-4" : "flex flex-col p-1"
                             }`}
                     >
                         {/* img */}
