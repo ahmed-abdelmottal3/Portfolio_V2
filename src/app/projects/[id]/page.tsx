@@ -81,15 +81,22 @@ export default function ProjectDetails() {
 
             {/* Main Image */}
             <MagicCard className="mb-8 p-1">
-                <div className="relative z-10 w-full h-[400px] md:h-[600px] overflow-hidden rounded-xl">
-                    <img
-                        src={selectedImage}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                    />
+                <div className="relative z-10 w-full h-[400px] md:h-[600px] rounded-2xl bg-black/5">
+                    <div className="w-full h-full overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                        <img
+                            src={selectedImage}
+                            alt={project.title}
+                            className="w-full h-auto object-contain rounded-2xl"
+                        />
+                    </div>
+
+                    <div className="pointer-events-none absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/60 via-black/30 to-transparent rounded-b-xl animate-pulse" />
+
+                    <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 animate-bounce text-2xl select-none">
+                        ↓
+                    </div>
                 </div>
             </MagicCard>
-
 
             {/* Content Grid */}
             <div className="grid md:grid-cols-3 gap-8 mb-12">

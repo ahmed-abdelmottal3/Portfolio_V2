@@ -4,7 +4,6 @@ import "./globals.css";
 import Nav from "../components/shared/Nav";
 import FramerWrapper from "../components/wrapper/FramerWrapper";
 import SplashScreen from "../components/wrapper/Splashscreen";
-import PageTransitionOverlay from "../components/wrapper/PageTransitionOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +40,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable}  antialiased`}
       >
         <SplashScreen>
-          <PageTransitionOverlay />
           <FramerWrapper>{children}</FramerWrapper>
           <Nav />
         </SplashScreen>
