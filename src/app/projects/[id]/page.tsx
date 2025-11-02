@@ -1,11 +1,11 @@
 "use client"
 import { useState } from "react";
 import { FaEye, FaGithub, FaArrowLeft, FaExternalLinkAlt } from "react-icons/fa";
-import { MagicCard } from "@/components/ui/magic-card";
-import { ShinyButton } from "@/components/ui/shiny-button";
+import { MagicCard } from "@/src/components/ui/magic-card";
+import { ShinyButton } from "@/src/components/ui/shiny-button";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
-import { projectsData } from "@/lib/projectsData";
+import { projectsData } from "@/src/lib/projectsData";
 export default function ProjectDetails() {
     const params = useParams();
     const projectId = params.id as string;

@@ -1,13 +1,13 @@
 "use client"
-import Header from "@/components/ui/header";
+import Header from "@/src/components/ui/header";
 import { MdViewList } from 'react-icons/md';
 import { HiViewGrid } from 'react-icons/hi';
 import { useState } from "react";
-import { MagicCard } from "@/components/ui/magic-card";
-import { ShinyButton } from "@/components/ui/shiny-button";
+import { MagicCard } from "@/src/components/ui/magic-card";
+import { ShinyButton } from "@/src/components/ui/shiny-button";
 import { FaEye, FaGithub } from "react-icons/fa";
 import Link from "next/link";
-import CircularCTA from "@/components/shared/CircularCTA";
+import CircularCTA from "@/src/components/shared/CircularCTA";
 
 export default function Page() {
     const [view, setView] = useState("grid");

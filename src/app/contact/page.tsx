@@ -1,8 +1,7 @@
 "use client"
+import Header from "@/src/components/ui/header";
+import { MagicCard } from "@/src/components/ui/magic-card";
 import { useState } from "react";
-import Header from "@/components/ui/header";
-import { MagicCard } from "@/components/ui/magic-card";
-import { ShinyButton } from "@/components/ui/shiny-button";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter, FaPaperPlane, FaFacebook } from "react-icons/fa";
 
 export default function ContactPage() {

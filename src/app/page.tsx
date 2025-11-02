@@ -2,8 +2,8 @@
 import { TypeAnimation } from "react-type-animation";
 import { Great_Vibes } from "next/font/google";
 import "./globals.css";
-import CTASection from "@/components/shared/CTAsection";
-import { AuroraText } from "@/components/ui/aurora-text"
+import CTASection from "../components/shared/CTAsection";
+import { AuroraText } from "../components/ui/aurora-text"
 
 
 
