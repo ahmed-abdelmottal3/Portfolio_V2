@@ -2,8 +2,8 @@
 import Header from "@/src/components/ui/header";
 import { MagicCard } from "@/src/components/ui/magic-card";
 import { useState } from "react";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter, FaPaperPlane, FaFacebook } from "react-icons/fa";
-
+import { FaLinkedin, FaGithub, FaPaperPlane, FaFacebook } from "react-icons/fa";
+import { cn } from "@/src/lib/utils"
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
@@ -60,7 +60,7 @@ export default function ContactPage() {
     return (
         <section className='container mx-auto pt-10 px-4 pb-20'>
             <Header title="Get In Touch" />
-            <p className="w-2xl text-gray-400 font-light">
+            <p className="max-w-2xl text-gray-400 font-light">
                 Have a project in mind or just want to say hi? I'd love to hear from you. 
                 Send me a message and I'll get back to you as soon as possible.
             </p>
@@ -99,7 +99,7 @@ export default function ContactPage() {
                                             onChange={handleChange}
                                             required
                                             className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-400 transition-colors duration-300"
-                                            placeholder="John Doe"
+                                            placeholder="Type Your Name"
                                         />
                                     </div>
                                     <div>
@@ -114,7 +114,7 @@ export default function ContactPage() {
                                             onChange={handleChange}
                                             required
                                             className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-400 transition-colors duration-300"
-                                            placeholder="john@example.com"
+                                            placeholder="Enter Your Name"
                                         />
                                     </div>
                                 </div>
@@ -255,8 +255,7 @@ export default function ContactPage() {
                                     What projects do you accept?
                                 </h4>
                                 <p className="text-gray-400 text-sm leading-relaxed">
-                                    I work on web development projects including React, Next.js, and 
-                                    full-stack applications. Feel free to reach out to discuss your needs.
+                                    I work on web development projects including React, Next.js. Feel free to reach out to discuss your needs.
                                 </p>
                             </div>
                             <div className="space-y-3">

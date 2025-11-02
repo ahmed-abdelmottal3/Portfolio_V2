@@ -60,7 +60,7 @@ export default function Page() {
             </p>
 
             {/* view toggle */}
-            <div className="flex w-fit m-auto mt-5 gap-3 items-center justify-center bg-background/20 rounded-full py-1 px-2">
+            <div className="hidden sm:flex w-fit m-auto mt-5 gap-3 items-center justify-center bg-background/20 rounded-full py-1 px-2">
                 <div
                     onClick={() => setView("grid")}
                     className={`p-2 rounded-full cursor-pointer transition-all duration-300 ${view === "grid" ? "bg-blue-500/30 text-blue-400" : "hover:bg-background/40"
@@ -143,7 +143,7 @@ export default function Page() {
                                 <Link href={`/projects/${proj.id}`} className="flex-1">
                                     <button className="w-full flex items-center justify-center gap-2 bg-foreground text-white px-6 py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:bg-foreground/80 active:scale-95 active:shadow-md">
                                         <FaEye className="text-white" />
-                                        View Project
+                                        Demo
                                     </button>
                                 </Link>
                                 <a
@@ -156,7 +156,7 @@ export default function Page() {
                                         icon={<FaGithub className="text-foreground" />}
                                         className="w-full bg-background"
                                     >
-                                        View Code
+                                        Code
                                     </ShinyButton>
                                 </a>
                             </div>

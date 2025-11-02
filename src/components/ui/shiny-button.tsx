@@ -4,7 +4,7 @@ import React from "react"
 import { motion, type MotionProps } from "motion/react"
 import { FaGithub } from "react-icons/fa"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/src/lib/utils"
 
 const animationProps: MotionProps = {
   initial: { "--x": "100%", scale: 0.8 },

@@ -29,7 +29,7 @@ export default function page() {
       {/* CTA section */}
       <CircularCTA title='my projects • my projects • my projects •'
         from='From Pixels'
-        to='Tp Products'
+        to='To Products'
         href='/projects' />
 
     </section>
