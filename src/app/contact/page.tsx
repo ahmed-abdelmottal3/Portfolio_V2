@@ -3,7 +3,6 @@ import Header from "@/src/components/ui/header";
 import { MagicCard } from "@/src/components/ui/magic-card";
 import { useState } from "react";
 import { FaLinkedin, FaGithub, FaPaperPlane, FaFacebook } from "react-icons/fa";
-import { cn } from "@/src/lib/utils"
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: "",
@@ -30,7 +29,7 @@ export default function ContactPage() {
             setIsSubmitting(false);
             setSubmitStatus("success");
             setFormData({ name: "", email: "", subject: "", message: "" });
-            
+
             setTimeout(() => {
                 setSubmitStatus("idle");
             }, 3000);
@@ -60,23 +59,21 @@ export default function ContactPage() {
     return (
         <section className='container mx-auto pt-10 px-4 pb-20'>
             <Header title="Get In Touch" />
-            <p className="max-w-2xl text-gray-400 font-light">
-                Have a project in mind or just want to say hi? I'd love to hear from you. 
+            <p className="max-w-2xl text-background/60 font-light">
+                Have a project in mind or just want to say hi? I'd love to hear from you.
                 Send me a message and I'll get back to you as soon as possible.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-            </div>
 
             <div className="grid md:grid-cols-5 gap-8 mt-12">
                 {/* Contact Form */}
                 <div className="md:col-span-3">
                     <MagicCard className="p-8">
                         <div className="relative z-10">
-                            <h2 className="text-2xl font-bold text-white mb-6">
+                            <h2 className="text-2xl font-bold text-background mb-6">
                                 Send Me a Message
                             </h2>
-                            
+
                             {submitStatus === "success" && (
                                 <div className="mb-6 p-4 bg-green-400/10 border border-green-400/20 rounded-lg">
                                     <p className="text-green-400 text-center">
@@ -88,7 +85,7 @@ export default function ContactPage() {
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div>
-                                        <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
+                                        <label htmlFor="name" className="block text-sm font-medium text-background/60 mb-2">
                                             Your Name
                                         </label>
                                         <input
@@ -98,12 +95,12 @@ export default function ContactPage() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-400 transition-colors duration-300"
+                                            className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-blue-400 transition-colors duration-300"
                                             placeholder="Type Your Name"
                                         />
                                     </div>
                                     <div>
-                                        <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
+                                        <label htmlFor="email" className="block text-sm font-medium text-background/60 mb-2">
                                             Your Email
                                         </label>
                                         <input
@@ -113,7 +110,7 @@ export default function ContactPage() {
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-400 transition-colors duration-300"
+                                            className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-blue-400 transition-colors duration-300"
                                             placeholder="Enter Your Name"
                                         />
                                     </div>
@@ -130,7 +127,7 @@ export default function ContactPage() {
                                         value={formData.subject}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-400 transition-colors duration-300"
+                                        className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-blue-400 transition-colors duration-300"
                                         placeholder="Project Inquiry"
                                     />
                                 </div>
@@ -146,7 +143,7 @@ export default function ContactPage() {
                                         onChange={handleChange}
                                         required
                                         rows={6}
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-400 transition-colors duration-300 resize-none"
+                                        className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-blue-400 transition-colors duration-300 resize-none"
                                         placeholder="Tell me about your project..."
                                     />
                                 </div>
@@ -154,11 +151,11 @@ export default function ContactPage() {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full flex items-center justify-center gap-2 bg-foreground text-white px-8 py-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                                    className="w-full flex items-center justify-center gap-2 bg-foreground text-background px-8 py-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                                 >
                                     {isSubmitting ? (
                                         <>
-                                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                            <div className="w-5 h-5 border-2 border-background/30 border-t-background rounded-full animate-spin"></div>
                                             Sending...
                                         </>
                                     ) : (
@@ -178,7 +175,7 @@ export default function ContactPage() {
                     {/* Social Links */}
                     <MagicCard className="p-6">
                         <div className="relative z-10">
-                            <h3 className="text-xl font-bold text-white mb-6">
+                            <h3 className="text-xl font-bold text-background mb-6">
                                 Connect With Me
                             </h3>
                             <div className="space-y-4">
@@ -188,12 +185,12 @@ export default function ContactPage() {
                                         href={social.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
+                                        className="flex items-center gap-4 p-4 rounded-lg bg-background/5 hover:bg-background/10 transition-all duration-300 group"
                                     >
-                                        <div className={`text-gray-400 ${social.color} transition-colors duration-300`}>
+                                        <div className={`text-background/60 ${social.color} transition-colors duration-300`}>
                                             {social.icon}
                                         </div>
-                                        <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                                        <span className="text-background/60 group-hover:text-background transition-colors duration-300">
                                             {social.name}
                                         </span>
                                     </a>
@@ -203,74 +200,86 @@ export default function ContactPage() {
                     </MagicCard>
 
                     {/* Availability */}
-                    <MagicCard className="p-6">
-                        <div className="relative z-10">
-                            <h3 className="text-xl font-bold text-white mb-4">
-                                Availability
-                            </h3>
-                            <div className="space-y-4">
-                                <div className="flex items-center gap-3">
-                                    <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
-                                    <span className="text-green-400 font-medium">Available for Freelance</span>
-                                </div>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    Currently accepting new projects and collaborations. 
-                                    Response time: Usually within 24 hours.
-                                </p>
-                            </div>
-                        </div>
-                    </MagicCard>
+                    <Availability />
 
                 </div>
             </div>
 
             {/* FAQ Section */}
-            <div className="mt-12">
-                <MagicCard className="p-8">
-                    <div className="relative z-10">
-                        <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                            Frequently Asked Questions
-                        </h2>
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <div className="space-y-3">
-                                <h4 className="text-lg font-semibold text-white">
-                                    What's your typical response time?
-                                </h4>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    I usually respond within 24 hours during weekdays. For urgent inquiries, 
-                                    feel free to mark your message as urgent in the subject line.
-                                </p>
-                            </div>
-                            <div className="space-y-3">
-                                <h4 className="text-lg font-semibold text-white">
-                                    Do you work on weekends?
-                                </h4>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    I'm available for limited hours on Saturday. Sunday is reserved for 
-                                    personal time, but I'll respond to urgent messages.
-                                </p>
-                            </div>
-                            <div className="space-y-3">
-                                <h4 className="text-lg font-semibold text-white">
-                                    What projects do you accept?
-                                </h4>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    I work on web development projects including React, Next.js. Feel free to reach out to discuss your needs.
-                                </p>
-                            </div>
-                            <div className="space-y-3">
-                                <h4 className="text-lg font-semibold text-white">
-                                    How do we proceed after contact?
-                                </h4>
-                                <p className="text-gray-400 text-sm leading-relaxed">
-                                    After your initial message, we'll schedule a call to discuss your 
-                                    project requirements, timeline, and budget in detail.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </MagicCard>
-            </div>
+            <FAQ />
         </section>
     );
+}
+
+function Availability() {
+    return (
+        <MagicCard className="p-6">
+            <div className="relative z-10">
+                <h3 className="text-xl font-bold text-background mb-4">
+                    Availability
+                </h3>
+                <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                        <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+                        <span className="text-green-400 font-medium">Available for Freelance</span>
+                    </div>
+                    <p className="text-background/60 text-sm leading-relaxed">
+                        Currently accepting new projects and collaborations.
+                        Response time: Usually within 24 hours.
+                    </p>
+                </div>
+            </div>
+        </MagicCard>
+    )
+}
+
+function FAQ() {
+    return (
+        <div className="mt-12">
+            <MagicCard className="p-8">
+                <div className="relative z-10">
+                    <h2 className="text-2xl font-bold text-background mb-6 text-center">
+                        Frequently Asked Questions
+                    </h2>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-3">
+                            <h4 className="text-lg font-semibold text-background">
+                                What's your typical response time?
+                            </h4>
+                            <p className="text-background/60 text-sm leading-relaxed">
+                                I usually respond within 24 hours during weekdays. For urgent inquiries,
+                                feel free to mark your message as urgent in the subject line.
+                            </p>
+                        </div>
+                        <div className="space-y-3">
+                            <h4 className="text-lg font-semibold text-background">
+                                Do you work on weekends?
+                            </h4>
+                            <p className="text-background/60 text-sm leading-relaxed">
+                                I'm available for limited hours on Saturday. Sunday is reserved for
+                                personal time, but I'll respond to urgent messages.
+                            </p>
+                        </div>
+                        <div className="space-y-3">
+                            <h4 className="text-lg font-semibold text-background">
+                                What projects do you accept?
+                            </h4>
+                            <p className="text-background/60 text-sm leading-relaxed">
+                                I work on web development projects including React, Next.js. Feel free to reach out to discuss your needs.
+                            </p>
+                        </div>
+                        <div className="space-y-3">
+                            <h4 className="text-lg font-semibold text-background">
+                                How do we proceed after contact?
+                            </h4>
+                            <p className="text-background/60 text-sm leading-relaxed">
+                                After your initial message, we'll schedule a call to discuss your
+                                project requirements, timeline, and budget in detail.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </MagicCard>
+        </div>
+    )
 }
