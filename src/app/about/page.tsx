@@ -138,7 +138,7 @@ function Education() {
               </div>
               <h6 className='text-sm text-gray-500'>2020 - 2024</h6>
             </div>
-            <p className='text-gray-400 font-light leading-relaxed'>Bachelor's degree in Computer Science from Kafr El-Sheikh University, focusing on software development and web technologies.</p>
+            <p className='text-gray-400 font-light leading-relaxed'>Bachelor’s degree in Science (Zoology Department) from Kafr El-Sheikh University.</p>
           </div>
         </div>
       </MagicCard>

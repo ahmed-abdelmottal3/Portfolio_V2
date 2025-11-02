@@ -80,8 +80,8 @@ export default function Page() {
             {/* projects section */}
             <div
                 className={`mt-10 w-full transition-all duration-500 ${view === "grid"
-                        ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8"
-                        : "flex flex-col gap-4"
+                    ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8"
+                    : "flex flex-col gap-4"
                     }`}
             >
                 {projects.map((proj, i) => (
@@ -90,36 +90,36 @@ export default function Page() {
                         className={`transition-all duration-500 group ${view === "list" ? "flex flex-col sm:flex-row items-center gap-4 p-4" : "flex flex-col p-1"
                             }`}
                     >
-{/* img */}
-<Link href={`/projects/${proj.id}`} className="relative z-10 group">
-  <div
-    className={`${view === "list"
-      ? "w-96 h-auto shrink-0 overflow-hidden rounded-xl"
-      : "w-full h-auto overflow-hidden rounded-tl-xl rounded-tr-xl"
-      } relative`}
-  >
-    <img
-      src={proj.img}
-      alt={proj.title}
-      className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer"
-    />
+                        {/* img */}
+                        <Link href={`/projects/${proj.id}`} className="relative z-10 group">
+                            <div
+                                className={`${view === "list"
+                                    ? "w-96 h-auto shrink-0 overflow-hidden rounded-xl"
+                                    : "w-full h-auto overflow-hidden rounded-tl-xl rounded-tr-xl"
+                                    } relative`}
+                            >
+                                <img
+                                    src={proj.img}
+                                    alt={proj.title}
+                                    className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer"
+                                />
 
-    {/* overlay */}
-    <div className="absolute inset-0 bg-black/40 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-      <span className="text-white text-lg font-semibold tracking-wide flex items-center gap-2">
-        View Details
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </span>
-    </div>
-  </div>
-</Link>
+                                {/* overlay */}
+                                <div className="absolute inset-0 bg-black/40 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+                                    <span className="text-white text-lg font-semibold tracking-wide flex items-center gap-2">
+                                        View Details
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </Link>
                         {/* data */}
                         <div
                             className={`relative z-10 transition-all duration-300 ${view === "list"
-                                    ? "flex-1 flex flex-col justify-center"
-                                    : "p-5 flex flex-col justify-between h-auto"
+                                ? "flex-1 flex flex-col justify-center"
+                                : "p-5 flex flex-col justify-between h-auto"
                                 }`}
                         >
                             {/* title */}

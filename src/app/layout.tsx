@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import Nav from "../components/shared/Nav";
+import FramerWrapper from "../components/wrapper/FramerWrapper";
+import SplashScreen from "../components/wrapper/Splashscreen";
+import PageTransitionOverlay from "../components/wrapper/PageTransitionOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 const greatVibes = Great_Vibes({
-    variable: "--font-great-vibes",
+  variable: "--font-great-vibes",
   subsets: ["latin"],
   weight: ["400"],
 });
@@ -22,7 +25,7 @@ const greatVibes = Great_Vibes({
 export const metadata: Metadata = {
   title: "Ahmed Abd El-mottalie",
   description: "My portfolio website, showcasing my projects and skills, built with Next.js and TypeScript and using shadcn/ui for the UI components.",
-  icons:{
+  icons: {
     icon: "/favicon.ico",
   }
 };
@@ -37,8 +40,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable}  antialiased`}
       >
-        {children}
-      <Nav />
+        <SplashScreen>
+          <PageTransitionOverlay />
+          <FramerWrapper>{children}</FramerWrapper>
+          <Nav />
+        </SplashScreen>
 
       </body>
     </html>
