@@ -4,7 +4,7 @@ import { BsArrowRight } from 'react-icons/bs'
 
 export default function CircularCTA({ title, from, to, href }: { title: string; from: string; to: string; href: string; }) {
   return (
-    <section className='overflow-hidden py-15'>
+    <section className='overflow-hidden py-25'>
       <div className='flex items-center justify-center gap-17 sm:gap-20'>
         <h2 className='font-great-vibes font-light text-xl sm:text-2xl text-background/50'>{from}</h2>
         <Link href={href} className='relative flex items-center justify-center cursor-pointer group'>
