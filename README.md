@@ -1,4 +1,4 @@
-# 🌐 Ahmed Abdelmottaleb — Portfolio
+# 🌐 Ahmed Abdelmottalie — Portfolio
 
 Welcome to my personal portfolio built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**.  
 It showcases my projects, skills, and experience as a **Front-End Developer**, with focus on smooth UI, performance, and modern design.
