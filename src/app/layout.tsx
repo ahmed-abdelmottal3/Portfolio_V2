@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Great_Vibes } from "next/font/google";
 import "./globals.css";
-import Nav from "../components/shared/Nav";
 import FramerWrapper from "../components/wrapper/FramerWrapper";
 import SplashScreen from "../components/wrapper/Splashscreen";
+import Dock from "../components/shared/Dock";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +41,7 @@ export default function RootLayout({
       >
         <SplashScreen>
           <FramerWrapper>{children}</FramerWrapper>
-          <Nav />
+          <Dock />
         </SplashScreen>
 
       </body>

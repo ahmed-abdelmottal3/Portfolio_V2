@@ -50,7 +50,7 @@ export default function ContactPage() {
         },
         {
             icon: <FaFacebook size={24} />,
-            name: "Twitter",
+            name: "Facebook",
             url: "https://www.facebook.com/ahmed.abdelmottalie.33",
             color: "hover:text-blue-400"
         }

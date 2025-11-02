@@ -3,7 +3,7 @@ import { AnimatedThemeToggler } from "@/src/components/ui/animated-theme-toggler
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub, FaWhatsapp, FaLinkedin } from "react-icons/fa";
-export default function Nav() {
+export default function Dock() {
   const pathname = usePathname();
   const active = pathname;
 
@@ -105,9 +105,9 @@ export default function Nav() {
         </div>
 
         {/* theme toggle */}
-        <div className="relative flex items-center gap-4 pl-3">
+        <div className="relative flex items-center gap-4 pl-3 ">
           <AnimatedThemeToggler
-            className="relative text-gray-400 hover:text-white hover:scale-125 transition-all duration-500 p-2 rounded-full"
+            className="relative text-gray-400 hover:text-white hover:scale-125 transition-all duration-500 p-2 rounded-full cursor-pointer"
           />        </div>
 
         {/* Decorative Lines */}
