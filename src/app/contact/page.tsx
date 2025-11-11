@@ -206,10 +206,10 @@ export default function ContactPage() {
             </div>
 
             {/* FAQ Section */}
-            <FAQ />
         </section>
     );
 }
+
 
 function Availability() {
     return (
@@ -221,65 +221,39 @@ function Availability() {
                 <div className="space-y-4">
                     <div className="flex items-center gap-3">
                         <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
-                        <span className="text-green-400 font-medium">Available for Freelance</span>
+                        <span className="text-green-400 font-medium">
+                            Available for Freelance
+                        </span>
                     </div>
+
                     <p className="text-background/60 text-sm leading-relaxed">
                         Currently accepting new projects and collaborations.
                         Response time: Usually within 24 hours.
                     </p>
+
+                    <div className="flex gap-4 pt-4">
+                        {/* نفّذلي */}
+                        <a
+                            href="https://nafezly.com/u/ahmed_abdelmottalie"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-background/80 hover:text-green-400 transition-colors"
+                        >
+                            <span className="text-sm font-medium">Nafezly</span>
+                        </a>
+
+                        {/* مستقل */}
+                        <a
+                            href="https://mostaql.com/u/Ahmed_Abdo1712"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-background/80 hover:text-green-400 transition-colors"
+                        >
+                            <span className="text-sm font-medium">Mostaql</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </MagicCard>
-    )
-}
-
-function FAQ() {
-    return (
-        <div className="mt-12">
-            <MagicCard className="p-8">
-                <div className="relative z-10">
-                    <h2 className="text-2xl font-bold text-background mb-6 text-center">
-                        Frequently Asked Questions
-                    </h2>
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="space-y-3">
-                            <h4 className="text-lg font-semibold text-background">
-                                What's your typical response time?
-                            </h4>
-                            <p className="text-background/60 text-sm leading-relaxed">
-                                I usually respond within 24 hours during weekdays. For urgent inquiries,
-                                feel free to mark your message as urgent in the subject line.
-                            </p>
-                        </div>
-                        <div className="space-y-3">
-                            <h4 className="text-lg font-semibold text-background">
-                                Do you work on weekends?
-                            </h4>
-                            <p className="text-background/60 text-sm leading-relaxed">
-                                I'm available for limited hours on Saturday. Sunday is reserved for
-                                personal time, but I'll respond to urgent messages.
-                            </p>
-                        </div>
-                        <div className="space-y-3">
-                            <h4 className="text-lg font-semibold text-background">
-                                What projects do you accept?
-                            </h4>
-                            <p className="text-background/60 text-sm leading-relaxed">
-                                I work on web development projects including React, Next.js. Feel free to reach out to discuss your needs.
-                            </p>
-                        </div>
-                        <div className="space-y-3">
-                            <h4 className="text-lg font-semibold text-background">
-                                How do we proceed after contact?
-                            </h4>
-                            <p className="text-background/60 text-sm leading-relaxed">
-                                After your initial message, we'll schedule a call to discuss your
-                                project requirements, timeline, and budget in detail.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </MagicCard>
-        </div>
-    )
+    );
 }

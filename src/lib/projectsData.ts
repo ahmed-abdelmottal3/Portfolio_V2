@@ -129,7 +129,7 @@ export const projectsData: Project[] = [
             id: "portfolio-website",
             title: "Modern Portfolio Website with Stunning UI/UX",
             subtitle: "Showcasing Skills with Style",
-            desc: "A modern and responsive personal portfolio website built with HTML5 and CSS3. The design highlights projects, skills, and experience with a clean layout and smooth animations.",
+            desc: "A modern and responsive personal portfolio website built with React.js and Tailwind.CSS. The design highlights projects, skills, and experience with a clean layout and smooth animations.",
             longDesc: "This portfolio website represents a complete personal branding solution. Built with semantic HTML5 and modern CSS3 techniques, it features a clean and professional design that emphasizes content while maintaining visual interest through subtle animations and transitions. The site is fully responsive and optimized for all devices.",
             skills: ["React.js", "Tailwind CSS", "Responsive Design"],
             img: "/portfolio-1.png",
