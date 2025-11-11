@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Great_Vibes } from "next/font/google";
 import "./globals.css";
-import FramerWrapper from "../components/wrapper/FramerWrapper";
 import SplashScreen from "../components/wrapper/Splashscreen";
 import Dock from "../components/shared/Dock";
 
@@ -40,7 +39,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable}  antialiased`}
       >
         <SplashScreen>
-          <FramerWrapper>{children}</FramerWrapper>
+          {children}
           <Dock />
         </SplashScreen>
 
