@@ -1,7 +1,7 @@
 "use client"
 
 import React, { ComponentPropsWithoutRef } from "react"
-import { motion, Transition, Variants } from "motion/react"
+import { motion, Transition, Variants } from "framer-motion"
 
 import { cn } from "@/src/lib/utils"
 

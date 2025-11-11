@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { motion, type MotionProps } from "motion/react"
+import { motion, type MotionProps } from "framer-motion"
 import { FaGithub } from "react-icons/fa"
 
 import { cn } from "@/src/lib/utils"
