@@ -160,5 +160,74 @@ export const projectsData: Project[] = [
                 }
             ]
         },
-        
+        {
+    id: "clarity-landing",
+    title: "Clarity Landing Page",
+    subtitle: "Minimalist & Responsive Landing Page",
+    desc: "A minimalist and responsive landing page built with HTML, CSS, and JavaScript, focusing on clean design, interactivity, and smooth transitions.",
+    longDesc: "Clarity is a lightweight, modern landing page designed to provide a visually appealing and engaging experience for visitors. It features a clean layout, smooth scrolling, interactive UI elements, and responsive design that works seamlessly across desktop, tablet, and mobile devices. The project emphasizes performance optimization and accessibility.",
+    skills: ["HTML", "CSS", "JavaScript", "Responsive Design", "UI/UX"],
+    img: "/clarity1.png",
+    liveUrl: "https://ahmed-abdelmottal3.github.io/Clarity/",
+    githubUrl: "https://github.com/ahmed-abdelmottal3/Clarity",
+    date: "July 2025",
+    category: "Web Development",
+    features: [
+        "Minimalist and responsive layout for all devices",
+        "Interactive UI elements with smooth transitions",
+        "Fast-loading and performance optimized",
+        "Accessible design following best practices",
+        "Clean code structure for easy maintenance"
+    ],
+    challenges: [
+        {
+            title: "Responsive Design",
+            desc: "Ensured the layout adapts beautifully across mobile, tablet, and desktop screens"
+        },
+        {
+            title: "Performance Optimization",
+            desc: "Optimized images, CSS, and JavaScript to ensure fast load times"
+        },
+        {
+            title: "Cross-browser Compatibility",
+            desc: "Tested and fixed UI issues across major browsers for a consistent experience"
+        }
+    ]
+},
+{
+    id: "lockscout-landing",
+    title: "LockScout Landing Page",
+    subtitle: "Modern Landing Page for Security Services",
+    desc: "A responsive and clean landing page for LockScout, built with HTML, CSS, and JavaScript. Highlights security services with a professional, user-friendly design.",
+    longDesc: "LockScout is a modern landing page designed to showcase security solutions in a professional and approachable way. The project features responsive design, clear navigation, smooth transitions, and interactive UI elements. It emphasizes usability, performance, and accessibility, making it suitable for desktop, tablet, and mobile users.",
+    skills: ["HTML", "CSS", "JavaScript", "Responsive Design", "UI/UX"],
+    img: "/lockscout1.png",
+    liveUrl: "https://ahmed-abdelmottal3.github.io/LockScout/",
+    githubUrl: "https://github.com/ahmed-abdelmottal3/LockScout",
+    date: "July 2025",
+    category: "Web Development",
+    features: [
+        "Responsive layout for desktop, tablet, and mobile devices",
+        "Clean and professional UI design",
+        "Interactive navigation and smooth scrolling",
+        "Optimized for performance and fast load times",
+        "Accessible design following web best practices"
+    ],
+    challenges: [
+        {
+            title: "Cross-device Responsiveness",
+            desc: "Ensured the page looks and functions perfectly across all screen sizes"
+        },
+        {
+            title: "Performance Optimization",
+            desc: "Minimized CSS and JS for faster load times without compromising UX"
+        },
+        {
+            title: "Interactive Elements",
+            desc: "Implemented smooth scrolling and hover effects without affecting performance"
+        }
+    ]
+}
+
+
     ];

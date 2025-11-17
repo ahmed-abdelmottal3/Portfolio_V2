@@ -1,13 +1,3 @@
-interface Project {
-    id: string;
-    title: string;
-    desc: string;
-    skills: string[];
-    img: string;
-    liveUrl: string;
-    githubUrl: string;
-}
-
 export const projects = [
     {
         id: "antijitos-restaurant",
@@ -24,8 +14,8 @@ export const projects = [
         desc: "A lightweight Gradient Generator built with React and Tailwind CSS. Users can create, customize, and preview gradients in real time, choose directions, add color stops, and export CSS, PNG or SVG. Clean UI, responsive layout, and developer-friendly export options.",
         skills: ["React", "Tailwind CSS"],
         img: "/Graadient Generator.jpg",
-        liveUrl: "https://github.com/ahmed-abdelmottal3/Gradient-Generator",
-        githubUrl: "https://gradient-generator-bice-iota.vercel.app/",
+        liveUrl: "https://gradient-generator-bice-iota.vercel.app/",
+        githubUrl: "https://github.com/ahmed-abdelmottal3/Gradient-Generator",
     },
     {
         id: "qr-generator",
@@ -33,8 +23,8 @@ export const projects = [
         desc: "A modern and elegant QR Code Generator built with React and Tailwind CSS. It allows users to instantly create, customize, and download QR codes for links, text, and contact information. Designed with simplicity and performance in mind, the interface is clean, responsive, and user-friendly.",
         skills: ["React", "Tailwind CSS"],
         img: "/QR-genertor.png",
-        liveUrl: "https://github.com/ahmed-abdelmottal3/QR-generator",
-        githubUrl: "https://ahmed-abdelmottal3.github.io/QR-generator/",
+        liveUrl: "https://ahmed-abdelmottal3.github.io/QR-generator/",
+        githubUrl: "https://github.com/ahmed-abdelmottal3/QR-generator",
     },
     {
         id: "portfolio-website",
@@ -44,5 +34,23 @@ export const projects = [
         img: "/portfolio.png",
         liveUrl: "https://ahmed-saleh-two.vercel.app/",
         githubUrl: "https://github.com/ahmed-abdelmottal3/my-first-client-project",
+    },
+    {
+        id: "clarity-landing",
+        title: "Clarity Landing Page",
+        desc: "A minimalist and responsive landing page built with HTML, CSS, and JavaScript. Features a clean design, interactive UI elements, and smooth transitions to provide an elegant user experience across all devices.",
+        skills: ["HTML", "CSS", "JavaScript"],
+        img: "/clarity.png",
+        liveUrl: "https://ahmed-abdelmottal3.github.io/Clarity/",
+        githubUrl: "https://github.com/ahmed-abdelmottal3/Clarity",
+    },
+    {
+        id: "lockscout-landing",
+        title: "LockScout Landing Page",
+        desc: "A responsive and professional landing page for LockScout, highlighting security services with clean design, interactive UI, and smooth transitions.",
+        skills: ["HTML", "CSS", "JavaScript", "Responsive Design", "UI/UX"],
+        img: "/lockscout.png",
+        liveUrl: "https://ahmed-abdelmottal3.github.io/LockScout/",
+        githubUrl: "https://github.com/ahmed-abdelmottal3/LockScout",
     },
 ];
