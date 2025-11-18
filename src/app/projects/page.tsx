@@ -111,9 +111,9 @@ export default function Page() {
                             </div>
 
                             {/* buttons */}
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4 w-full">
-                                <Link href={proj.liveUrl} className="w-full sm:flex-1">
-                                    <button className="w-full sm:w-auto px-10 flex items-center justify-center gap-2 bg-foreground text-background py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:bg-foreground/80 active:scale-95 active:shadow-md">
+                            <div className="flex items-center justify-center flex-wrap gap-3 mt-4 w-full">
+                                <Link href={proj.liveUrl} className="flex-1 min-w-[120px]">
+                                    <button className="w-full px-6 flex items-center justify-center gap-2 bg-foreground text-background py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:bg-foreground/80 active:scale-95 active:shadow-md">
                                         <FaEye className="text-background" />
                                         Demo
                                     </button>
@@ -122,17 +122,16 @@ export default function Page() {
                                     href={proj.githubUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-full sm:flex-1"
+                                    className="flex-1 min-w-[120px]"
                                 >
                                     <ShinyButton
-                                        icon={<FaGithub className="text-foreground" />}
-                                        className="w-full sm:w-auto px-10 bg-background"
+                                        icon={<FaGithub className="text-foreground " />}
+                                        className="w-full px-6 bg-background"
                                     >
                                         Code
                                     </ShinyButton>
                                 </a>
                             </div>
-
                         </div>
                     </MagicCard>
                 ))}
