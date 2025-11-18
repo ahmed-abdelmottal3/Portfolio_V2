@@ -3,6 +3,7 @@ import Header from "@/src/components/ui/header";
 import { InteractiveHoverButton } from "@/src/components/ui/interactive-hover-button";
 import { MagicCard } from "@/src/components/ui/magic-card";
 import { skills } from "@/src/lib/skills";
+import Link from "next/link";
 
 const experiences = [{
   role: "Frontend Developer",
@@ -45,7 +46,13 @@ function Info() {
           <img src="/me.jpg" alt="me" className='rounded-2xl w-full h-auto object-cover' />
         </div>
         <div>
-          <InteractiveHoverButton>My CV</InteractiveHoverButton>
+          <InteractiveHoverButton>
+            <Link 
+            target="_blank"
+            href="https://drive.google.com/file/d/1LnLvXUeVhSWbfvicq8k-AEzBZZ7QWkep/view">
+            My CV
+            </Link>
+            </InteractiveHoverButton>
         </div>
       </div>
 
