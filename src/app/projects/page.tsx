@@ -112,7 +112,7 @@ export default function Page() {
 
                             {/* buttons */}
                             <div className="flex flex-wrap gap-3 mt-4 w-fit">
-                                <Link href={`/projects/${proj.id}`} className="flex-1">
+                                <Link href={proj.liveUrl} className="flex-1">
                                     <button className="w-fit px-15 flex items-center justify-center gap-2 bg-foreground text-background py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:bg-foreground/80 active:scale-95 active:shadow-md">
                                         <FaEye className="text-background" />
                                         Demo
