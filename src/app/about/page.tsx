@@ -47,12 +47,12 @@ function Info() {
         </div>
         <div>
           <InteractiveHoverButton>
-            <Link 
-            target="_blank"
-            href="https://drive.google.com/file/d/1LnLvXUeVhSWbfvicq8k-AEzBZZ7QWkep/view">
-            My CV
+            <Link
+              target="_blank"
+              href="https://drive.google.com/open?id=1GCVr0o8ekIwtduZnSFCRlnDqvkQAVZeP&authuser=0">
+              My CV
             </Link>
-            </InteractiveHoverButton>
+          </InteractiveHoverButton>
         </div>
       </div>
 
