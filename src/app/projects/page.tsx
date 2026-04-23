@@ -31,21 +31,19 @@ export default function Page() {
       <div className="hidden sm:flex w-fit m-auto mt-5 gap-3 items-center justify-center bg-background/10 rounded-full py-0.5 px-2">
         <div
           onClick={() => setView("grid")}
-          className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${
-            view === "grid"
-              ? "bg-blue-500/30 text-blue-400"
-              : "hover:bg-background/40"
-          }`}
+          className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${view === "grid"
+            ? "bg-blue-500/30 text-blue-400"
+            : "hover:bg-background/40"
+            }`}
         >
           <HiViewGrid size={22} />
         </div>
         <div
           onClick={() => setView("list")}
-          className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${
-            view === "list"
-              ? "bg-blue-500/30 text-blue-400"
-              : "hover:bg-background/40"
-          }`}
+          className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${view === "list"
+            ? "bg-blue-500/30 text-blue-400"
+            : "hover:bg-background/40"
+            }`}
         >
           <MdViewList size={22} />
         </div>
@@ -57,11 +55,10 @@ export default function Page() {
           <button
             key={cat}
             onClick={() => setCategory(cat)}
-            className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-              category === cat
-                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/30"
-                : "bg-background/10 text-background/60 hover:bg-background/20 hover:text-background"
-            }`}
+            className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${category === cat
+              ? "bg-blue-500 text-white shadow-lg shadow-blue-500/30"
+              : "bg-background/10 text-background/60 hover:bg-background/20 hover:text-background"
+              }`}
           >
             {cat}
           </button>
@@ -128,10 +125,10 @@ export default function Page() {
                 </div>
                 <div className="flex items-center justify-center flex-wrap gap-3 mt-4 w-full">
                   {proj.liveUrl && (
-                    <a 
-                      href={proj.liveUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href={proj.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 min-w-[120px]"
                     >
                       <button className="w-full px-6 flex items-center justify-center gap-2 bg-foreground text-background py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95">
@@ -182,9 +179,9 @@ export default function Page() {
           {filteredProjects.map((proj, i) => (
             <MagicCard
               key={i}
-              className="group relative overflow-visible border-b border-background/10 last:border-b-0 rounded-none first:rounded-t-2xl last:rounded-b-2xl"
+              className="group relative overflow-visible border-b border-background/10 last:border-b-0 rounded-none first:rounded-t-2xl last:rounded-b-2xl mb-2"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-[3rem_1fr_9rem_10rem] gap-4 sm:gap-6 items-center px-4 sm:px-6 py-5 relative z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-[3rem_1fr_9rem_10rem] gap-4 sm:gap-6 items-center px-4 sm:px-6 py-5 relative z-10 ">
                 {/* index */}
                 <span className="hidden sm:block text-4xl font-black text-background/8 group-hover:text-blue-500/20 transition-colors duration-500 select-none leading-none">
                   {String(i + 1).padStart(2, "0")}
@@ -241,9 +238,9 @@ export default function Page() {
                 {/* action buttons */}
                 <div className="flex items-center gap-2 sm:justify-end">
                   {proj.liveUrl && (
-                    <a 
-                      href={proj.liveUrl} 
-                      target="_blank" 
+                    <a
+                      href={proj.liveUrl}
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
                       <button className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium rounded-xl bg-foreground text-background transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-foreground/10 active:scale-95 cursor-pointer whitespace-nowrap">
