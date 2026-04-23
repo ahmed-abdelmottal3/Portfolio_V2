@@ -41,28 +41,32 @@ export default function ProjectDetails() {
                         </p>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                        <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <button className="flex items-center gap-2 bg-background/10 text-background px-6 py-3 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95">
-                                <FaEye />
-                                Live Demo
-                            </button>
-                        </a>
-                        <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <ShinyButton
-                                icon={<FaGithub className="text-foreground" />}
-                                className="bg-background px-6 py-3"
+                        {project.liveUrl && (
+                            <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                View Code
-                            </ShinyButton>
-                        </a>
+                                <button className="flex items-center gap-2 bg-background/10 text-background px-6 py-3 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95">
+                                    <FaEye />
+                                    Live Demo
+                                </button>
+                            </a>
+                        )}
+                        {project.githubUrl && (
+                            <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <ShinyButton
+                                    icon={<FaGithub className="text-foreground" />}
+                                    className="bg-background px-6 py-3"
+                                >
+                                    View Code
+                                </ShinyButton>
+                            </a>
+                        )}
                     </div>
                 </div>
 
@@ -86,17 +90,41 @@ export default function ProjectDetails() {
                         <img
                             src={selectedImage}
                             alt={project.title}
-                            className="w-full h-auto object-contain rounded-2xl"
+                            className="w-full h-auto object-contain rounded-2xl transition-all duration-500"
                         />
                     </div>
 
-                    <div className="pointer-events-none absolute bottom-0 left-0 w-full h-24 bg-linear-to-t from-black/60 via-black/30 to-transparent rounded-b-xl animate-pulse" />
+                    <div className="pointer-events-none absolute bottom-0 left-0 w-full h-24 bg-linear-to-t from-black/60 via-black/30 to-transparent rounded-b-xl" />
 
                     <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 animate-bounce text-2xl select-none">
                         ↓
                     </div>
                 </div>
             </MagicCard>
+
+            {/* Image Gallery Thumbnails */}
+            {project.images && project.images.length > 1 && (
+                <div className="flex flex-wrap gap-4 mb-12 justify-center">
+                    {project.images.map((img, index) => (
+                        <div
+                            key={index}
+                            onClick={() => setSelectedImage(img)}
+                            className={`relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 border-2 ${
+                                selectedImage === img
+                                    ? "border-blue-500 scale-105 shadow-lg shadow-blue-500/20"
+                                    : "border-transparent opacity-60 hover:opacity-100 hover:border-blue-400/50"
+                            }`}
+                        >
+                            <img
+                                src={img}
+                                alt={`${project.title} thumbnail ${index + 1}`}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    ))}
+                </div>
+            )}
+
 
             {/* Content Grid */}
             <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -186,24 +214,28 @@ export default function ProjectDetails() {
                                 Project Links
                             </h3>
                             <div className="space-y-3">
-                                <a
-                                    href={project.liveUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
-                                >
-                                    <span className="text-background/60">Live Website</span>
-                                    <FaExternalLinkAlt className="text-blue-400 group-hover:translate-x-1 transition-transform duration-300" />
-                                </a>
-                                <a
-                                    href={project.githubUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
-                                >
-                                    <span className="text-background/60">Source Code</span>
-                                    <FaGithub className="text-blue-400 group-hover:translate-x-1 transition-transform duration-300" />
-                                </a>
+                                {project.liveUrl && (
+                                    <a
+                                        href={project.liveUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
+                                    >
+                                        <span className="text-background/60">Live Website</span>
+                                        <FaExternalLinkAlt className="text-blue-400 group-hover:translate-x-1 transition-transform duration-300" />
+                                    </a>
+                                )}
+                                {project.githubUrl && (
+                                    <a
+                                        href={project.githubUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
+                                    >
+                                        <span className="text-background/60">Source Code</span>
+                                        <FaGithub className="text-blue-400 group-hover:translate-x-1 transition-transform duration-300" />
+                                    </a>
+                                )}
                             </div>
                         </div>
                     </MagicCard>
