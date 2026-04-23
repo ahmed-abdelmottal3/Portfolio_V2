@@ -1,5 +1,15 @@
 export const projects = [
   {
+    id: "suknai-real-estate",
+    title: "Suknai - Luxury Real Estate Platform",
+    desc: "A premium real estate platform showcasing luxury properties. Features high-quality visuals, brand integration, and an elegant user interface for property discovery.",
+    category: "Web",
+    skills: ["React", "Tailwind CSS", "Framer Motion", "UI/UX"],
+    img: "/suknai/screencapture-suknai-vercel-app-2026-04-23-19_20_43.png",
+    liveUrl: "https://suknai.vercel.app/",
+    githubUrl: "https://github.com/ahmed-abdelmottal3/suknai",
+  },
+  {
     id: "rawy-mobile-app",
     title: "Rawy - Storytelling Mobile App",
     desc: "A premium mobile application designed for storytelling and narrative experiences. Features a clean, user-centric interface with smooth transitions and interactive elements to provide an immersive reading and listening experience.",

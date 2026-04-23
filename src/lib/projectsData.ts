@@ -236,6 +236,44 @@ export const projectsData: Project[] = [
         images: ["/lockscout1.png"]
     },
     {
+        id: "suknai-real-estate",
+        title: "Suknai - Luxury Real Estate Platform",
+        subtitle: "Luxury Living Redefined",
+        desc: "A premium real estate platform showcasing luxury properties. Features high-quality visuals, brand integration, and an elegant user interface for property discovery.",
+        longDesc: "Suknai is a high-end real estate platform designed to showcase luxury properties and high-profile brands. The project focuses on visual excellence, featuring massive, high-resolution imagery and smooth animations that reflect the premium nature of the real estate market. It includes detailed property views, brand showcases, and a seamless contact system for potential buyers.",
+        skills: ["React", "Tailwind CSS", "Framer Motion", "UI/UX"],
+        img: "/suknai/screencapture-suknai-vercel-app-2026-04-23-19_20_43.png",
+        liveUrl: "https://suknai.vercel.app/",
+        githubUrl: "https://github.com/ahmed-abdelmottal3/suknai",
+        date: "April 2026",
+        category: "Web Development",
+        features: [
+            "High-resolution property galleries",
+            "Interactive brand showcases",
+            "Smooth parallax and scroll animations",
+            "Responsive design for all devices",
+            "Lead generation and contact forms",
+            "SEO optimized property listings"
+        ],
+        challenges: [
+            {
+                title: "Image Optimization",
+                desc: "Handling very large, high-quality images while maintaining fast page load times."
+            },
+            {
+                title: "Aesthetic Precision",
+                desc: "Achieving a pixel-perfect, luxury feel using custom CSS and Framer Motion."
+            }
+        ],
+        images: [
+            "/suknai/screencapture-suknai-vercel-app-2026-04-23-19_20_43.png",
+            "/suknai/screencapture-suknai-vercel-app-about-2026-04-23-19_21_49.png",
+            "/suknai/screencapture-suknai-vercel-app-brands-2026-04-23-19_21_57.png",
+            "/suknai/screencapture-suknai-vercel-app-contact-2026-04-23-19_22_06.png",
+            "/suknai/screencapture-suknai-vercel-app-suknai-royal-2026-04-23-19_21_11.png"
+        ]
+    },
+    {
         id: "quizium-platform",
         title: "Quizium - Interactive Quiz Platform",
         subtitle: "Empowering Learning Through Interaction",
