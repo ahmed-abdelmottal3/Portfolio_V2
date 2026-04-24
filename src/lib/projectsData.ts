@@ -243,7 +243,7 @@ export const projectsData: Project[] = [
         longDesc: "Suknai is a high-end real estate platform designed to showcase luxury properties and high-profile brands. The project focuses on visual excellence, featuring massive, high-resolution imagery and smooth animations that reflect the premium nature of the real estate market. It includes detailed property views, brand showcases, and a seamless contact system for potential buyers.",
         skills: ["React", "Tailwind CSS", "Framer Motion", "UI/UX"],
         img: "/suknai/screencapture-suknai-vercel-app-2026-04-23-19_20_43.png",
-        liveUrl: "https://suknai.vercel.app/",
+        liveUrl: "https://suknaii.vercel.app/",
         githubUrl: "https://github.com/ahmed-abdelmottal3/suknai",
         date: "April 2026",
         category: "Web Development",
