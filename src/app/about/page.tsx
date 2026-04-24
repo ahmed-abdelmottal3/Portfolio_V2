@@ -3,6 +3,7 @@ import Header from "@/src/components/ui/header";
 import { InteractiveHoverButton } from "@/src/components/ui/interactive-hover-button";
 import { MagicCard } from "@/src/components/ui/magic-card";
 import { skills } from "@/src/lib/skills";
+import { a } from "framer-motion/client";
 import Link from "next/link";
 
 const experiences = [{
@@ -10,6 +11,12 @@ const experiences = [{
   company: "Information Technology Institute (ITI)",
   desc: "Participating in an intensive 5-month scholarship program provided by the Ministry of Communications through ITI, focusing on advanced front-end technologies, cross-platform mobile development, and real-world software engineering practices.",
   date: "July-2025"
+},
+{
+  role: "Frontend React & React Native Developer",
+  company: "Afaq Production",
+  desc: "Developed and published the Sanaiee cross-platform mobile application using React Native, handling RESTful API integrations, state management, and deployment to Google Play. Architected and developed the official Sanaiee Web Platform utilizing Next.js and Tailwind CSS, delivering a highly responsive, fast, and SEO-optimized user experience. Engineered reusable UI components and refactored legacy architecture across both mobile and web applications to enhance overall performance, maintainability, and scalability.",
+  date: "Oct-2025"
 }
 ]
 
