@@ -16,7 +16,7 @@ const experiences = [{
   role: "Frontend React & React Native Developer",
   company: "Afaq Production",
   desc: "Developed and published the Sanaiee cross-platform mobile application using React Native, handling RESTful API integrations, state management, and deployment to Google Play. Architected and developed the official Sanaiee Web Platform utilizing Next.js and Tailwind CSS, delivering a highly responsive, fast, and SEO-optimized user experience. Engineered reusable UI components and refactored legacy architecture across both mobile and web applications to enhance overall performance, maintainability, and scalability.",
-  date: "Oct-2025"
+  date: "Dec-2025 - present"
 }
 ]
 
