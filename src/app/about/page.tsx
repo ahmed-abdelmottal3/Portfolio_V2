@@ -76,7 +76,7 @@ function Info() {
         <section>
 
           <h2 className='text-2xl font-semibold pb-4'>Tools & Technologies I use</h2>
-          <div className='flex flex-wrap gap-4'>
+          <div className='flex flex-wrap gap-4 max-w-2xl'>
             {skills.map((skill) => (
               <div
                 key={skill.name}
