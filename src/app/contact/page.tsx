@@ -1,259 +1,202 @@
-"use client"
-import Header from "@/src/components/ui/header";
-import { MagicCard } from "@/src/components/ui/magic-card";
+"use client";
 import { useState } from "react";
-import { FaLinkedin, FaGithub, FaPaperPlane, FaFacebook } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { BsArrowUpRight, BsDownload, BsEnvelope } from "react-icons/bs";
+import PageHeader, { SectionLabel } from "@/src/components/ui/page-header";
+import NextPage from "@/src/components/shared/NextPage";
+
+const EMAIL = "abdelmottale3@gmail.com";
+// Public form key from web3forms.com; it only allows sending to the owner's inbox.
+const FORM_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+const channels = [
+  { label: "Email", value: EMAIL, href: `mailto:${EMAIL}`, icon: <BsEnvelope /> },
+  { label: "WhatsApp", value: "+20 109 717 5212", href: "https://wa.me/201097175212", icon: <FaWhatsapp /> },
+  { label: "LinkedIn", value: "in/abdelmottalie", href: "https://www.linkedin.com/in/abdelmottalie", icon: <FaLinkedinIn /> },
+  { label: "GitHub", value: "ahmed-abdelmottal3", href: "https://github.com/ahmed-abdelmottal3", icon: <FaGithub /> },
+];
+
+const freelance = [
+  { label: "Mostaql", href: "https://mostaql.com/u/Ahmed_Abdo1712" },
+  { label: "Nafezly", href: "https://nafezly.com/u/ahmed_abdelmottalie" },
+];
+
+type Status = "idle" | "sending" | "sent" | "error";
+const empty = { name: "", email: "", subject: "", message: "" };
+
 export default function ContactPage() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        subject: "",
-        message: ""
-    });
+  const [form, setForm] = useState(empty);
+  const [status, setStatus] = useState<Status>("idle");
 
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const update = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
+  const mailtoLink = () =>
+    `mailto:${EMAIL}?subject=${encodeURIComponent(form.subject || `Message from ${form.name}`)}&body=${encodeURIComponent(
+      `${form.message}\n\n${form.name}\n${form.email}`,
+    )}`;
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setSubmitStatus("success");
-            setFormData({ name: "", email: "", subject: "", message: "" });
+    // Without a form key, hand the message to the visitor's email app instead of pretending to send it.
+    if (!FORM_KEY) {
+      window.location.href = mailtoLink();
+      return;
+    }
 
-            setTimeout(() => {
-                setSubmitStatus("idle");
-            }, 3000);
-        }, 1500);
-    };
-    const socialLinks = [
-        {
-            icon: <FaGithub size={24} />,
-            name: "GitHub",
-            url: "https://github.com/ahmed-abdelmottal3",
-            color: "hover:text-gray-400"
-        },
-        {
-            icon: <FaLinkedin size={24} />,
-            name: "LinkedIn",
-            url: "www.linkedin.com/in/abdelmottalie",
-            color: "hover:text-cyan"
-        },
-        {
-            icon: <FaFacebook size={24} />,
-            name: "Facebook",
-            url: "https://www.facebook.com/ahmed.abdelmottalie.33",
-            color: "hover:text-cyan"
-        }
-    ];
+    const botcheck = (e.currentTarget.elements.namedItem("botcheck") as HTMLInputElement | null)?.checked;
+    if (botcheck) return;
 
-    return (
-        <section className='container mx-auto pt-10 px-4 pb-20'>
-            <Header title="Get In Touch" />
-            <p className="max-w-2xl text-background/60 font-light">
-                Have a project in mind or just want to say hi? I'd love to hear from you.
-                Send me a message and I'll get back to you as soon as possible.
-            </p>
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: FORM_KEY,
+          from_name: "Portfolio contact form",
+          subject: form.subject || `New message from ${form.name}`,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error(data.message || "Send failed");
+      setStatus("sent");
+      setForm(empty);
+    } catch {
+      setStatus("error");
+    }
+  };
 
+  return (
+    <section className="container mx-auto px-5 sm:px-8 pt-20 pb-40">
+      <PageHeader
+        index="04"
+        eyebrow="CONTACT"
+        title="Let's talk"
+        intro="Open to React Native roles, remote or in Cairo, and to freelance mobile work. Email or WhatsApp is the fastest way to reach me, and the form below lands in my inbox too."
+      />
 
-            <div className="grid md:grid-cols-5 gap-8 mt-12">
-                {/* Contact Form */}
-                <div className="md:col-span-3">
-                    <MagicCard className="p-8">
-                        <div className="relative z-10">
-                            <h2 className="text-2xl font-bold text-background mb-6">
-                                Send Me a Message
-                            </h2>
+      <div className="mt-16 grid gap-16 lg:grid-cols-[1fr_1.2fr]">
+        {/* direct channels */}
+        <div className="hero-rise" style={{ "--d": "0.18s" } as React.CSSProperties}>
+          <SectionLabel>REACH ME DIRECTLY</SectionLabel>
+          <ul className="mt-6 divide-y divide-white/10 border-b border-white/10">
+            {channels.map((c) => (
+              <li key={c.label}>
+                <a
+                  href={c.href}
+                  target={c.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 py-5"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-silver transition group-hover:border-cyan group-hover:text-cyan">
+                    {c.icon}
+                  </span>
+                  <span className="flex-1 min-w-0">
+                    <span className="block font-mono text-[11px] tracking-[0.2em] text-white/35">{c.label.toUpperCase()}</span>
+                    <span className="block truncate text-background transition group-hover:text-cyan">{c.value}</span>
+                  </span>
+                  <BsArrowUpRight className="text-silver transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan" />
+                </a>
+              </li>
+            ))}
+          </ul>
 
-                            {submitStatus === "success" && (
-                                <div className="mb-6 p-4 bg-green-400/10 border border-green-400/20 rounded-lg">
-                                    <p className="text-green-400 text-center">
-                                        ✓ Message sent successfully! I'll get back to you soon.
-                                    </p>
-                                </div>
-                            )}
+          <div className="mt-10 flex items-center gap-3 text-sm text-silver">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
+            Usually replies within a day
+          </div>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div className="grid md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label htmlFor="name" className="block text-sm font-medium text-background/60 mb-2">
-                                            Your Name
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="name"
-                                            name="name"
-                                            value={formData.name}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-cyan transition-colors duration-300"
-                                            placeholder="Type Your Name"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label htmlFor="email" className="block text-sm font-medium text-background/60 mb-2">
-                                            Your Email
-                                        </label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-cyan transition-colors duration-300"
-                                            placeholder="Enter Your Name"
-                                        />
-                                    </div>
-                                </div>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+            <a
+              href="/Ahmed-Abdelmottalie-CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-semibold text-background hover:text-cyan"
+            >
+              <BsDownload /> Download CV
+            </a>
+            <span className="text-white/20">|</span>
+            <span className="text-silver">Freelance profiles:</span>
+            {freelance.map((f) => (
+              <a key={f.label} href={f.href} target="_blank" rel="noopener noreferrer" className="text-background hover:text-cyan">
+                {f.label}
+              </a>
+            ))}
+          </div>
+        </div>
 
-                                <div>
-                                    <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-2">
-                                        Subject
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="subject"
-                                        name="subject"
-                                        value={formData.subject}
-                                        onChange={handleChange}
-                                        required
-                                        className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-cyan transition-colors duration-300"
-                                        placeholder="Project Inquiry"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
-                                        Message
-                                    </label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        required
-                                        rows={6}
-                                        className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-cyan transition-colors duration-300 resize-none"
-                                        placeholder="Tell me about your project..."
-                                    />
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full flex items-center justify-center gap-2 bg-foreground text-background px-8 py-4 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <div className="w-5 h-5 border-2 border-background/30 border-t-background rounded-full animate-spin"></div>
-                                            Sending...
-                                        </>
-                                    ) : (
-                                        <>
-                                            <FaPaperPlane />
-                                            Send Message
-                                        </>
-                                    )}
-                                </button>
-                            </form>
-                        </div>
-                    </MagicCard>
-                </div>
-
-                {/* Sidebar */}
-                <div className="md:col-span-2 space-y-6">
-                    {/* Social Links */}
-                    <MagicCard className="p-6">
-                        <div className="relative z-10">
-                            <h3 className="text-xl font-bold text-background mb-6">
-                                Connect With Me
-                            </h3>
-                            <div className="space-y-4">
-                                {socialLinks.map((social, index) => (
-                                    <a
-                                        key={index}
-                                        href={social.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-4 p-4 rounded-lg bg-background/5 hover:bg-background/10 transition-all duration-300 group"
-                                    >
-                                        <div className={`text-background/60 ${social.color} transition-colors duration-300`}>
-                                            {social.icon}
-                                        </div>
-                                        <span className="text-background/60 group-hover:text-background transition-colors duration-300">
-                                            {social.name}
-                                        </span>
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    </MagicCard>
-
-                    {/* Availability */}
-                    <Availability />
-
-                </div>
+        {/* form */}
+        <div className="hero-rise" style={{ "--d": "0.24s" } as React.CSSProperties}>
+          <SectionLabel>SEND A MESSAGE</SectionLabel>
+          <form onSubmit={submit} className="mt-6 space-y-5">
+            <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field label="Name" name="name" value={form.name} onChange={update} autoComplete="name" />
+              <Field label="Email" name="email" type="email" value={form.email} onChange={update} autoComplete="email" />
             </div>
+            <Field label="Subject" name="subject" value={form.subject} onChange={update} required={false} />
+            <label className="block">
+              <span className="font-mono text-[11px] tracking-[0.2em] text-white/40">MESSAGE</span>
+              <textarea
+                name="message"
+                required
+                rows={6}
+                value={form.message}
+                onChange={update}
+                className="mt-2 w-full resize-none rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-background placeholder:text-white/25 outline-none transition focus:border-cyan/60"
+                placeholder="Tell me about the role or the project"
+              />
+            </label>
 
-            {/* FAQ Section */}
-        </section>
-    );
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="inline-flex items-center gap-2 rounded-full bg-cyan px-7 py-3 text-sm font-semibold text-[#050507] transition hover:brightness-110 disabled:opacity-60"
+              >
+                {status === "sending" ? "Sending…" : FORM_KEY ? "Send message" : "Send via email app"}
+              </button>
+
+              <p aria-live="polite" className="text-sm">
+                {status === "sent" && <span className="text-cyan">Thanks, your message is on its way. I will reply by email.</span>}
+                {status === "error" && (
+                  <span className="text-[#ff8f80]">
+                    That did not go through. Please email me at{" "}
+                    <a href={mailtoLink()} className="underline">{EMAIL}</a>.
+                  </span>
+                )}
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <NextPage />
+    </section>
+  );
 }
 
-
-function Availability() {
-    return (
-        <MagicCard className="p-6">
-            <div className="relative z-10">
-                <h3 className="text-xl font-bold text-background mb-4">
-                    Availability
-                </h3>
-                <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                        <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
-                        <span className="text-green-400 font-medium">
-                            Available for Freelance
-                        </span>
-                    </div>
-
-                    <p className="text-background/60 text-sm leading-relaxed">
-                        Currently accepting new projects and collaborations.
-                        Response time: Usually within 24 hours.
-                    </p>
-
-                    <div className="flex gap-4 pt-4">
-                        {/* نفّذلي */}
-                        <a
-                            href="https://nafezly.com/u/ahmed_abdelmottalie"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-background/80 hover:text-green-400 transition-colors"
-                        >
-                            <span className="text-sm font-medium">Nafezly</span>
-                        </a>
-
-                        {/* مستقل */}
-                        <a
-                            href="https://mostaql.com/u/Ahmed_Abdo1712"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-background/80 hover:text-green-400 transition-colors"
-                        >
-                            <span className="text-sm font-medium">Mostaql</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </MagicCard>
-    );
+function Field({
+  label,
+  required = true,
+  ...props
+}: { label: string; required?: boolean } & React.InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <label className="block">
+      <span className="font-mono text-[11px] tracking-[0.2em] text-white/40">
+        {label.toUpperCase()}
+        {!required && <span className="text-white/20"> (OPTIONAL)</span>}
+      </span>
+      <input
+        required={required}
+        {...props}
+        className="mt-2 w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-background placeholder:text-white/25 outline-none transition focus:border-cyan/60"
+      />
+    </label>
+  );
 }
