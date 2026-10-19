@@ -8,6 +8,8 @@ type Particle = {
   size: number; alpha: number; delay: number;
 };
 
+const LIGHT_RADIUS = 110;
+
 type Props = {
   src?: string;
   className?: string;
@@ -19,8 +21,9 @@ type Props = {
   instant?: boolean;
 };
 
-// Draws a photo as a field of dots that fly into place and drift away from
-// the cursor. The canvas fills its parent, so size it with the wrapper.
+// Draws a photo as a field of dots that fly into place. Dots near the cursor
+// grow and pick up the accent colour, and the whole portrait tilts slightly
+// towards the cursor. The canvas fills its parent, so size it with the wrapper.
 export default function ParticlePortrait({
   src = "/me.jpg",
   className = "",
@@ -40,6 +43,8 @@ export default function ParticlePortrait({
     let particles: Particle[] = [];
     let img: HTMLImageElement | null = null;
     const mouse = { x: -9999, y: -9999 };
+    const light = { x: 0, y: 0, on: 0 };
+    const tilt = { x: 0, y: 0 };
     const still = instant || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const build = () => {
@@ -91,18 +96,44 @@ export default function ParticlePortrait({
     const frame = (now: number) => {
       if (!start) start = now;
       const t = still ? 99 : (now - start) / 1000;
+
+      // Ease the light and the tilt towards the cursor so movement feels smooth.
+      const inside = mouse.x > -1000;
+      light.x += ((inside ? mouse.x : light.x) - light.x) * 0.18;
+      light.y += ((inside ? mouse.y : light.y) - light.y) * 0.18;
+      light.on += ((inside ? 1 : 0) - light.on) * 0.08;
+      const tx = inside ? Math.max(-1, Math.min(1, (mouse.x - W / 2) / (W / 2))) : 0;
+      const ty = inside ? Math.max(-1, Math.min(1, (mouse.y - H / 2) / (H / 2))) : 0;
+      tilt.x += (tx - tilt.x) * 0.06;
+      tilt.y += (ty - tilt.y) * 0.06;
+
       ctx.clearRect(0, 0, W, H);
+      const lit: { p: Particle; f: number }[] = [];
       ctx.fillStyle = "#e8ecf3";
       for (const p of particles) {
         const local = Math.max(0, t - delay - p.delay);
         const k = local > 0 ? Math.min(0.12, 0.02 + local * 0.08) : 0;
-        p.vx += (p.tx - p.x) * k; p.vy += (p.ty - p.y) * k;
-        const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
-        if (d2 < 9000) { const f = 900 / (d2 + 60); p.vx += dx * f * 0.05; p.vy += dy * f * 0.05; }
+        // Brighter dots sit "closer", so they shift more with the tilt.
+        const depth = 4 + p.alpha * 10;
+        const gx = p.tx + tilt.x * depth, gy = p.ty + tilt.y * depth;
+        p.vx += (gx - p.x) * k; p.vy += (gy - p.y) * k;
         p.vx *= 0.82; p.vy *= 0.82;
         p.x += p.vx; p.y += p.vy;
-        ctx.globalAlpha = p.alpha;
-        ctx.fillRect(p.x, p.y, p.size, p.size);
+
+        const dx = p.x - light.x, dy = p.y - light.y;
+        const f = light.on * Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / LIGHT_RADIUS);
+        const size = p.size * (1 + 0.6 * f * f);
+        ctx.globalAlpha = Math.min(1, p.alpha + f * 0.25);
+        ctx.fillRect(p.x - (size - p.size) / 2, p.y - (size - p.size) / 2, size, size);
+        if (f > 0.05) lit.push({ p, f });
+      }
+
+      // Tint the dots under the cursor with the accent colour.
+      ctx.fillStyle = "#61dafb";
+      for (const { p, f } of lit) {
+        const size = p.size * (1 + 0.6 * f * f);
+        ctx.globalAlpha = f * f * f * 0.45;
+        ctx.fillRect(p.x - (size - p.size) / 2, p.y - (size - p.size) / 2, size, size);
       }
       ctx.globalAlpha = 1;
       raf = requestAnimationFrame(frame);

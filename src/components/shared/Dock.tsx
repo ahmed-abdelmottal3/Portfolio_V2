@@ -1,115 +1,68 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { pageOrder } from "@/src/lib/pages";
+
+const socials = [
+  { icon: <FaGithub size={15} />, label: "GitHub", href: "https://github.com/ahmed-abdelmottal3" },
+  { icon: <FaLinkedinIn size={15} />, label: "LinkedIn", href: "https://www.linkedin.com/in/abdelmottalie" },
+  { icon: <FaWhatsapp size={15} />, label: "WhatsApp", href: "https://wa.me/+201097175212" },
+];
+
 export default function Dock() {
   const pathname = usePathname();
-  const active = pathname;
-
-  const navItems = [
-    { icon: <FaHome size={15} />, label: "Home", href: "/" },
-    { icon: <FaUser size={15} />, label: "About", href: "/about" },
-    { icon: <FaProjectDiagram size={15} />, label: "Projects", href: "/projects" },
-    { icon: <FaEnvelope size={15} />, label: "Contact", href: "/contact" },
-  ];
-
-  const socialItems = [
-    { icon: <FaGithub size={18} />, label: "GitHub", href: "https://github.com/ahmed-abdelmottal3", color: "#fff" },
-    { icon: <FaLinkedin size={18} />, label: "LinkedIn", href: "https://www.linkedin.com/in/abdelmottalie", color: "#0077b5" },
-    { icon: <FaWhatsapp size={18} />, label: "WhatsApp", href: "https://wa.me/+201097175212", color: "#25D366" },
-  ];
+  // Project detail pages still highlight "Projects".
+  const active = pathname.startsWith("/projects") ? "/projects" : pathname;
 
   return (
-    <div className="fixed bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-50">
-      <nav className="relative flex items-center bg-linear-to-r from-[#1a1a1a] via-[#222121] to-[#1a1a1a] backdrop-blur-2xl rounded-full px-3 py-1 shadow-2xl border border-white/10">
+    <nav
+      aria-label="Main"
+      className="fixed bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 rounded-full border border-white/10 bg-[#0b0d12]/80 p-1.5 shadow-[0_10px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl"
+    >
+      {pageOrder.map((page, i) => {
+        const isActive = active === page.href;
+        return (
+          <Link
+            key={page.href}
+            href={page.href}
+            aria-current={isActive ? "page" : undefined}
+            className={`relative rounded-full px-3 sm:px-4 py-2 text-[13px] font-medium transition-colors ${
+              isActive ? "text-[#050507]" : "text-silver hover:text-background"
+            }`}
+          >
+            {isActive && (
+              <motion.span
+                layoutId="dock-active"
+                className="absolute inset-0 rounded-full bg-cyan"
+                transition={{ type: "spring", stiffness: 420, damping: 34 }}
+              />
+            )}
+            <span className="relative flex items-baseline gap-1.5">
+              <span className={`hidden sm:inline font-mono text-[10px] ${isActive ? "text-[#050507]/60" : "text-white/25"}`}>
+                0{i + 1}
+              </span>
+              {page.label}
+            </span>
+          </Link>
+        );
+      })}
 
-        {/* Background Glow */}
-        <div className="absolute inset-0 rounded-3xl bg-linear-to-r from-white/5 via-white/10 to-white/5 opacity-50 blur-xl" />
-        <div className="absolute -inset-0.5 rounded-3xl bg-linear-to-r from-transparent via-white/20 to-transparent opacity-30 blur-sm" />
+      <span className="mx-1 hidden h-5 w-px bg-white/10 sm:block" />
 
-        {/* Nav Items */}
-        <div className="relative flex items-center gap-1  border-white/20 pr-3">
-          {navItems.map((item) => {
-            const isActive = active === item.href;
-            return (
-              <div key={item.href} className="relative group">
-                <Link
-                  href={item.href}
-                  className={`relative rounded-full p-1.5 flex items-center justify-center transition-all duration-500 ${isActive
-                    ? 'bg-cyan text-[#050507] shadow-lg shadow-cyan/30 scale-110'
-                    : 'text-gray-400 hover:text-white hover:scale-110'
-                    }`}
-                >
-                  <div className="text-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-                    {item.icon}
-                  </div>
-
-                  {isActive && (
-                    <>
-                      <div className="absolute -inset-1 rounded-2xl bg-cyan/20 blur-md" />
-                    </>
-                  )}
-                </Link>
-
-                {/* Tooltip */}
-                <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 pointer-events-none">
-                  <div className="relative bg-background text-foreground text-xs font-bold px-4 py-1 rounded-full shadow-2xl border border-white/20 backdrop-blur-sm ">
-                    {item.label}
-                    <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-background rotate-45 border-r border-b border-white/20" />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Social Items */}
-        <div className="relative flex items-center border-l gap-4 pl-3 pr-1">
-          {socialItems.map((item) => (
-            <div key={item.href} className="relative group">
-              <a
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:scale-125 transition-all duration-500"
-              >
-                <div
-                  className="text-xl transition-all duration-500 group-hover:scale-125 group-hover:rotate-360"
-                  style={{ color: 'inherit' }}
-                >
-                  {item.icon}
-                </div>
-
-                {/* Glow Effect on Hover */}
-                <div
-                  className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 blur-md transition-all duration-500"
-                  style={{ backgroundColor: item.color }}
-                />
-                <div
-                  className="absolute -inset-2 rounded-2xl opacity-0 group-hover:opacity-20 blur-2xl transition-all duration-500"
-                  style={{ backgroundColor: item.color }}
-                />
-              </a>
-
-              {/* Tooltip */}
-              <div className="absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 pointer-events-none">
-                <div className="relative bg-background text-foreground text-xs font-bold px-4 py-1 rounded-full shadow-2xl border border-white/20 backdrop-blur-sm ">
-                  {item.label}
-                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-background rotate-45 border-r border-b border-white/20" />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-
-        {/* Decorative Lines */}
-        <div className="absolute -top-1 left-1/4 w-20 h-0.5 bg-linear-to-r from-transparent via-white/30 to-transparent blur-sm" />
-        <div className="absolute -bottom-1 right-1/4 w-20 h-0.5 bg-linear-to-r from-transparent via-white/30 to-transparent blur-sm" />
-      </nav>
-
-      {/* Bottom Shadow */}
-      <div className="absolute inset-x-0 -bottom-4 h-8 bg-linear-to-b from-black/20 to-transparent blur-2xl" />
-    </div>
+      {socials.map((s) => (
+        <a
+          key={s.href}
+          href={s.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={s.label}
+          className="hidden sm:flex h-8 w-8 items-center justify-center rounded-full text-silver transition-colors hover:bg-white/5 hover:text-cyan"
+        >
+          {s.icon}
+        </a>
+      ))}
+    </nav>
   );
 }

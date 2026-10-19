@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SplashScreen from "../components/wrapper/Splashscreen";
 import Dock from "../components/shared/Dock";
+import ScrollPager from "../components/shared/ScrollPager";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
         <SplashScreen>
           {children}
           <Dock />
+          <ScrollPager />
         </SplashScreen>
 
       </body>
