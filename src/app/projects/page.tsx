@@ -1,281 +1,156 @@
 "use client";
-import Header from "@/src/components/ui/header";
-import { MdViewList } from "react-icons/md";
-import { HiViewGrid } from "react-icons/hi";
 import { useState } from "react";
-import { MagicCard } from "@/src/components/ui/magic-card";
-import { ShinyButton } from "@/src/components/ui/shiny-button";
-import { FaEye, FaGithub } from "react-icons/fa";
-import { BsArrowUpRight } from "react-icons/bs";
 import Link from "next/link";
-import CircularCTA from "@/src/components/shared/CircularCTA";
+import { motion } from "framer-motion";
+import { FaApple, FaGithub, FaGooglePlay } from "react-icons/fa";
+import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
+import PageHeader, { SectionLabel } from "@/src/components/ui/page-header";
+import NextPage from "@/src/components/shared/NextPage";
 import { projects } from "@/src/lib/projects";
 
-export default function Page() {
-  const [view, setView] = useState("grid");
-  const [category, setCategory] = useState("All");
+type Project = (typeof projects)[number];
 
-  const filteredProjects = projects.filter((proj) =>
-    category === "All" ? true : proj.category === category,
-  );
+const filters = ["All", "Mobile", "Web", "UI/UX"] as const;
+
+const isStoreLink = (url: string) => /(apps\.apple|play\.google)\.com/.test(url);
+
+function StoreIcon({ url }: { url: string }) {
+  if (url.includes("apps.apple.com")) return <FaApple />;
+  if (url.includes("play.google.com")) return <FaGooglePlay />;
+  return <BsArrowUpRight />;
+}
+
+export default function ProjectsPage() {
+  const [filter, setFilter] = useState<(typeof filters)[number]>("All");
+  const visible = projects.filter((p) => filter === "All" || p.category === filter);
+  const shipped = visible.filter((p) => isStoreLink(p.liveUrl));
+  const other = visible.filter((p) => !isStoreLink(p.liveUrl));
 
   return (
-    <section className="container mx-auto pt-10 px-4">
-      <Header title="Projects" />
-      <p className="max-w-lg text-background/60 font-light">
-        Apps I have shipped to the App Store and Google Play, followed by web
-        projects and earlier work. Client code is private, so store links come first.
-      </p>
+    <section className="container mx-auto px-5 sm:px-8 pt-20 pb-40">
+      <PageHeader
+        index="03"
+        eyebrow="PROJECTS"
+        title="Selected work"
+        intro="Apps I have shipped to the App Store and Google Play come first. Client code is private, so each one links to its store listing and a short case study."
+      />
 
-      {/* view toggle */}
-      <div className="hidden sm:flex w-fit m-auto mt-5 gap-3 items-center justify-center bg-background/10 rounded-full py-0.5 px-2">
-        <div
-          onClick={() => setView("grid")}
-          className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${view === "grid"
-            ? "bg-cyan/30 text-cyan"
-            : "hover:bg-background/40"
-            }`}
-        >
-          <HiViewGrid size={22} />
-        </div>
-        <div
-          onClick={() => setView("list")}
-          className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${view === "list"
-            ? "bg-cyan/30 text-cyan"
-            : "hover:bg-background/40"
-            }`}
-        >
-          <MdViewList size={22} />
-        </div>
-      </div>
-
-      {/* category filter */}
-      <div className="flex flex-wrap justify-center gap-3 mt-8">
-        {["All", "Web", "Mobile", "UI/UX"].map((cat) => (
+      {/* filters */}
+      <div className="hero-rise mt-10 inline-flex rounded-full border border-white/10 bg-white/[0.02] p-1" style={{ "--d": "0.18s" } as React.CSSProperties}>
+        {filters.map((f) => (
           <button
-            key={cat}
-            onClick={() => setCategory(cat)}
-            className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${category === cat
-              ? "bg-cyan text-[#050507] shadow-lg shadow-cyan/20"
-              : "bg-background/10 text-background/60 hover:bg-background/20 hover:text-background"
-              }`}
+            key={f}
+            onClick={() => setFilter(f)}
+            className={`relative rounded-full px-4 sm:px-5 py-2 text-sm font-medium transition-colors ${
+              filter === f ? "text-[#050507]" : "text-silver hover:text-background"
+            }`}
           >
-            {cat}
+            {filter === f && (
+              <motion.span layoutId="project-filter" className="absolute inset-0 rounded-full bg-cyan" transition={{ type: "spring", stiffness: 420, damping: 34 }} />
+            )}
+            <span className="relative">{f}</span>
           </button>
         ))}
       </div>
 
-      {/* projects section */}
-      {view === "grid" ? (
-        <div className="mt-10 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {filteredProjects.map((proj, i) => (
-            <MagicCard key={i} className="group flex flex-col p-1">
-              {/* img */}
-              <Link
-                href={`/projects/${proj.id}`}
-                className="relative z-10 group"
-              >
-                <div className="w-full h-auto overflow-hidden rounded-tl-xl rounded-tr-xl relative">
-                  <img
-                    src={proj.img}
-                    alt={proj.title}
-                    className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                    <span className="text-white text-lg font-semibold tracking-wide flex items-center gap-2">
-                      View Details
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-5 h-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </Link>
-              {/* data */}
-              <div className="relative z-10 p-5 flex flex-col justify-between h-auto">
-                <Link href={`/projects/${proj.id}`}>
-                  <h3 className="relative text-lg w-fit font-semibold text-background transition-colors duration-300 group-hover:text-cyan pb-1 cursor-pointer">
-                    {proj.title}
-                    <span className="absolute left-0 bottom-0 w-full h-0.5 bg-cyan origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                  </h3>
-                </Link>
-                <p className="text-sm text-background/40 leading-relaxed mt-1">
-                  {proj.desc.slice(0, 100) + "..."}
-                </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {proj.skills.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 text-xs font-medium rounded-full bg-background/10 text-background backdrop-blur-sm border border-white/10"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex items-center justify-center flex-wrap gap-3 mt-4 w-full">
-                  {proj.liveUrl && (
-                    <a
-                      href={proj.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 min-w-[120px]"
-                    >
-                      <button className="w-full px-6 flex items-center justify-center gap-2 bg-foreground text-background py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95">
-                        <FaEye className="text-background" />
-                        {/(apps\.apple|play\.google)\.com/.test(proj.liveUrl) ? "View on store" : "Demo"}
-                      </button>
-                    </a>
-                  )}
-                  {proj.githubUrl && (
-                    <a
-                      href={proj.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 min-w-[120px]"
-                    >
-                      <ShinyButton
-                        icon={<FaGithub className="text-foreground" />}
-                        className="w-full px-6 bg-background"
-                      >
-                        Code
-                      </ShinyButton>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </MagicCard>
-          ))}
-        </div>
-      ) : (
-        /* ── LIST VIEW ── */
-        <div className="mt-10 w-full flex flex-col">
-          {/* header row */}
-          <div className="hidden sm:grid grid-cols-[3rem_1fr_9rem_10rem] gap-6 px-6 pb-3 border-b border-background/10">
-            <span className="text-xs font-semibold text-background/30 uppercase tracking-widest">
-              #
-            </span>
-            <span className="text-xs font-semibold text-background/30 uppercase tracking-widest">
-              Project
-            </span>
-            <span className="text-xs font-semibold text-background/30 uppercase tracking-widest">
-              Category
-            </span>
-            <span className="text-xs font-semibold text-background/30 uppercase tracking-widest text-right">
-              Links
-            </span>
+      {shipped.length > 0 && (
+        <div className="mt-16">
+          <SectionLabel count={shipped.length}>SHIPPED TO THE STORES</SectionLabel>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            {shipped.map((p, i) => (
+              <ShippedCard key={p.id} project={p} index={i + 1} />
+            ))}
           </div>
-
-          {filteredProjects.map((proj, i) => (
-            <MagicCard
-              key={i}
-              className="group relative overflow-visible border-b border-background/10 last:border-b-0 rounded-none first:rounded-t-2xl last:rounded-b-2xl mb-2"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-[3rem_1fr_9rem_10rem] gap-4 sm:gap-6 items-center px-4 sm:px-6 py-5 relative z-10 ">
-                {/* index */}
-                <span className="hidden sm:block text-4xl font-black text-background/8 group-hover:text-cyan/20 transition-colors duration-500 select-none leading-none">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-
-                {/* main info */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                  {/* thumbnail */}
-                  <Link
-                    href={`/projects/${proj.id}`}
-                    className="shrink-0 relative overflow-hidden rounded-xl w-full sm:w-28 h-20 block"
-                  >
-                    <img
-                      src={proj.img}
-                      alt={proj.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <BsArrowUpRight className="text-white" size={16} />
-                    </div>
-                  </Link>
-
-                  {/* text */}
-                  <div className="flex flex-col gap-1.5 min-w-0">
-                    <Link href={`/projects/${proj.id}`}>
-                      <h3 className="relative w-fit text-base font-semibold text-background group-hover:text-cyan transition-colors duration-300 pb-0.5 cursor-pointer">
-                        {proj.title}
-                        <span className="absolute left-0 bottom-0 h-px w-full bg-cyan origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-400" />
-                      </h3>
-                    </Link>
-                    <p className="text-xs text-background/40 leading-relaxed line-clamp-2 max-w-sm">
-                      {proj.desc}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mt-1">
-                      {proj.skills.map((skill, idx) => (
-                        <span
-                          key={idx}
-                          className="px-2.5 py-0.5 text-[10px] font-medium rounded-full bg-background/10 text-background/70 border border-white/10 backdrop-blur-sm"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* category badge */}
-                <div className="hidden sm:flex justify-start">
-                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-cyan/10 text-cyan border border-cyan/20 tracking-wide uppercase">
-                    {proj.category}
-                  </span>
-                </div>
-
-                {/* action buttons */}
-                <div className="flex items-center gap-2 sm:justify-end">
-                  {proj.liveUrl && (
-                    <a
-                      href={proj.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <button className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium rounded-xl bg-foreground text-background transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-foreground/10 active:scale-95 cursor-pointer whitespace-nowrap">
-                        <FaEye size={11} />
-                        {/(apps\.apple|play\.google)\.com/.test(proj.liveUrl) ? "View on store" : "Demo"}
-                      </button>
-                    </a>
-                  )}
-                  {proj.githubUrl && (
-                    <a
-                      href={proj.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <button className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium rounded-xl bg-background/10 text-background border border-white/10 backdrop-blur-sm transition-all duration-200 hover:bg-background/20 hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap">
-                        <FaGithub size={11} />
-                        Code
-                      </button>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </MagicCard>
-          ))}
         </div>
       )}
 
-      <div>
-        <CircularCTA
-          title="Get in touch • Get in touch • Get in touch •"
-          from="Crafted With Care"
-          to="Lets Craft Yours"
-          href="/contact"
-        />
-      </div>
+      {other.length > 0 && (
+        <div className="mt-20">
+          <SectionLabel count={other.length}>{filter === "UI/UX" ? "DESIGN WORK" : "MORE WORK"}</SectionLabel>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {other.map((p) => (
+              <WorkCard key={p.id} project={p} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      <NextPage />
     </section>
+  );
+}
+
+function ShippedCard({ project: p, index }: { project: Project; index: number }) {
+  return (
+    <article className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors hover:border-white/25">
+      <Link href={`/projects/${p.id}`} className="block overflow-hidden">
+        <img
+          src={p.img}
+          alt={p.title}
+          className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+        />
+      </Link>
+      <div className="p-6 sm:p-7">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="font-mono text-xs text-white/30">{String(index).padStart(2, "0")}</p>
+            <h2 className="mt-1 text-xl sm:text-2xl font-bold tracking-tight text-background">{p.title.split(" - ")[0]}</h2>
+            <p className="text-sm text-silver">{p.title.split(" - ")[1]}</p>
+          </div>
+          <a
+            href={p.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${p.title} store listing`}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 text-background transition hover:border-cyan hover:text-cyan"
+          >
+            <StoreIcon url={p.liveUrl} />
+          </a>
+        </div>
+        <p className="mt-4 text-sm leading-relaxed text-silver line-clamp-3">{p.desc}</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {p.skills.map((s) => (
+            <span key={s} className="rounded-full border border-white/10 px-3 py-1 text-xs text-background/80">{s}</span>
+          ))}
+        </div>
+        <Link href={`/projects/${p.id}`} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan">
+          Case study <BsArrowRight className="transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+function WorkCard({ project: p }: { project: Project }) {
+  return (
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors hover:border-white/25">
+      <Link href={`/projects/${p.id}`} className="block overflow-hidden">
+        <img
+          src={p.img}
+          alt={p.title}
+          className="aspect-[16/10] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+        />
+      </Link>
+      <div className="flex flex-1 flex-col p-5">
+        <p className="font-mono text-[11px] tracking-[0.2em] text-white/30">{p.category.toUpperCase()}</p>
+        <h3 className="mt-1 text-lg font-semibold text-background">{p.title}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-silver line-clamp-2">{p.desc}</p>
+        <div className="mt-auto flex items-center gap-4 pt-5 text-sm">
+          <Link href={`/projects/${p.id}`} className="inline-flex items-center gap-1.5 font-semibold text-background hover:text-cyan">
+            Details <BsArrowRight />
+          </Link>
+          {p.liveUrl && (
+            <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-silver hover:text-cyan">
+              Live <BsArrowUpRight />
+            </a>
+          )}
+          {p.githubUrl && (
+            <a href={p.githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-silver hover:text-cyan">
+              <FaGithub /> Code
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
   );
 }

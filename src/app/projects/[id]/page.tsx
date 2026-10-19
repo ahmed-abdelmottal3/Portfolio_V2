@@ -1,296 +1,180 @@
-"use client"
-import { useState } from "react";
-import { FaEye, FaGithub, FaArrowLeft, FaExternalLinkAlt } from "react-icons/fa";
-import { MagicCard } from "@/src/components/ui/magic-card";
-import { ShinyButton } from "@/src/components/ui/shiny-button";
+"use client";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
+import { FaApple, FaGithub, FaGooglePlay } from "react-icons/fa";
+import { BsArrowLeft, BsArrowRight, BsArrowUpRight } from "react-icons/bs";
+import { SectionLabel } from "@/src/components/ui/page-header";
 import { projectsData } from "@/src/lib/projectsData";
+import { projects } from "@/src/lib/projects";
+
+const isStoreLink = (url: string) => /(apps\.apple|play\.google)\.com/.test(url);
+const isPhoneShot = (src: string) => /\/shot\d+\.jpg$/.test(src);
+
 export default function ProjectDetails() {
-    const params = useParams();
-    const projectId = params.id as string;
+  const { id } = useParams<{ id: string }>();
+  const project = projectsData.find((p) => p.id === id);
+  if (!project) notFound();
 
+  const store = isStoreLink(project.liveUrl);
+  const [name, tagline] = project.title.split(" - ");
+  const phoneShots = project.images.filter(isPhoneShot);
+  const otherShots = project.images.filter((src) => !isPhoneShot(src) && src !== project.img);
 
-    const project = projectsData.find(p => p.id === projectId);
+  // Next project follows the order of the Projects page.
+  const order = projects.map((p) => p.id);
+  const at = order.indexOf(project.id);
+  const nextId = order[(at + 1) % order.length];
+  const next = projectsData.find((p) => p.id === nextId) ?? projectsData[0];
 
-    if (!project) {
-        notFound();
-    }
+  return (
+    <section className="container mx-auto px-5 sm:px-8 pt-16 pb-40">
+      <Link href="/projects" className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.25em] text-silver transition hover:text-cyan">
+        <BsArrowLeft /> ALL PROJECTS
+      </Link>
 
-    const [selectedImage, setSelectedImage] = useState(project.img);
-
-    return (
-        <div className='container mx-auto pt-10 px-4 pb-20'>
-            {/* Back Button */}
-            <Link href="/projects">
-                <button className="flex items-center gap-2 text-background hover:text-cyan transition-colors duration-300 mb-8 group">
-                    <FaArrowLeft className="group-hover:-translate-x-1 transition-transform duration-300" />
-                    <span>Back to Projects</span>
-                </button>
-            </Link>
-
-            {/* Hero Section */}
-            <div className="mb-12">
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-                    <div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-background mb-2">
-                            {project.title}
-                        </h1>
-                        <p className="text-xl text-cyan font-light">
-                            {project.subtitle}
-                        </p>
-                    </div>
-                    <div className="flex flex-wrap gap-3">
-                        {project.liveUrl && (
-                            <a
-                                href={project.liveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <button className="flex items-center gap-2 bg-background/10 text-background px-6 py-3 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95">
-                                    <FaEye />
-                                    {/(apps\.apple|play\.google)\.com/.test(project.liveUrl) ? "View on store" : "Live Demo"}
-                                </button>
-                            </a>
-                        )}
-                        {project.githubUrl && (
-                            <a
-                                href={project.githubUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <ShinyButton
-                                    icon={<FaGithub className="text-foreground" />}
-                                    className="bg-background px-6 py-3"
-                                >
-                                    View Code
-                                </ShinyButton>
-                            </a>
-                        )}
-                    </div>
-                </div>
-
-                {/* Meta Info */}
-                <div className="flex flex-wrap gap-6 text-sm text-background/40">
-                    <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-cyan rounded-full"></span>
-                        <span>{project.category}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-cyan rounded-full"></span>
-                        <span>{project.date}</span>
-                    </div>
-                </div>
-            </div>
-
-            {/* Main Image */}
-            <MagicCard className="mb-8 p-1">
-                <div className="relative z-10 w-full h-[400px] md:h-[600px] rounded-2xl bg-background/40">
-                    <div className="w-full h-full overflow-y-auto overflow-x-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                        <img
-                            src={selectedImage}
-                            alt={project.title}
-                            className="w-full h-auto object-contain rounded-2xl transition-all duration-500"
-                        />
-                    </div>
-
-                    <div className="pointer-events-none absolute bottom-0 left-0 w-full h-24 bg-linear-to-t from-black/60 via-black/30 to-transparent rounded-b-xl" />
-
-                    <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 animate-bounce text-2xl select-none">
-                        ↓
-                    </div>
-                </div>
-            </MagicCard>
-
-            {/* Image Gallery Thumbnails */}
-            {project.images && project.images.length > 1 && (
-                <div className="flex flex-wrap gap-4 mb-12 justify-center">
-                    {project.images.map((img, index) => (
-                        <div
-                            key={index}
-                            onClick={() => setSelectedImage(img)}
-                            className={`relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 border-2 ${
-                                selectedImage === img
-                                    ? "border-cyan scale-105 shadow-lg shadow-cyan/20"
-                                    : "border-transparent opacity-60 hover:opacity-100 hover:border-cyan/50"
-                            }`}
-                        >
-                            <img
-                                src={img}
-                                alt={`${project.title} thumbnail ${index + 1}`}
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    ))}
-                </div>
-            )}
-
-
-            {/* Content Grid */}
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-                {/* Main Content */}
-                <div className="md:col-span-2 space-y-8">
-                    {/* Overview */}
-                    <MagicCard className="p-6">
-                        <div className="relative z-10">
-                            <h2 className="text-2xl font-bold text-background mb-4">
-                                Project Overview
-                            </h2>
-                            <p className="text-background/60 leading-relaxed mb-4">
-                                {project.desc}
-                            </p>
-                            <p className="text-background/60 leading-relaxed">
-                                {project.longDesc}
-                            </p>
-                        </div>
-                    </MagicCard>
-
-                    {/* Key Features */}
-                    <MagicCard className="p-6">
-                        <div className="relative z-10">
-                            <h2 className="text-2xl font-bold text-background mb-6">
-                                Key Features
-                            </h2>
-                            <div className="space-y-3">
-                                {project.features.map((feature, index) => (
-                                    <div key={index} className="flex items-start gap-3">
-                                        <div className="w-2 h-2 bg-cyan rounded-full mt-2 shrink-0"></div>
-                                        <p className="text-background/60 leading-relaxed">
-                                            {feature}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </MagicCard>
-
-                    {/* Challenges & Solutions */}
-                    <MagicCard className="p-6">
-                        <div className="relative z-10">
-                            <h2 className="text-2xl font-bold text-background mb-6">
-                                Challenges & Solutions
-                            </h2>
-                            <div className="space-y-6">
-                                {project.challenges.map((challenge, index) => (
-                                    <div key={index} className="border-l-2 border-cyan pl-4">
-                                        <h3 className="text-lg font-semibold text-background mb-2">
-                                            {challenge.title}
-                                        </h3>
-                                        <p className="text-background/60 leading-relaxed">
-                                            {challenge.desc}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </MagicCard>
-                </div>
-
-                {/* Sidebar */}
-                <div className="space-y-6">
-                    {/* Technologies */}
-                    <MagicCard className="p-6">
-                        <div className="relative z-10">
-                            <h3 className="text-xl font-bold text-background mb-4">
-                                Technologies Used
-                            </h3>
-                            <div className="flex flex-wrap gap-2">
-                                {project.skills.map((skill, index) => (
-                                    <span
-                                        key={index}
-                                        className="px-3 py-2 text-sm font-medium rounded-full bg-background/10 text-background backdrop-blur-sm border border-white/10 hover:bg-white/20 hover:border-cyan transition-all duration-300"
-                                    >
-                                        {skill}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                    </MagicCard>
-
-                    {/* Project Links */}
-                    <MagicCard className="p-6">
-                        <div className="relative z-10">
-                            <h3 className="text-xl font-bold text-background mb-4">
-                                Project Links
-                            </h3>
-                            <div className="space-y-3">
-                                {project.liveUrl && (
-                                    <a
-                                        href={project.liveUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
-                                    >
-                                        <span className="text-background/60">{/(apps\.apple|play\.google)\.com/.test(project.liveUrl) ? "Store listing" : "Live Website"}</span>
-                                        <FaExternalLinkAlt className="text-cyan group-hover:translate-x-1 transition-transform duration-300" />
-                                    </a>
-                                )}
-                                {project.githubUrl && (
-                                    <a
-                                        href={project.githubUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
-                                    >
-                                        <span className="text-background/60">Source Code</span>
-                                        <FaGithub className="text-cyan group-hover:translate-x-1 transition-transform duration-300" />
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-                    </MagicCard>
-
-                    {/* Project Info */}
-                    <MagicCard className="p-6">
-                        <div className="relative z-10">
-                            <h3 className="text-xl font-bold text-background mb-4">
-                                Project Info
-                            </h3>
-                            <div className="space-y-4">
-                                <div>
-                                    <p className="text-sm text-background/60 mb-1">Category</p>
-                                    <p className="text-background/40">{project.category}</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-background/60 mb-1">Completed</p>
-                                    <p className="text-background/40">{project.date}</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-background/60 mb-1">Status</p>
-                                    <span className="inline-flex items-center gap-2 text-green-400">
-                                        <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                                        Live & Maintained
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </MagicCard>
-                </div>
-            </div>
-
-            {/* CTA Section */}
-            <MagicCard className="p-8 text-center">
-                <div className="relative z-10">
-                    <h2 className="text-3xl font-bold text-background mb-4">
-                        Interested in Similar Work?
-                    </h2>
-                    <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-                        I'm available for freelance projects and collaborations. Let's create something amazing together!
-                    </p>
-                    <div className="flex flex-wrap gap-4 justify-center">
-                        <Link href="/contact">
-                            <button className="flex items-center gap-2 bg-foreground text-background px-8 py-3 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg">
-                                Get in Touch
-                            </button>
-                        </Link>
-                        <Link href="/projects">
-                            <ShinyButton className="bg-background px-8 py-3">
-                                View More Projects
-                            </ShinyButton>
-                        </Link>
-                    </div>
-                </div>
-            </MagicCard>
+      {/* heading */}
+      <header className="mt-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="max-w-3xl">
+          <p className="hero-rise font-mono text-xs tracking-[0.3em] text-cyan" style={{ "--d": "0s" } as React.CSSProperties}>
+            {project.category.toUpperCase()} / {project.date}
+          </p>
+          <h1 className="hero-rise mt-4 text-silver-gradient font-extrabold tracking-tight leading-[1] text-[clamp(40px,6vw,76px)]" style={{ "--d": "0.06s" } as React.CSSProperties}>
+            {name}
+          </h1>
+          {tagline && (
+            <p className="hero-rise mt-3 text-lg sm:text-xl text-silver" style={{ "--d": "0.12s" } as React.CSSProperties}>
+              {tagline}
+            </p>
+          )}
         </div>
-    );
+        <div className="hero-rise flex flex-wrap gap-3" style={{ "--d": "0.18s" } as React.CSSProperties}>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3 text-sm font-semibold text-[#050507] transition hover:brightness-110"
+            >
+              {project.liveUrl.includes("apps.apple.com") ? <FaApple /> : project.liveUrl.includes("play.google.com") ? <FaGooglePlay /> : <BsArrowUpRight />}
+              {store ? "View on store" : "Live site"}
+            </a>
+          )}
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-background transition hover:border-white/40"
+            >
+              <FaGithub /> Source
+            </a>
+          )}
+        </div>
+      </header>
+
+      {/* cover */}
+      <div className="hero-rise mt-12 overflow-hidden rounded-2xl border border-white/10" style={{ "--d": "0.24s" } as React.CSSProperties}>
+        <img src={project.img} alt={project.title} className="w-full object-cover" />
+      </div>
+
+      {/* phone screenshots */}
+      {phoneShots.length > 0 && (
+        <div className="mt-6 -mx-5 sm:mx-0 flex gap-5 overflow-x-auto px-5 sm:px-0 pb-2 [scrollbar-width:none]">
+          {phoneShots.map((src) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className="w-[200px] sm:w-[230px] shrink-0 rounded-[28px] border-[5px] border-[#1c2230] bg-black"
+            />
+          ))}
+        </div>
+      )}
+
+      {/* other screenshots */}
+      {otherShots.length > 0 && (
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          {otherShots.map((src) => (
+            <img key={src} src={src} alt="" className="w-full rounded-2xl border border-white/10 object-cover object-top aspect-[16/10]" />
+          ))}
+        </div>
+      )}
+
+      {/* body */}
+      <div className="mt-20 grid gap-16 lg:grid-cols-[1fr_320px]">
+        <div className="space-y-16">
+          <section>
+            <SectionLabel>OVERVIEW</SectionLabel>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-background/85">{project.longDesc}</p>
+          </section>
+
+          <section>
+            <SectionLabel count={project.features.length}>WHAT IT DOES</SectionLabel>
+            <ul className="mt-6 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+              {project.features.map((f) => (
+                <li key={f} className="flex gap-3 text-silver">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
+                  <span className="leading-relaxed">{f}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <SectionLabel count={project.challenges.length}>{store ? "ENGINEERING NOTES" : "CHALLENGES"}</SectionLabel>
+            <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
+              {project.challenges.map((c, i) => (
+                <div key={c.title} className="grid gap-2 py-6 sm:grid-cols-[60px_1fr]">
+                  <span className="font-mono text-sm text-white/30">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="font-semibold text-background">{c.title}</h3>
+                    <p className="mt-2 leading-relaxed text-silver">{c.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* sidebar */}
+        <aside className="lg:sticky lg:top-10 h-fit space-y-10">
+          <div>
+            <SectionLabel>STACK</SectionLabel>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {project.skills.map((s) => (
+                <span key={s} className="rounded-full border border-white/10 px-3 py-1 text-xs text-background/80">{s}</span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <SectionLabel>DETAILS</SectionLabel>
+            <dl className="mt-5 divide-y divide-white/10 text-sm">
+              <div className="flex justify-between py-3"><dt className="text-silver">Type</dt><dd className="text-background">{project.category}</dd></div>
+              <div className="flex justify-between py-3"><dt className="text-silver">Date</dt><dd className="text-background">{project.date}</dd></div>
+              <div className="flex justify-between py-3">
+                <dt className="text-silver">Status</dt>
+                <dd className="flex items-center gap-2 text-background">
+                  {project.liveUrl && <span className="h-1.5 w-1.5 rounded-full bg-cyan" />}
+                  {store ? "Live on the stores" : project.liveUrl ? "Live" : "Case study"}
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </aside>
+      </div>
+
+      {/* next project */}
+      <Link href={`/projects/${next.id}`} className="group mt-28 flex items-end justify-between gap-6 border-t border-white/10 pt-8">
+        <div>
+          <p className="font-mono text-xs tracking-[0.3em] text-silver">NEXT PROJECT</p>
+          <p className="mt-3 text-silver-gradient font-extrabold tracking-tight text-[clamp(32px,5vw,64px)] leading-none">
+            {next.title.split(" - ")[0]}
+          </p>
+        </div>
+        <span className="mb-2 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-white/15 text-background transition group-hover:border-cyan group-hover:bg-cyan group-hover:text-[#050507]">
+          <BsArrowRight size={22} className="transition-transform group-hover:-rotate-45" />
+        </span>
+      </Link>
+    </section>
+  );
 }
