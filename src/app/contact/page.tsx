@@ -46,13 +46,13 @@ export default function ContactPage() {
             icon: <FaLinkedin size={24} />,
             name: "LinkedIn",
             url: "www.linkedin.com/in/abdelmottalie",
-            color: "hover:text-blue-500"
+            color: "hover:text-cyan"
         },
         {
             icon: <FaFacebook size={24} />,
             name: "Facebook",
             url: "https://www.facebook.com/ahmed.abdelmottalie.33",
-            color: "hover:text-blue-400"
+            color: "hover:text-cyan"
         }
     ];
 
@@ -95,7 +95,7 @@ export default function ContactPage() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-blue-400 transition-colors duration-300"
+                                            className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-cyan transition-colors duration-300"
                                             placeholder="Type Your Name"
                                         />
                                     </div>
@@ -110,7 +110,7 @@ export default function ContactPage() {
                                             value={formData.email}
                                             onChange={handleChange}
                                             required
-                                            className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-blue-400 transition-colors duration-300"
+                                            className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-cyan transition-colors duration-300"
                                             placeholder="Enter Your Name"
                                         />
                                     </div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
                                         value={formData.subject}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-blue-400 transition-colors duration-300"
+                                        className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-cyan transition-colors duration-300"
                                         placeholder="Project Inquiry"
                                     />
                                 </div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                                         onChange={handleChange}
                                         required
                                         rows={6}
-                                        className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-blue-400 transition-colors duration-300 resize-none"
+                                        className="w-full px-4 py-3 bg-background/5 border border-background/10 rounded-lg text-background placeholder-background/60 focus:outline-none focus:border-cyan transition-colors duration-300 resize-none"
                                         placeholder="Tell me about your project..."
                                     />
                                 </div>

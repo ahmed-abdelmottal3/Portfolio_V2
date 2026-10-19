@@ -3,20 +3,31 @@ import Header from "@/src/components/ui/header";
 import { InteractiveHoverButton } from "@/src/components/ui/interactive-hover-button";
 import { MagicCard } from "@/src/components/ui/magic-card";
 import { skills } from "@/src/lib/skills";
-import { a } from "framer-motion/client";
 import Link from "next/link";
 
 const experiences = [{
-  role: "Frontend Developer",
-  company: "Information Technology Institute (ITI)",
-  desc: "Participating in an intensive 5-month scholarship program provided by the Ministry of Communications through ITI, focusing on advanced front-end technologies, cross-platform mobile development, and real-world software engineering practices.",
-  date: "July-2025"
+  role: "React Native Developer",
+  company: "Triple Solutions",
+  desc: "Building and releasing production React Native apps with Expo and TypeScript: ThrowBack, Asema, Earno and PureSite, live on the App Store and Google Play. Payments and in-app purchases (RevenueCat, Moyasar, Tabby, Tamara, Paymob), real-time features over Pusher, push notifications, biometrics, logistics integrations and OTA updates, all bilingual and RTL-first.",
+  date: "Jun 2026 - Present"
 },
 {
-  role: "Frontend React & React Native Developer",
+  role: "React Native Developer",
   company: "Afaq Production",
-  desc: "Developed and published the Sanaiee cross-platform mobile application using React Native, handling RESTful API integrations, state management, and deployment to Google Play. Architected and developed the official Sanaiee Web Platform utilizing Next.js and Tailwind CSS, delivering a highly responsive, fast, and SEO-optimized user experience. Engineered reusable UI components and refactored legacy architecture across both mobile and web applications to enhance overall performance, maintainability, and scalability.",
-  date: "Dec-2025 - present"
+  desc: "Architected and published the Sanaiee app to Google Play, owning the Expo build and release pipeline. Refactored legacy screens into a reusable, fully typed component library, and built the companion Next.js web platform with responsive, SEO-optimized pages.",
+  date: "Dec 2025 - Jun 2026"
+},
+{
+  role: "Frontend & React Native Developer",
+  company: "Freelance",
+  desc: "Delivered apps and web platforms for clients in Kuwait, Saudi Arabia and Egypt: an RTL-first Expo marketplace with Arabic PDF invoices, an Arabic study planner with AI-generated study material and Paymob paywalls, and a bilingual Next.js 15 B2B storefront.",
+  date: "2025 - Present"
+},
+{
+  role: "Front-End & Cross-Platform Developer Intern",
+  company: "Information Technology Institute (ITI)",
+  desc: "Six-month intensive program in React Native and modern front-end development. Built Tadweer, a role-based recycling platform with schema-driven forms and secure authentication.",
+  date: "Jul 2025 - Dec 2025"
 }
 ]
 
@@ -36,8 +47,8 @@ export default function page() {
 
       {/* CTA section */}
       <CircularCTA title='my projects • my projects • my projects •'
-        from='From Pixels'
-        to='To Products'
+        from='From Figma'
+        to='To the stores'
         href='/projects' />
 
     </section>
@@ -56,7 +67,7 @@ function Info() {
           <InteractiveHoverButton>
             <Link
               target="_blank"
-              href="https://drive.google.com/open?id=1GCVr0o8ekIwtduZnSFCRlnDqvkQAVZeP&authuser=0">
+              href="/Ahmed-Abdelmottalie-CV.pdf">
               My CV
             </Link>
           </InteractiveHoverButton>
@@ -65,11 +76,12 @@ function Info() {
 
       {/* desc*/}
       <div className='flex-1 flex flex-col items-start justify-start'>
-        <h2 className=' text-2xl font-semibold mb-4'><span className='font-great-vibes font-light'>Hi there,</span> I'm Ahmed Abd El-mottalie</h2>
+        <h2 className=' text-2xl font-semibold mb-4'>I'm Ahmed Abdelmottalie</h2>
         <p className='text-base leading-relaxed text-background/60 max-w-2xl mb-6'>
-          I'm a passionate and detail-oriented web developer with a strong focus on creating clean, modern, and user-friendly websites.
-          I enjoy turning creative ideas into functional digital experiences, blending design with performance.
-          Always eager to learn and adapt to new technologies, I aim to deliver high-quality solutions that make an impact.
+          I build React Native apps with Expo and TypeScript, currently at Triple Solutions in Cairo.
+          Five of them are live on the App Store and Google Play, most of them Arabic-first, with payments,
+          subscriptions and real-time features built in. I own the full release path, from EAS builds and store
+          submissions to over-the-air updates, and I build the matching web front ends in React and Next.js.
         </p>
 
         {/* skills */}
@@ -116,7 +128,7 @@ function Experience() {
             <div className="w-full">
               <div className='flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4'>
                 <div>
-                  <h2 className="font-semibold text-lg text-blue-400">
+                  <h2 className="font-semibold text-lg text-cyan">
                     {exp.role}
                   </h2>
                   <h5 className="text-sm text-background/60">
@@ -143,7 +155,7 @@ function Education() {
           <div className="w-full">
             <div className='flex flex-col md:flex-row justify-between items-start md:items-center gap-2 mb-4'>
               <div>
-                <h2 className="font-semibold text-lg text-blue-400">
+                <h2 className="font-semibold text-lg text-cyan">
                   Bachelor's Degree, Sc
                 </h2>
                 <h5 className="text-sm text-background/60">

@@ -22,6 +22,157 @@ interface Project {
 
 export const projectsData: Project[] = [
     {
+        id: "throwback-family-albums",
+        title: "ThrowBack - Private Family Albums",
+        subtitle: "Bilingual family media app, live on iOS and Android",
+        desc: "Bilingual Arabic/English app for sharing photos and videos in private family albums, with subscriptions, real-time activity and biometric protection on paid content.",
+        longDesc: "ThrowBack gives families a private place to collect photos and videos in shared albums. I built the React Native client with Expo and TypeScript at Triple Solutions: album permissions, photo and video playback, real-time activity over Pusher, RevenueCat in-app purchases alongside Tabby, Tamara and Moyasar checkout, and a biometric lock plus screen-capture protection on premium content. Updates ship over the air with expo-updates, with separate channels for development, preview and production.",
+        skills: ["React Native", "Expo", "TypeScript", "React Query", "RevenueCat", "Pusher", "i18next"],
+        img: "/throwback/cover.jpg",
+        liveUrl: "https://apps.apple.com/us/app/throwback-%D8%AB%D8%B1%D9%88%D8%A8%D8%A7%D9%83/id6762511229",
+        githubUrl: "",
+        date: "2026",
+        category: "Mobile App",
+        features: [
+            "Private family albums with per-album permissions",
+            "Photo and video upload and playback",
+            "Real-time album activity over Pusher",
+            "RevenueCat subscriptions with Tabby, Tamara and Moyasar checkout",
+            "Biometric lock and screen-capture protection on paid content",
+            "Arabic and English with full RTL support"
+        ],
+        challenges: [
+            {
+                title: "Screenshot protection on iOS",
+                desc: "The native prevent-capture call is not reentrant, so StrictMode and Fast Refresh remounts could corrupt the window layer. I latched it once per JS runtime and verified it on a physical iPhone."
+            },
+            {
+                title: "OTA updates without a slow start",
+                desc: "The first version waited for the update check before the first frame. Downloads now run in the background and the app only reloads at a safe moment, never during an upload."
+            }
+        ],
+        images: ["/throwback/cover.jpg", "/throwback/shot1.jpg", "/throwback/shot2.jpg", "/throwback/shot3.jpg", "/throwback/shot4.jpg"]
+    },
+    {
+        id: "asema-marketplace",
+        title: "Asema - Marketplace & Loyalty",
+        subtitle: "Production marketplace app on the App Store",
+        desc: "Marketplace app with logistics and payment integrations, offers, loyalty rewards and a spin-the-wheel prize experience.",
+        longDesc: "Asema is a full marketplace app I built at Triple Solutions. It integrates Aramex and RedBox for logistics, Google Maps for location-based store discovery, and Tabby, Tamara and Paymob for payments. On top of the shopping flow it has offers, a rewards catalogue, a points-based loyalty programme and a spin-the-wheel prize game, rebuilt pixel-accurately from Figma.",
+        skills: ["React Native", "Expo", "TypeScript", "React Query", "Zustand", "Google Maps"],
+        img: "/asema/cover.jpg",
+        liveUrl: "https://apps.apple.com/us/app/asima-%D8%A7%D8%B3%D9%8A%D9%85%D8%A7/id6761766764",
+        githubUrl: "",
+        date: "2026",
+        category: "Mobile App",
+        features: [
+            "Aramex and RedBox logistics",
+            "Location-based store search with Google Maps",
+            "Tabby, Tamara and Paymob payment flows",
+            "Offers, rewards catalogue and points-based loyalty",
+            "Spin-the-wheel prize game",
+            "Pixel-accurate implementation from Figma"
+        ],
+        challenges: [
+            {
+                title: "Several payment providers in one checkout",
+                desc: "Tabby, Tamara and Paymob each have their own flow, so checkout had to stay consistent for the user whichever provider they picked."
+            },
+            {
+                title: "Matching the design exactly",
+                desc: "Screens were rebuilt pixel-accurately from Figma, with UI audits before each release."
+            }
+        ],
+        images: ["/asema/cover.jpg", "/asema/shot1.jpg", "/asema/shot2.jpg", "/asema/shot3.jpg", "/asema/shot4.jpg"]
+    },
+    {
+        id: "earno-investment",
+        title: "Earno - Investment Marketplace",
+        subtitle: "Two-sided marketplace, live on iOS and Android",
+        desc: "Real-estate and business investment marketplace connecting project owners with investors.",
+        longDesc: "Earno connects project owners who want funding or partners with investors browsing opportunities. I built the React Native app at Triple Solutions: multi-step listing creation with media upload for owners, discovery with filters by category, city and status for investors, in-app chat, Moyasar payments with coupon validation and a support-ticket flow, all bilingual with RTL layouts.",
+        skills: ["React Native", "Expo", "TypeScript", "React Query", "Zustand", "Moyasar", "i18next"],
+        img: "/earno/cover.jpg",
+        liveUrl: "https://apps.apple.com/us/app/earno-%D8%A7%D9%8A%D8%B1%D9%86%D9%88/id6761137437",
+        githubUrl: "",
+        date: "2026",
+        category: "Mobile App",
+        features: [
+            "Multi-step listing creation with media upload",
+            "Investor search and filters by category, city and status",
+            "In-app chat between owners and investors",
+            "Moyasar payments with coupon validation",
+            "Support-ticket flow",
+            "Arabic and English with RTL layouts"
+        ],
+        challenges: [
+            {
+                title: "Two audiences in one app",
+                desc: "Project owners and investors need different flows, so navigation and screens are split by role while sharing the same components."
+            },
+            {
+                title: "Long forms with media",
+                desc: "Listing creation spans several steps with media upload, so progress has to survive moving between steps."
+            }
+        ],
+        images: ["/earno/cover.jpg", "/earno/shot1.jpg", "/earno/shot2.jpg", "/earno/shot3.jpg", "/earno/shot4.jpg"]
+    },
+    {
+        id: "puresite-booking",
+        title: "PureSite - Car-Care Booking",
+        subtitle: "Booking app, live on iOS and Android",
+        desc: "Car-care booking app with live order tracking, push notifications and in-app cafe ordering.",
+        longDesc: "PureSite is a booking app for a car wash and cafe. I built the React Native client at Triple Solutions: a service catalogue, end-to-end booking with live order tracking and push notifications, and in-app ordering from the wash-site cafe, with bilingual support and secure token storage.",
+        skills: ["React Native", "Expo", "TypeScript", "Push Notifications", "expo-secure-store"],
+        img: "/puresite/cover.jpg",
+        liveUrl: "https://apps.apple.com/us/app/puresite-%D8%A8%D9%8A%D9%88%D8%B1-%D8%B3%D8%A7%D9%8A%D8%AA/id6761421822",
+        githubUrl: "",
+        date: "2026",
+        category: "Mobile App",
+        features: [
+            "Service catalogue and end-to-end booking",
+            "Live order tracking",
+            "Push notifications for order updates",
+            "In-app ordering from the cafe",
+            "Arabic and English support",
+            "Secure token storage"
+        ],
+        challenges: [
+            {
+                title: "Keeping users updated",
+                desc: "Bookings change status while the user is away, so the app combines live tracking on screen with push notifications in the background."
+            }
+        ],
+        images: ["/puresite/cover.jpg", "/puresite/shot1.jpg", "/puresite/shot2.jpg", "/puresite/shot3.jpg", "/puresite/shot4.jpg"]
+    },
+    {
+        id: "sanaiee-services",
+        title: "Sanaiee - Services App & Web Platform",
+        subtitle: "Published on Google Play, with a Next.js web platform",
+        desc: "Cross-platform services app and its companion web platform, built at Afaq Production.",
+        longDesc: "At Afaq Production I architected and published Sanaiee to Google Play, owning the Expo build and release pipeline end to end. I refactored legacy screens into a reusable, fully typed component library and restructured global state to cut duplicated logic. I also built the companion Sanaiee web platform in Next.js, TypeScript and Tailwind CSS with responsive, SEO-optimized pages.",
+        skills: ["React Native", "Expo", "Expo Router", "TypeScript", "Next.js", "Tailwind CSS", "React Query"],
+        img: "/sanaiee/cover.jpg",
+        liveUrl: "https://play.google.com/store/apps/details?id=com.sanaieeafaq.sanaiee",
+        githubUrl: "https://github.com/ahmed-abdelmottal3/sanaiee-web",
+        date: "Dec 2025 - Jun 2026",
+        category: "Mobile App",
+        features: [
+            "Published to Google Play",
+            "Expo build and release pipeline owned end to end",
+            "Reusable, fully typed component library",
+            "Companion Next.js web platform",
+            "Responsive, SEO-optimized web pages"
+        ],
+        challenges: [
+            {
+                title: "Legacy code",
+                desc: "Refactored older screens into typed, reusable components and restructured global state to remove duplicated logic."
+            }
+        ],
+        images: ["/sanaiee/cover.jpg", "/sanaiee/shot1.jpg", "/sanaiee/shot2.jpg", "/sanaiee/shot3.jpg", "/sanaiee/shot4.jpg"]
+    },
+    {
         id: "antijitos-restaurant",
         title: "Elegant Food & Restaurant Website",
         subtitle: "Antijitos — Modern Restaurant Experience",
@@ -313,7 +464,7 @@ export const projectsData: Project[] = [
     },
     {
         id: "rawy-mobile-app",
-        title: "Rawy - Storytelling Mobile App",
+        title: "Rawy - Podcast Streaming App",
         subtitle: "Immersive Storytelling Experience",
         desc: "A premium mobile application designed for storytelling and narrative experiences. Features a clean, user-centric interface with smooth transitions and interactive elements to provide an immersive reading and listening experience.",
         longDesc: "Rawy is a state-of-the-art mobile application designed to bring stories to life. By combining a minimalist UI with powerful narrative features, Rawy allows users to explore, create, and share stories in a way that feels natural and immersive. The app focuses on user engagement through smooth transitions and a focus on typography and high-quality visuals.",

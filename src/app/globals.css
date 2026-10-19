@@ -4,7 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-great-vibes: var(--font-great-vibes);
+  --color-cyan: var(--accent-cyan);
+  --color-silver: var(--muted-silver);
   --color-magic: var(--magic);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -120,16 +121,28 @@
 }
 
 body {
-  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 30px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 30px);
+  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 44px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 44px);
+}
 
+.text-silver-gradient {
+  background: linear-gradient(180deg, #ffffff 0%, #c9ced8 55%, #8a93a3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+::selection {
+  background: rgba(97, 218, 251, 0.3);
 }
 
 :root {
-  --radius: 0.625rem;
-  --magic: #18181b;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
+  --radius: 0.75rem;
+  --magic: #1c2230;
+  --accent-cyan: #61dafb;
+  --muted-silver: #9aa4b6;
+  --background: #e8ecf3;
+  --foreground: #050507;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
@@ -143,7 +156,7 @@ body {
   --accent: oklch(0.967 0.001 286.375);
   --accent-foreground: oklch(0.21 0.006 285.885);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(91.973% 0.00413 285.946 / 0.158);
+  --border: rgba(232, 236, 243, 0.08);
   --input: oklch(0.92 0.004 286.32);
   --ring: oklch(0.705 0.015 286.067);
   --chart-1: oklch(0.646 0.222 41.116);

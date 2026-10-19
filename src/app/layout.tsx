@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Great_Vibes } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SplashScreen from "../components/wrapper/Splashscreen";
 import Dock from "../components/shared/Dock";
@@ -14,18 +14,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const greatVibes = Great_Vibes({
-  variable: "--font-great-vibes",
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
 export const metadata: Metadata = {
-  title: "Ahmed Abd El-mottalie",
-  description: "My portfolio website, showcasing my projects and skills, built with Next.js and TypeScript and using shadcn/ui for the UI components.",
+  title: "Ahmed Abdelmottalie | React Native Developer",
+  description: "React Native developer building production iOS and Android apps with Expo and TypeScript. Five apps live on the App Store and Google Play, most of them Arabic-first.",
   icons: {
     icon: "/favicon.ico",
-  }
+  },
 };
 
 export default function RootLayout({
@@ -36,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${greatVibes.variable}  antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <SplashScreen>
           {children}

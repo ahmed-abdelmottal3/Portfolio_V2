@@ -1,5 +1,4 @@
 "use client";
-import { AnimatedThemeToggler } from "@/src/components/ui/animated-theme-toggler";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaGithub, FaWhatsapp, FaLinkedin } from "react-icons/fa";
@@ -37,7 +36,7 @@ export default function Dock() {
                 <Link
                   href={item.href}
                   className={`relative rounded-full p-1.5 flex items-center justify-center transition-all duration-500 ${isActive
-                    ? 'bg-white text-black shadow-2xl shadow-white/50 scale-110'
+                    ? 'bg-cyan text-[#050507] shadow-lg shadow-cyan/30 scale-110'
                     : 'text-gray-400 hover:text-white hover:scale-110'
                     }`}
                 >
@@ -47,8 +46,7 @@ export default function Dock() {
 
                   {isActive && (
                     <>
-                      <div className="absolute inset-0 rounded-2xl bg-white animate-ping opacity-20" />
-                      <div className="absolute -inset-1 rounded-2xl bg-linear-to-r from-white/40 to-white/0 blur-md" />
+                      <div className="absolute -inset-1 rounded-2xl bg-cyan/20 blur-md" />
                     </>
                   )}
                 </Link>
@@ -66,7 +64,7 @@ export default function Dock() {
         </div>
 
         {/* Social Items */}
-        <div className="relative flex items-center border-l border-r gap-4 px-3">
+        <div className="relative flex items-center border-l gap-4 pl-3 pr-1">
           {socialItems.map((item) => (
             <div key={item.href} className="relative group">
               <a
@@ -104,11 +102,6 @@ export default function Dock() {
           ))}
         </div>
 
-        {/* theme toggle */}
-        <div className="relative flex items-center gap-4 pl-3 ">
-          <AnimatedThemeToggler
-            className="relative text-gray-400 hover:text-white hover:scale-125 transition-all duration-500 p-2 rounded-full cursor-pointer"
-          />        </div>
 
         {/* Decorative Lines */}
         <div className="absolute -top-1 left-1/4 w-20 h-0.5 bg-linear-to-r from-transparent via-white/30 to-transparent blur-sm" />

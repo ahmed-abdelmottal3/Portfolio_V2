@@ -23,8 +23,8 @@ export default function Page() {
     <section className="container mx-auto pt-10 px-4">
       <Header title="Projects" />
       <p className="max-w-lg text-background/60 font-light">
-        Explore my mini-projects showcasing my skills in web development and
-        design. Each project reflects my passion for coding and creativity.
+        Apps I have shipped to the App Store and Google Play, followed by web
+        projects and earlier work. Client code is private, so store links come first.
       </p>
 
       {/* view toggle */}
@@ -32,7 +32,7 @@ export default function Page() {
         <div
           onClick={() => setView("grid")}
           className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${view === "grid"
-            ? "bg-blue-500/30 text-blue-400"
+            ? "bg-cyan/30 text-cyan"
             : "hover:bg-background/40"
             }`}
         >
@@ -41,7 +41,7 @@ export default function Page() {
         <div
           onClick={() => setView("list")}
           className={`p-1 rounded-full cursor-pointer transition-all duration-300 ${view === "list"
-            ? "bg-blue-500/30 text-blue-400"
+            ? "bg-cyan/30 text-cyan"
             : "hover:bg-background/40"
             }`}
         >
@@ -56,7 +56,7 @@ export default function Page() {
             key={cat}
             onClick={() => setCategory(cat)}
             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${category === cat
-              ? "bg-blue-500 text-white shadow-lg shadow-blue-500/30"
+              ? "bg-cyan text-[#050507] shadow-lg shadow-cyan/20"
               : "bg-background/10 text-background/60 hover:bg-background/20 hover:text-background"
               }`}
           >
@@ -105,9 +105,9 @@ export default function Page() {
               {/* data */}
               <div className="relative z-10 p-5 flex flex-col justify-between h-auto">
                 <Link href={`/projects/${proj.id}`}>
-                  <h3 className="relative text-lg w-fit font-semibold text-background transition-colors duration-300 group-hover:text-blue-400 pb-1 cursor-pointer">
+                  <h3 className="relative text-lg w-fit font-semibold text-background transition-colors duration-300 group-hover:text-cyan pb-1 cursor-pointer">
                     {proj.title}
-                    <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                    <span className="absolute left-0 bottom-0 w-full h-0.5 bg-cyan origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                   </h3>
                 </Link>
                 <p className="text-sm text-background/40 leading-relaxed mt-1">
@@ -133,7 +133,7 @@ export default function Page() {
                     >
                       <button className="w-full px-6 flex items-center justify-center gap-2 bg-foreground text-background py-2 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95">
                         <FaEye className="text-background" />
-                        Demo
+                        {/(apps\.apple|play\.google)\.com/.test(proj.liveUrl) ? "View on store" : "Demo"}
                       </button>
                     </a>
                   )}
@@ -183,7 +183,7 @@ export default function Page() {
             >
               <div className="grid grid-cols-1 sm:grid-cols-[3rem_1fr_9rem_10rem] gap-4 sm:gap-6 items-center px-4 sm:px-6 py-5 relative z-10 ">
                 {/* index */}
-                <span className="hidden sm:block text-4xl font-black text-background/8 group-hover:text-blue-500/20 transition-colors duration-500 select-none leading-none">
+                <span className="hidden sm:block text-4xl font-black text-background/8 group-hover:text-cyan/20 transition-colors duration-500 select-none leading-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
@@ -199,7 +199,7 @@ export default function Page() {
                       alt={proj.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <BsArrowUpRight className="text-white" size={16} />
                     </div>
                   </Link>
@@ -207,9 +207,9 @@ export default function Page() {
                   {/* text */}
                   <div className="flex flex-col gap-1.5 min-w-0">
                     <Link href={`/projects/${proj.id}`}>
-                      <h3 className="relative w-fit text-base font-semibold text-background group-hover:text-blue-400 transition-colors duration-300 pb-0.5 cursor-pointer">
+                      <h3 className="relative w-fit text-base font-semibold text-background group-hover:text-cyan transition-colors duration-300 pb-0.5 cursor-pointer">
                         {proj.title}
-                        <span className="absolute left-0 bottom-0 h-px w-full bg-blue-400 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-400" />
+                        <span className="absolute left-0 bottom-0 h-px w-full bg-cyan origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-400" />
                       </h3>
                     </Link>
                     <p className="text-xs text-background/40 leading-relaxed line-clamp-2 max-w-sm">
@@ -230,7 +230,7 @@ export default function Page() {
 
                 {/* category badge */}
                 <div className="hidden sm:flex justify-start">
-                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 tracking-wide uppercase">
+                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-cyan/10 text-cyan border border-cyan/20 tracking-wide uppercase">
                     {proj.category}
                   </span>
                 </div>
@@ -245,7 +245,7 @@ export default function Page() {
                     >
                       <button className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium rounded-xl bg-foreground text-background transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-foreground/10 active:scale-95 cursor-pointer whitespace-nowrap">
                         <FaEye size={11} />
-                        Demo
+                        {/(apps\.apple|play\.google)\.com/.test(proj.liveUrl) ? "View on store" : "Demo"}
                       </button>
                     </a>
                   )}

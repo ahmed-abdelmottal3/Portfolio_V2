@@ -23,7 +23,7 @@ export default function ProjectDetails() {
         <div className='container mx-auto pt-10 px-4 pb-20'>
             {/* Back Button */}
             <Link href="/projects">
-                <button className="flex items-center gap-2 text-background hover:text-blue-400 transition-colors duration-300 mb-8 group">
+                <button className="flex items-center gap-2 text-background hover:text-cyan transition-colors duration-300 mb-8 group">
                     <FaArrowLeft className="group-hover:-translate-x-1 transition-transform duration-300" />
                     <span>Back to Projects</span>
                 </button>
@@ -36,7 +36,7 @@ export default function ProjectDetails() {
                         <h1 className="text-4xl md:text-5xl font-bold text-background mb-2">
                             {project.title}
                         </h1>
-                        <p className="text-xl text-blue-400 font-light">
+                        <p className="text-xl text-cyan font-light">
                             {project.subtitle}
                         </p>
                     </div>
@@ -49,7 +49,7 @@ export default function ProjectDetails() {
                             >
                                 <button className="flex items-center gap-2 bg-background/10 text-background px-6 py-3 rounded-xl cursor-pointer transition-all duration-200 hover:bg-foreground/90 hover:scale-105 hover:shadow-lg active:scale-95">
                                     <FaEye />
-                                    Live Demo
+                                    {/(apps\.apple|play\.google)\.com/.test(project.liveUrl) ? "View on store" : "Live Demo"}
                                 </button>
                             </a>
                         )}
@@ -73,11 +73,11 @@ export default function ProjectDetails() {
                 {/* Meta Info */}
                 <div className="flex flex-wrap gap-6 text-sm text-background/40">
                     <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
+                        <span className="w-2 h-2 bg-cyan rounded-full"></span>
                         <span>{project.category}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
+                        <span className="w-2 h-2 bg-cyan rounded-full"></span>
                         <span>{project.date}</span>
                     </div>
                 </div>
@@ -111,8 +111,8 @@ export default function ProjectDetails() {
                             onClick={() => setSelectedImage(img)}
                             className={`relative w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 border-2 ${
                                 selectedImage === img
-                                    ? "border-blue-500 scale-105 shadow-lg shadow-blue-500/20"
-                                    : "border-transparent opacity-60 hover:opacity-100 hover:border-blue-400/50"
+                                    ? "border-cyan scale-105 shadow-lg shadow-cyan/20"
+                                    : "border-transparent opacity-60 hover:opacity-100 hover:border-cyan/50"
                             }`}
                         >
                             <img
@@ -154,7 +154,7 @@ export default function ProjectDetails() {
                             <div className="space-y-3">
                                 {project.features.map((feature, index) => (
                                     <div key={index} className="flex items-start gap-3">
-                                        <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 shrink-0"></div>
+                                        <div className="w-2 h-2 bg-cyan rounded-full mt-2 shrink-0"></div>
                                         <p className="text-background/60 leading-relaxed">
                                             {feature}
                                         </p>
@@ -172,7 +172,7 @@ export default function ProjectDetails() {
                             </h2>
                             <div className="space-y-6">
                                 {project.challenges.map((challenge, index) => (
-                                    <div key={index} className="border-l-2 border-blue-400 pl-4">
+                                    <div key={index} className="border-l-2 border-cyan pl-4">
                                         <h3 className="text-lg font-semibold text-background mb-2">
                                             {challenge.title}
                                         </h3>
@@ -198,7 +198,7 @@ export default function ProjectDetails() {
                                 {project.skills.map((skill, index) => (
                                     <span
                                         key={index}
-                                        className="px-3 py-2 text-sm font-medium rounded-full bg-background/10 text-background backdrop-blur-sm border border-white/10 hover:bg-white/20 hover:border-blue-400 transition-all duration-300"
+                                        className="px-3 py-2 text-sm font-medium rounded-full bg-background/10 text-background backdrop-blur-sm border border-white/10 hover:bg-white/20 hover:border-cyan transition-all duration-300"
                                     >
                                         {skill}
                                     </span>
@@ -221,8 +221,8 @@ export default function ProjectDetails() {
                                         rel="noopener noreferrer"
                                         className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
                                     >
-                                        <span className="text-background/60">Live Website</span>
-                                        <FaExternalLinkAlt className="text-blue-400 group-hover:translate-x-1 transition-transform duration-300" />
+                                        <span className="text-background/60">{/(apps\.apple|play\.google)\.com/.test(project.liveUrl) ? "Store listing" : "Live Website"}</span>
+                                        <FaExternalLinkAlt className="text-cyan group-hover:translate-x-1 transition-transform duration-300" />
                                     </a>
                                 )}
                                 {project.githubUrl && (
@@ -233,7 +233,7 @@ export default function ProjectDetails() {
                                         className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 group"
                                     >
                                         <span className="text-background/60">Source Code</span>
-                                        <FaGithub className="text-blue-400 group-hover:translate-x-1 transition-transform duration-300" />
+                                        <FaGithub className="text-cyan group-hover:translate-x-1 transition-transform duration-300" />
                                     </a>
                                 )}
                             </div>
