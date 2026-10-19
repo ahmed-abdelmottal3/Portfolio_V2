@@ -260,6 +260,12 @@
   overflow: hidden;
 }
 
+/* While the splash portrait flies into place, the hero portrait under it stays hidden. */
+.intro-pending #hero-portrait,
+.intro-handover #hero-portrait {
+  visibility: hidden;
+}
+
 
 .splash-glow {
   animation: splash-glow 0.7s ease-out forwards;

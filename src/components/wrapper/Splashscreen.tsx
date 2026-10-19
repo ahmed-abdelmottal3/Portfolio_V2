@@ -57,11 +57,16 @@ export default function SplashScreen({ children }: { children: React.ReactNode }
         box.style.opacity = "0";
       }
     }
+    // Hide the hero portrait until the flying one has landed on it, so the two never show at once.
+    document.documentElement.classList.add("intro-handover");
     setExiting(true);
 
     // Let the hero start rising while the portrait is still landing.
     setTimeout(() => document.documentElement.classList.remove("intro-pending"), 350);
-    setTimeout(() => setMounted(false), EXIT_MS);
+    setTimeout(() => {
+      document.documentElement.classList.remove("intro-handover");
+      setMounted(false);
+    }, EXIT_MS);
   }, []);
 
   useEffect(() => {
