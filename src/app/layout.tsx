@@ -36,7 +36,7 @@ export default function RootLayout({
         {/* Decide on the intro before first paint, so the site never flashes under it. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(sessionStorage.getItem("intro-seen")!=="1"&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("intro-pending");sessionStorage.setItem("intro-seen","1")}}catch(e){}`,
+            __html: `document.documentElement.classList.add("js");try{if(sessionStorage.getItem("intro-seen")!=="1"&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("intro-pending");sessionStorage.setItem("intro-seen","1")}}catch(e){}`,
           }}
         />
       </head>

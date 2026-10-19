@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BsArrowRight } from "react-icons/bs";
 import { pageOrder, pageIndex } from "@/src/lib/pages";
+import Reveal from "@/src/components/ui/reveal";
 
 // Large link to the next page at the bottom of each main page.
 export default function NextPage() {
@@ -14,9 +15,10 @@ export default function NextPage() {
   const nextNumber = isLast ? 1 : i + 2;
 
   return (
+    <Reveal shape="line-top" className="mt-28">
     <Link
       href={next.href}
-      className="group mt-28 flex items-end justify-between gap-6 border-t border-white/10 pt-8"
+      className="group flex items-end justify-between gap-6 border-t border-white/10 pt-8"
     >
       <div>
         <p className="font-mono text-xs tracking-[0.3em] text-silver">
@@ -30,5 +32,6 @@ export default function NextPage() {
         <BsArrowRight size={22} className="transition-transform group-hover:-rotate-45" />
       </span>
     </Link>
+    </Reveal>
   );
 }

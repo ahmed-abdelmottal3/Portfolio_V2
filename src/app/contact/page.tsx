@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { BsArrowUpRight, BsDownload, BsEnvelope } from "react-icons/bs";
 import PageHeader, { SectionLabel } from "@/src/components/ui/page-header";
 import NextPage from "@/src/components/shared/NextPage";
+import Reveal from "@/src/components/ui/reveal";
 
 const EMAIL = "abdelmottale3@gmail.com";
 // Public form key from web3forms.com; it only allows sending to the owner's inbox.
@@ -85,7 +86,7 @@ export default function ContactPage() {
           <SectionLabel>REACH ME DIRECTLY</SectionLabel>
           <ul className="mt-6 divide-y divide-white/10 border-b border-white/10">
             {channels.map((c) => (
-              <li key={c.label}>
+              <Reveal as="li" shape="line-top" key={c.label}>
                 <a
                   href={c.href}
                   target={c.href.startsWith("mailto:") ? undefined : "_blank"}
@@ -101,7 +102,7 @@ export default function ContactPage() {
                   </span>
                   <BsArrowUpRight className="text-silver transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan" />
                 </a>
-              </li>
+              </Reveal>
             ))}
           </ul>
 

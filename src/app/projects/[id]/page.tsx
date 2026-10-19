@@ -4,6 +4,7 @@ import { useParams, notFound } from "next/navigation";
 import { FaApple, FaGithub, FaGooglePlay } from "react-icons/fa";
 import { BsArrowLeft, BsArrowRight, BsArrowUpRight } from "react-icons/bs";
 import { SectionLabel } from "@/src/components/ui/page-header";
+import Reveal from "@/src/components/ui/reveal";
 import { projectsData } from "@/src/lib/projectsData";
 import { projects } from "@/src/lib/projects";
 
@@ -127,13 +128,13 @@ export default function ProjectDetails() {
             <SectionLabel count={project.challenges.length}>{store ? "ENGINEERING NOTES" : "CHALLENGES"}</SectionLabel>
             <div className="mt-6 divide-y divide-white/10 border-y border-white/10">
               {project.challenges.map((c, i) => (
-                <div key={c.title} className="grid gap-2 py-6 sm:grid-cols-[60px_1fr]">
+                <Reveal key={c.title} shape="line-top" className="grid gap-2 py-6 sm:grid-cols-[60px_1fr]">
                   <span className="font-mono text-sm text-white/30">{String(i + 1).padStart(2, "0")}</span>
                   <div>
                     <h3 className="font-semibold text-background">{c.title}</h3>
                     <p className="mt-2 leading-relaxed text-silver">{c.desc}</p>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </section>
@@ -167,7 +168,8 @@ export default function ProjectDetails() {
       </div>
 
       {/* next project */}
-      <Link href={`/projects/${next.id}`} className="group mt-28 flex items-end justify-between gap-6 border-t border-white/10 pt-8">
+      <Reveal shape="line-top" className="mt-28">
+      <Link href={`/projects/${next.id}`} className="group flex items-end justify-between gap-6 border-t border-white/10 pt-8">
         <div>
           <p className="font-mono text-xs tracking-[0.3em] text-silver">NEXT PROJECT</p>
           <p className="mt-3 text-silver-gradient font-extrabold tracking-tight text-[clamp(32px,5vw,64px)] leading-none">
@@ -178,6 +180,7 @@ export default function ProjectDetails() {
           <BsArrowRight size={22} className="transition-transform group-hover:-rotate-45" />
         </span>
       </Link>
+      </Reveal>
     </section>
   );
 }

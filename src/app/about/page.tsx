@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BsArrowRight, BsDownload } from "react-icons/bs";
 import PageHeader, { SectionLabel } from "@/src/components/ui/page-header";
 import NextPage from "@/src/components/shared/NextPage";
+import Reveal from "@/src/components/ui/reveal";
 
 const experiences = [
   {
@@ -104,7 +105,7 @@ export default function AboutPage() {
         <SectionLabel count={experiences.length}>EXPERIENCE</SectionLabel>
         <div className="mt-8 divide-y divide-white/10 border-b border-white/10">
           {experiences.map((e) => (
-            <article key={e.company} className="grid gap-3 py-8 md:grid-cols-[220px_1fr] md:gap-10">
+            <Reveal as="article" shape="line-top" key={e.company} className="grid gap-3 py-8 md:grid-cols-[220px_1fr] md:gap-10">
               <div className="font-mono text-xs tracking-wider text-silver">
                 <p>{e.date}</p>
                 <p className="mt-1 text-white/30">{e.place}</p>
@@ -114,7 +115,7 @@ export default function AboutPage() {
                 <p className="text-sm text-cyan">{e.company}</p>
                 <p className="mt-3 leading-relaxed text-silver">{e.desc}</p>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -124,14 +125,14 @@ export default function AboutPage() {
         <SectionLabel>STACK</SectionLabel>
         <div className="mt-8 divide-y divide-white/10 border-b border-white/10">
           {stack.map((s) => (
-            <div key={s.group} className="grid gap-3 py-6 md:grid-cols-[220px_1fr] md:gap-10">
+            <Reveal shape="line-top" key={s.group} className="grid gap-3 py-6 md:grid-cols-[220px_1fr] md:gap-10">
               <p className="font-mono text-xs tracking-wider text-silver">{s.group.toUpperCase()}</p>
               <div className="flex flex-wrap gap-2">
                 {s.items.map((item) => (
                   <span key={item} className="rounded-full border border-white/10 px-3 py-1 text-sm text-background/85">{item}</span>
                 ))}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -139,13 +140,13 @@ export default function AboutPage() {
       {/* education */}
       <section className="mt-24">
         <SectionLabel>EDUCATION</SectionLabel>
-        <div className="mt-8 grid gap-3 border-b border-white/10 pb-8 md:grid-cols-[220px_1fr] md:gap-10">
+        <Reveal shape="line-top" className="mt-8 grid gap-3 border-b border-white/10 pb-8 md:grid-cols-[220px_1fr] md:gap-10">
           <p className="font-mono text-xs tracking-wider text-silver">2020 – 2024</p>
           <div>
             <h3 className="text-lg font-semibold text-background">B.Sc. in Science, Zoology</h3>
             <p className="text-sm text-cyan">Kafr El-Sheikh University</p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <NextPage />

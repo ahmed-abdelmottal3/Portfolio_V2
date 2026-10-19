@@ -1,3 +1,5 @@
+import Reveal from "./reveal";
+
 type Props = {
   index: string;
   eyebrow: string;
@@ -30,10 +32,10 @@ export default function PageHeader({ index, eyebrow, title, intro }: Props) {
 // Small mono label used above sections inside a page.
 export function SectionLabel({ children, count }: { children: React.ReactNode; count?: number }) {
   return (
-    <div className="flex items-center gap-4 font-mono text-xs tracking-[0.3em] text-silver">
+    <Reveal shape="line-middle" className="flex items-center gap-4 font-mono text-xs tracking-[0.3em] text-silver">
       <span>{children}</span>
       {count !== undefined && <span className="text-white/25">{String(count).padStart(2, "0")}</span>}
       <span className="h-px flex-1 bg-white/10" />
-    </div>
+    </Reveal>
   );
 }

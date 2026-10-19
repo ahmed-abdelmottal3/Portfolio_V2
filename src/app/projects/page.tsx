@@ -6,6 +6,7 @@ import { FaApple, FaGithub, FaGooglePlay } from "react-icons/fa";
 import { BsArrowRight, BsArrowUpRight } from "react-icons/bs";
 import PageHeader, { SectionLabel } from "@/src/components/ui/page-header";
 import NextPage from "@/src/components/shared/NextPage";
+import Reveal from "@/src/components/ui/reveal";
 import { projects } from "@/src/lib/projects";
 
 type Project = (typeof projects)[number];
@@ -82,7 +83,7 @@ export default function ProjectsPage() {
 
 function ShippedCard({ project: p, index }: { project: Project; index: number }) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors hover:border-white/25">
+    <Reveal as="article" className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors hover:border-white/25">
       <Link href={`/projects/${p.id}`} className="block overflow-hidden">
         <img
           src={p.img}
@@ -122,13 +123,13 @@ function ShippedCard({ project: p, index }: { project: Project; index: number })
           Case study <BsArrowRight className="transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
-    </article>
+    </Reveal>
   );
 }
 
 function WorkCard({ project: p }: { project: Project }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors hover:border-white/25">
+    <Reveal as="article" className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors hover:border-white/25">
       <Link href={`/projects/${p.id}`} className="block overflow-hidden">
         <img
           src={p.img}
@@ -156,6 +157,6 @@ function WorkCard({ project: p }: { project: Project }) {
           )}
         </div>
       </div>
-    </article>
+    </Reveal>
   );
 }
