@@ -4,6 +4,8 @@ import "./globals.css";
 import SplashScreen from "../components/wrapper/Splashscreen";
 import Dock from "../components/shared/Dock";
 import ScrollPager from "../components/shared/ScrollPager";
+import ParticleField from "../components/shared/ParticleField";
+import PageTransition from "../components/shared/PageTransition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,10 +43,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
+        <ParticleField />
         <SplashScreen>
           {children}
           <Dock />
           <ScrollPager />
+          <PageTransition />
         </SplashScreen>
 
       </body>
