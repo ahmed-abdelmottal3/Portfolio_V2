@@ -7,6 +7,7 @@ export const projects = [
     skills: ["React Native", "Expo", "TypeScript", "RevenueCat", "Pusher"],
     img: "/throwback/cover.jpg",
     liveUrl: "https://apps.apple.com/us/app/throwback-%D8%AB%D8%B1%D9%88%D8%A8%D8%A7%D9%83/id6762511229",
+    playUrl: "https://play.google.com/store/apps/details?id=com.venus.throwback",
     githubUrl: "",
   },
   {
@@ -27,6 +28,7 @@ export const projects = [
     skills: ["React Native", "Expo", "TypeScript", "React Query", "Moyasar"],
     img: "/earno/cover.jpg",
     liveUrl: "https://apps.apple.com/us/app/earno-%D8%A7%D9%8A%D8%B1%D9%86%D9%88/id6761137437",
+    playUrl: "https://play.google.com/store/apps/details?id=com.afsc.earno",
     githubUrl: "",
   },
   {
@@ -37,6 +39,7 @@ export const projects = [
     skills: ["React Native", "Expo", "TypeScript", "Push Notifications"],
     img: "/puresite/cover.jpg",
     liveUrl: "https://apps.apple.com/us/app/puresite-%D8%A8%D9%8A%D9%88%D8%B1-%D8%B3%D8%A7%D9%8A%D8%AA/id6761421822",
+    playUrl: "https://play.google.com/store/apps/details?id=com.afsc.PureSite",
     githubUrl: "",
   },
   {
@@ -56,7 +59,7 @@ export const projects = [
     category: "Web",
     skills: ["Next.js", "Tailwind CSS", "Framer Motion", "UI/UX"],
     img: "/suknai/screencapture-suknai-vercel-app-2026-04-23-19_20_43.png",
-    liveUrl: "https://suknai.vercel.app/",
+    liveUrl: "",
     githubUrl: "https://github.com/ahmed-abdelmottal3/suknai",
   },
   {

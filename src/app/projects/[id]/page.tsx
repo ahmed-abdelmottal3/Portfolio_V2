@@ -48,17 +48,20 @@ export default function ProjectDetails() {
           )}
         </div>
         <div className="hero-rise flex flex-wrap gap-3" style={{ "--d": "0.18s" } as React.CSSProperties}>
-          {project.liveUrl && (
+          {[project.liveUrl, project.playUrl].filter((u): u is string => !!u).map((url, i) => (
             <a
-              href={project.liveUrl}
+              key={url}
+              href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3 text-sm font-semibold text-[#050507] transition hover:brightness-110"
+              className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition ${
+                i === 0 ? "bg-cyan text-[#050507] hover:brightness-110" : "border border-white/15 text-background hover:border-white/40"
+              }`}
             >
-              {project.liveUrl.includes("apps.apple.com") ? <FaApple /> : project.liveUrl.includes("play.google.com") ? <FaGooglePlay /> : <BsArrowUpRight />}
-              {store ? "View on store" : "Live site"}
+              {url.includes("apps.apple.com") ? <FaApple /> : url.includes("play.google.com") ? <FaGooglePlay /> : <BsArrowUpRight />}
+              {url.includes("apps.apple.com") ? "App Store" : url.includes("play.google.com") ? "Google Play" : "Live site"}
             </a>
-          )}
+          ))}
           {project.githubUrl && (
             <a
               href={project.githubUrl}

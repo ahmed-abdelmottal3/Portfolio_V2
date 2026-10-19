@@ -12,6 +12,7 @@ interface Project {
     skills: string[];
     img: string;
     liveUrl: string;
+    playUrl?: string;
     githubUrl: string;
     date: string;
     category: string;
@@ -30,6 +31,7 @@ export const projectsData: Project[] = [
         skills: ["React Native", "Expo", "TypeScript", "React Query", "RevenueCat", "Pusher", "i18next"],
         img: "/throwback/cover.jpg",
         liveUrl: "https://apps.apple.com/us/app/throwback-%D8%AB%D8%B1%D9%88%D8%A8%D8%A7%D9%83/id6762511229",
+        playUrl: "https://play.google.com/store/apps/details?id=com.venus.throwback",
         githubUrl: "",
         date: "2026",
         category: "Mobile App",
@@ -94,6 +96,7 @@ export const projectsData: Project[] = [
         skills: ["React Native", "Expo", "TypeScript", "React Query", "Zustand", "Moyasar", "i18next"],
         img: "/earno/cover.jpg",
         liveUrl: "https://apps.apple.com/us/app/earno-%D8%A7%D9%8A%D8%B1%D9%86%D9%88/id6761137437",
+        playUrl: "https://play.google.com/store/apps/details?id=com.afsc.earno",
         githubUrl: "",
         date: "2026",
         category: "Mobile App",
@@ -126,6 +129,7 @@ export const projectsData: Project[] = [
         skills: ["React Native", "Expo", "TypeScript", "Push Notifications", "expo-secure-store"],
         img: "/puresite/cover.jpg",
         liveUrl: "https://apps.apple.com/us/app/puresite-%D8%A8%D9%8A%D9%88%D8%B1-%D8%B3%D8%A7%D9%8A%D8%AA/id6761421822",
+        playUrl: "https://play.google.com/store/apps/details?id=com.afsc.PureSite",
         githubUrl: "",
         date: "2026",
         category: "Mobile App",
@@ -394,7 +398,7 @@ export const projectsData: Project[] = [
         longDesc: "Suknai is a high-end real estate platform designed to showcase luxury properties and high-profile brands. The project focuses on visual excellence, featuring massive, high-resolution imagery and smooth animations that reflect the premium nature of the real estate market. It includes detailed property views, brand showcases, and a seamless contact system for potential buyers.",
         skills: ["React", "Tailwind CSS", "Framer Motion", "UI/UX"],
         img: "/suknai/screencapture-suknai-vercel-app-2026-04-23-19_20_43.png",
-        liveUrl: "https://suknaii.vercel.app/",
+        liveUrl: "",
         githubUrl: "https://github.com/ahmed-abdelmottal3/suknai",
         date: "April 2026",
         category: "Web Development",

@@ -18,7 +18,6 @@ const channels = [
 
 const freelance = [
   { label: "Mostaql", href: "https://mostaql.com/u/Ahmed_Abdo1712" },
-  { label: "Nafezly", href: "https://nafezly.com/u/ahmed_abdelmottalie" },
 ];
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -121,7 +120,7 @@ export default function ContactPage() {
               <BsDownload /> Download CV
             </a>
             <span className="text-white/20">|</span>
-            <span className="text-silver">Freelance profiles:</span>
+            <span className="text-silver">Freelance profile:</span>
             {freelance.map((f) => (
               <a key={f.label} href={f.href} target="_blank" rel="noopener noreferrer" className="text-background hover:text-cyan">
                 {f.label}

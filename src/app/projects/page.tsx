@@ -97,15 +97,20 @@ function ShippedCard({ project: p, index }: { project: Project; index: number })
             <h2 className="mt-1 text-xl sm:text-2xl font-bold tracking-tight text-background">{p.title.split(" - ")[0]}</h2>
             <p className="text-sm text-silver">{p.title.split(" - ")[1]}</p>
           </div>
-          <a
-            href={p.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${p.title} store listing`}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 text-background transition hover:border-cyan hover:text-cyan"
-          >
-            <StoreIcon url={p.liveUrl} />
-          </a>
+          <div className="flex shrink-0 gap-2">
+            {[p.liveUrl, p.playUrl].filter((u): u is string => !!u).map((url) => (
+              <a
+                key={url}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${p.title} on ${url.includes("apps.apple.com") ? "the App Store" : "Google Play"}`}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-background transition hover:border-cyan hover:text-cyan"
+              >
+                <StoreIcon url={url} />
+              </a>
+            ))}
+          </div>
         </div>
         <p className="mt-4 text-sm leading-relaxed text-silver line-clamp-3">{p.desc}</p>
         <div className="mt-5 flex flex-wrap gap-2">
