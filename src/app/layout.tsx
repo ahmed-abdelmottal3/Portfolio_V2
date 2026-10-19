@@ -6,6 +6,7 @@ import Dock from "../components/shared/Dock";
 import ScrollPager from "../components/shared/ScrollPager";
 import ParticleField from "../components/shared/ParticleField";
 import PageTransition from "../components/shared/PageTransition";
+import ParticleRevealer from "../components/shared/ParticleRevealer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({
           <Dock />
           <ScrollPager />
           <PageTransition />
+          <ParticleRevealer />
         </SplashScreen>
 
       </body>

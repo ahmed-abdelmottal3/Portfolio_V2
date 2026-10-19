@@ -260,25 +260,6 @@
   overflow: hidden;
 }
 
-/* Hero items rise in; they wait (paused) until the splash hands over. */
-.hero-rise {
-  opacity: 0;
-  transform: translateY(18px);
-  animation: hero-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-  animation-delay: var(--d, 0s);
-}
-
-.intro-pending .hero-rise,
-.page-transitioning .hero-rise {
-  animation-play-state: paused;
-}
-
-@keyframes hero-rise {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
 
 .splash-glow {
   animation: splash-glow 0.7s ease-out forwards;
@@ -290,14 +271,14 @@
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
 }
 
-/* Particle reveals: hidden until the dots have traced the section. Only with JS. */
-.js [data-reveal] {
+
+/* Particle reveals: everything that rebuilds from particles stays hidden until
+   its dots have gathered. Only with JS, so the site still works without it. */
+.js :is([data-reveal], .hero-rise, section img):not([data-revealed]) {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.js [data-reveal][data-revealed] {
+.js :is([data-reveal], .hero-rise, section img)[data-revealed] {
   opacity: 1;
-  transform: none;
+  transition: opacity 0.45s ease;
 }

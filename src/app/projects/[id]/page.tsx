@@ -83,7 +83,7 @@ export default function ProjectDetails() {
 
       {/* phone screenshots */}
       {phoneShots.length > 0 && (
-        <div className="mt-6 -mx-5 sm:mx-0 flex gap-5 overflow-x-auto px-5 sm:px-0 pb-2 [scrollbar-width:none]">
+        <div data-reveal="" className="mt-6 -mx-5 sm:mx-0 flex gap-5 overflow-x-auto px-5 sm:px-0 pb-2 [scrollbar-width:none]">
           {phoneShots.map((src) => (
             <img
               key={src}
@@ -109,12 +109,12 @@ export default function ProjectDetails() {
         <div className="space-y-16">
           <section>
             <SectionLabel>OVERVIEW</SectionLabel>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-background/85">{project.longDesc}</p>
+            <p data-reveal="" className="mt-6 max-w-3xl text-lg leading-relaxed text-background/85">{project.longDesc}</p>
           </section>
 
           <section>
             <SectionLabel count={project.features.length}>WHAT IT DOES</SectionLabel>
-            <ul className="mt-6 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+            <ul data-reveal="" className="mt-6 grid gap-x-10 gap-y-4 sm:grid-cols-2">
               {project.features.map((f) => (
                 <li key={f} className="flex gap-3 text-silver">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
@@ -144,7 +144,7 @@ export default function ProjectDetails() {
         <aside className="lg:sticky lg:top-10 h-fit space-y-10">
           <div>
             <SectionLabel>STACK</SectionLabel>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div data-reveal="" className="mt-5 flex flex-wrap gap-2">
               {project.skills.map((s) => (
                 <span key={s} className="rounded-full border border-white/10 px-3 py-1 text-xs text-background/80">{s}</span>
               ))}
@@ -152,7 +152,7 @@ export default function ProjectDetails() {
           </div>
           <div>
             <SectionLabel>DETAILS</SectionLabel>
-            <dl className="mt-5 divide-y divide-white/10 text-sm">
+            <dl data-reveal="" className="mt-5 divide-y divide-white/10 text-sm">
               <div className="flex justify-between py-3"><dt className="text-silver">Type</dt><dd className="text-background">{project.category}</dd></div>
               <div className="flex justify-between py-3"><dt className="text-silver">Date</dt><dd className="text-background">{project.date}</dd></div>
               <div className="flex justify-between py-3">
