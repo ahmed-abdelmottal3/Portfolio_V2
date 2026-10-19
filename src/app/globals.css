@@ -251,3 +251,44 @@ body {
 
 
 
+/* Splash: rendered on the server, shown only while the intro is pending. */
+.splash {
+  display: none;
+}
+
+.intro-pending .splash {
+  display: block;
+}
+
+.intro-pending body {
+  overflow: hidden;
+}
+
+/* Hero items rise in; they wait (paused) until the splash hands over. */
+.hero-rise {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: hero-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+.intro-pending .hero-rise {
+  animation-play-state: paused;
+}
+
+@keyframes hero-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.splash-glow {
+  animation: splash-glow 0.7s ease-out forwards;
+}
+
+@keyframes splash-glow {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+  35% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
+}

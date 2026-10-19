@@ -42,6 +42,8 @@ export default function ScrollPager() {
     let decay: ReturnType<typeof setTimeout> | undefined;
     let touchY: number | null = null;
 
+    const introShowing = () => document.documentElement.classList.contains("intro-pending");
+
     const atBottom = () =>
       window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
     const atTop = () => window.scrollY <= 2;
@@ -67,7 +69,7 @@ export default function ScrollPager() {
     };
 
     const onWheel = (e: WheelEvent) => {
-      if (Date.now() < lockUntil.current) return;
+      if (Date.now() < lockUntil.current || introShowing()) return;
       const p = pullRef.current;
       if (e.deltaY > 0 && next && atBottom()) update(Math.max(0, p) + e.deltaY / WHEEL_DISTANCE);
       else if (e.deltaY < 0 && prev && atTop()) update(Math.min(0, p) + e.deltaY / WHEEL_DISTANCE);
@@ -77,7 +79,7 @@ export default function ScrollPager() {
 
     const onTouchStart = (e: TouchEvent) => { touchY = e.touches[0].clientY; };
     const onTouchMove = (e: TouchEvent) => {
-      if (touchY === null || Date.now() < lockUntil.current) return;
+      if (touchY === null || Date.now() < lockUntil.current || introShowing()) return;
       const dy = touchY - e.touches[0].clientY; // positive = swiping up = scrolling down
       if (dy > 0 && next && atBottom()) update(dy / TOUCH_DISTANCE);
       else if (dy < 0 && prev && atTop()) update(dy / TOUCH_DISTANCE);

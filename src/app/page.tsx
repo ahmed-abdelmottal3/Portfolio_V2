@@ -17,23 +17,23 @@ export default function Home() {
       <div className="container mx-auto px-5 sm:px-8 pt-16 pb-36 lg:pt-0 lg:pb-0 min-h-screen grid lg:grid-cols-[1.1fr_0.9fr] items-center gap-10">
         {/* copy */}
         <div className="relative z-10 order-2 lg:order-1">
-          <p className="font-mono text-xs sm:text-sm tracking-[0.3em] text-cyan mb-5">
+          <p className="hero-rise font-mono text-xs sm:text-sm tracking-[0.3em] text-cyan mb-5" style={{ "--d": "0s" } as React.CSSProperties}>
             REACT NATIVE DEVELOPER · CAIRO
           </p>
 
-          <h1 className="text-silver-gradient font-extrabold tracking-tight leading-[0.95] text-[clamp(44px,7vw,96px)]">
+          <h1 style={{ "--d": "0.08s" } as React.CSSProperties} className="hero-rise text-silver-gradient font-extrabold tracking-tight leading-[0.95] text-[clamp(44px,7vw,96px)]">
             Ahmed
             <br />
             Abdelmottalie
           </h1>
 
-          <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-silver">
+          <p style={{ "--d": "0.16s" } as React.CSSProperties} className="hero-rise mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-silver">
             I build production iOS and Android apps with Expo and TypeScript at Triple Solutions.
             Five are live on the App Store and Google Play, most of them Arabic-first with
             payments and subscriptions built in.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="hero-rise mt-8 flex flex-wrap gap-3" style={{ "--d": "0.24s" } as React.CSSProperties}>
             <Link
               href="/projects"
               className="group inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3 text-sm font-semibold text-[#050507] transition hover:brightness-110"
@@ -58,7 +58,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <dl className="mt-12 grid grid-cols-3 max-w-xl border-t border-white/10 pt-6 gap-4">
+          <dl style={{ "--d": "0.32s" } as React.CSSProperties} className="hero-rise mt-12 grid grid-cols-3 max-w-xl border-t border-white/10 pt-6 gap-4">
             {stats.map((s) => (
               <div key={s.label}>
                 <dt className="text-lg sm:text-2xl font-bold text-background">{s.value}</dt>
@@ -67,7 +67,7 @@ export default function Home() {
             ))}
           </dl>
 
-          <div className="mt-8 flex flex-wrap items-center gap-2">
+          <div className="hero-rise mt-8 flex flex-wrap items-center gap-2" style={{ "--d": "0.4s" } as React.CSSProperties}>
             <span className="mr-2 inline-flex items-center gap-2 text-xs text-silver">
               <FaApple /> <FaGooglePlay /> Shipping with
             </span>
@@ -80,7 +80,7 @@ export default function Home() {
         </div>
 
         {/* portrait */}
-        <div className="relative order-1 lg:order-2 h-[46vh] sm:h-[55vh] lg:h-[78vh]">
+        <div id="hero-portrait" className="relative order-1 lg:order-2 h-[46vh] sm:h-[55vh] lg:h-[78vh]">
           <ParticlePortrait delay={0.1} />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-foreground to-transparent" />
         </div>
